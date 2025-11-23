@@ -179,7 +179,7 @@
 
 @layer theme {
   :root, :host {
-    --font-sans: var(--font-inter);
+    --font-sans: "Inter", system-ui, sans-serif;
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     --color-red-400: #ff6568;
     --color-red-600: #e40014;
@@ -241,13 +241,13 @@
     --default-transition-timing-function: cubic-bezier(.4, 0, .2, 1);
     --default-font-family: var(--font-sans);
     --default-mono-font-family: var(--font-mono);
+    --font-chewy: "Chewy", cursive;
+    --font-comic: "Comic Sans MS", "Comic Sans", cursive;
     --color-brand-300: #ffb099;
     --color-brand-400: #ff8566;
     --color-brand-500: #f15a24;
     --color-brand-600: #d94516;
     --color-brand-900: #782510;
-    --font-chewy: var(--font-chewy);
-    --font-comic: "Comic Sans MS", "Comic Sans", cursive;
     --animate-fade-in: fadeIn .5s ease-out forwards;
     --animate-slide-up: slideUp .5s ease-out forwards;
   }
@@ -569,8 +569,8 @@
     margin-top: calc(var(--spacing) * 1);
   }
 
-  .mt-8 {
-    margin-top: calc(var(--spacing) * 8);
+  .mt-2 {
+    margin-top: calc(var(--spacing) * 2);
   }
 
   .mb-1\.5 {
@@ -793,6 +793,12 @@
 
   .self-center {
     align-self: center;
+  }
+
+  .truncate {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
   }
 
   .overflow-hidden {
@@ -1019,6 +1025,10 @@
 
   .p-10 {
     padding: calc(var(--spacing) * 10);
+  }
+
+  .px-2 {
+    padding-inline: calc(var(--spacing) * 2);
   }
 
   .px-4 {
@@ -1562,6 +1572,17 @@
   }
 }
 
+body {
+  color: #fff;
+  font-family: var(--font-sans);
+  background-color: #280b51;
+}
+
+.animated-bg {
+  background: linear-gradient(-45deg, #280b51, #15052d, #3b1078, #1e083d) 0 0 / 400% 400%;
+  animation: 15s infinite gradientBG;
+}
+
 @keyframes gradientBG {
   0% {
     background-position: 0%;
@@ -1574,17 +1595,6 @@
   100% {
     background-position: 0%;
   }
-}
-
-body {
-  color: #fff;
-  font-family: var(--font-sans);
-  background-color: #1a1625;
-}
-
-.animated-bg {
-  background: linear-gradient(-45deg, #1a1625, #231e32, #0f0e17, #1e1b2e) 0 0 / 400% 400%;
-  animation: 15s infinite gradientBG;
 }
 
 @property --tw-rotate-x {

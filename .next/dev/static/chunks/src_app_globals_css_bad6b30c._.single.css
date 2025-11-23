@@ -68,7 +68,7 @@
 
 @layer theme {
   :root, :host {
-    --font-sans: var(--font-inter);
+    --font-sans: "Inter", system-ui, sans-serif;
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     --color-red-400: #ff6568;
     --color-red-600: #e40014;
@@ -121,6 +121,7 @@
     --drop-shadow-sm: 0 1px 2px #00000026;
     --drop-shadow-md: 0 3px 3px #0000001f;
     --drop-shadow-lg: 0 4px 4px #00000026;
+    --drop-shadow-2xl: 0 25px 25px #00000026;
     --animate-spin: spin 1s linear infinite;
     --animate-pulse: pulse 2s cubic-bezier(.4, 0, .6, 1) infinite;
     --animate-bounce: bounce 1s infinite;
@@ -130,15 +131,16 @@
     --default-transition-timing-function: cubic-bezier(.4, 0, .2, 1);
     --default-font-family: var(--font-sans);
     --default-mono-font-family: var(--font-mono);
+    --font-chewy: "Chewy", cursive;
+    --font-comic: "Comic Sans MS", "Comic Sans", cursive;
     --color-brand-300: #ffb099;
     --color-brand-400: #ff8566;
     --color-brand-500: #f15a24;
     --color-brand-600: #d94516;
     --color-brand-900: #782510;
-    --font-chewy: var(--font-chewy);
-    --font-comic: "Comic Sans MS", "Comic Sans", cursive;
     --animate-fade-in: fadeIn .5s ease-out forwards;
     --animate-slide-up: slideUp .5s ease-out forwards;
+    --animate-scale-pulse: scalePulse 2s ease-in-out infinite;
   }
 
   @supports (color: lab(0% 0 0)) {
@@ -458,8 +460,8 @@
     margin-top: calc(var(--spacing) * 1);
   }
 
-  .mt-8 {
-    margin-top: calc(var(--spacing) * 8);
+  .mt-2 {
+    margin-top: calc(var(--spacing) * 2);
   }
 
   .mb-1\.5 {
@@ -518,6 +520,10 @@
     height: calc(var(--spacing) * 40);
   }
 
+  .h-48 {
+    height: calc(var(--spacing) * 48);
+  }
+
   .h-full {
     height: 100%;
   }
@@ -556,6 +562,10 @@
 
   .w-40 {
     width: calc(var(--spacing) * 40);
+  }
+
+  .w-48 {
+    width: calc(var(--spacing) * 48);
   }
 
   .w-full {
@@ -608,6 +618,10 @@
 
   .animate-pulse {
     animation: var(--animate-pulse);
+  }
+
+  .animate-scale-pulse {
+    animation: var(--animate-scale-pulse);
   }
 
   .animate-slide-up {
@@ -682,6 +696,12 @@
 
   .self-center {
     align-self: center;
+  }
+
+  .truncate {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
   }
 
   .overflow-hidden {
@@ -786,8 +806,8 @@
     background-color: #0f0e17;
   }
 
-  .bg-\[\#1a1625\] {
-    background-color: #1a1625;
+  .bg-\[\#280b51\] {
+    background-color: #280b51;
   }
 
   .bg-\[\#13111a\] {
@@ -910,6 +930,10 @@
     padding: calc(var(--spacing) * 10);
   }
 
+  .px-2 {
+    padding-inline: calc(var(--spacing) * 2);
+  }
+
   .px-4 {
     padding-inline: calc(var(--spacing) * 4);
   }
@@ -932,6 +956,10 @@
 
   .pb-12 {
     padding-bottom: calc(var(--spacing) * 12);
+  }
+
+  .pb-32 {
+    padding-bottom: calc(var(--spacing) * 32);
   }
 
   .text-center {
@@ -1185,6 +1213,12 @@
 
   .blur {
     --tw-blur: blur(8px);
+    filter: var(--tw-blur, ) var(--tw-brightness, ) var(--tw-contrast, ) var(--tw-grayscale, ) var(--tw-hue-rotate, ) var(--tw-invert, ) var(--tw-saturate, ) var(--tw-sepia, ) var(--tw-drop-shadow, );
+  }
+
+  .drop-shadow-2xl {
+    --tw-drop-shadow-size: drop-shadow(0 25px 25px var(--tw-drop-shadow-color, #00000026));
+    --tw-drop-shadow: drop-shadow(var(--drop-shadow-2xl));
     filter: var(--tw-blur, ) var(--tw-brightness, ) var(--tw-contrast, ) var(--tw-grayscale, ) var(--tw-hue-rotate, ) var(--tw-invert, ) var(--tw-saturate, ) var(--tw-sepia, ) var(--tw-drop-shadow, );
   }
 
@@ -1451,6 +1485,27 @@
   }
 }
 
+@keyframes scalePulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+body {
+  color: #fff;
+  font-family: var(--font-sans);
+  background-color: #280b51;
+}
+
+.animated-bg {
+  background: linear-gradient(-45deg, #280b51, #15052d, #3b1078, #1e083d) 0 0 / 400% 400%;
+  animation: 15s infinite gradientBG;
+}
+
 @keyframes gradientBG {
   0% {
     background-position: 0%;
@@ -1463,17 +1518,6 @@
   100% {
     background-position: 0%;
   }
-}
-
-body {
-  color: #fff;
-  font-family: var(--font-sans);
-  background-color: #1a1625;
-}
-
-.animated-bg {
-  background: linear-gradient(-45deg, #1a1625, #231e32, #0f0e17, #1e1b2e) 0 0 / 400% 400%;
-  animation: 15s infinite gradientBG;
 }
 
 @property --tw-rotate-x {
