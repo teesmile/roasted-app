@@ -1,4 +1,4 @@
-'use client'; // Client component due to Canvas/Audio usage
+'use client';
 
 import React, { useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
@@ -51,9 +51,7 @@ export const RoastCard: React.FC<RoastCardProps> = ({ user, roast, memeUrl, isMe
         return;
       }
 
-      // Get correct font family names injected by Next.js
       const styles = getComputedStyle(document.body);
-      // Fallback to generic names if variable not found
       const chewyFont = styles.getPropertyValue('--font-chewy') || 'cursive'; 
       const comicFont = styles.getPropertyValue('--font-comic') || 'Comic Sans MS';
 
@@ -62,10 +60,10 @@ export const RoastCard: React.FC<RoastCardProps> = ({ user, roast, memeUrl, isMe
       canvas.width = width;
       canvas.height = height;
 
-      // 1. Background
+      // 1. Background - New #280b51 Theme
       const gradient = ctx.createLinearGradient(0, 0, 0, height);
-      gradient.addColorStop(0, '#1a1625');
-      gradient.addColorStop(1, '#0f0e17');
+      gradient.addColorStop(0, '#280b51'); // Deep Purple
+      gradient.addColorStop(1, '#0f0e17'); // Almost Black
       ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, width, height);
 
@@ -74,7 +72,6 @@ export const RoastCard: React.FC<RoastCardProps> = ({ user, roast, memeUrl, isMe
       ctx.fillRect(0, 0, width, 100);
       
       ctx.fillStyle = '#ffffff';
-      // Use the actual font family name from CSS variable
       ctx.font = `50px ${chewyFont}`;
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
@@ -102,7 +99,6 @@ export const RoastCard: React.FC<RoastCardProps> = ({ user, roast, memeUrl, isMe
         
         // Roast Text
         ctx.fillStyle = '#ffffff';
-        // Use correct font variable for Comic Sans
         ctx.font = `36px ${comicFont}`; 
         ctx.textAlign = 'center';
         
@@ -178,11 +174,14 @@ export const RoastCard: React.FC<RoastCardProps> = ({ user, roast, memeUrl, isMe
       const imageBlob = await generateCompositeImage();
       if (!imageBlob) throw new Error("Failed to generate image");
 
+      let copySuccess = false;
+
       try {
         await navigator.clipboard.write([
           new ClipboardItem({ [imageBlob.type]: imageBlob })
         ]);
-        setStatusMessage("Image copied to clipboard!");
+        copySuccess = true;
+        setStatusMessage("✅ Image Copied! PASTE IT (Ctrl+V) manually!");
       } catch (err) {
         console.warn("Clipboard failed, downloading", err);
         const url = URL.createObjectURL(imageBlob);
@@ -193,26 +192,24 @@ export const RoastCard: React.FC<RoastCardProps> = ({ user, roast, memeUrl, isMe
         link.click();
         document.body.removeChild(link);
         URL.revokeObjectURL(url);
-        setStatusMessage("Image downloaded! Attach it to your cast.");
+        setStatusMessage("⬇️ Image Saved! Attach it manually.");
       }
 
-      // REMOVED TIMEOUT: This fixes the popup blocker issue
+      await new Promise(r => setTimeout(r, 1500));
+
       const shareText = `I just got roasted by Roasted.\n\nCheck yours:`;
-      
-      // Use Production URL if sharing from Localhost (so the embed works for others)
       const currentHost = window.location.hostname;
       const appUrl = (currentHost === 'localhost' || currentHost === '127.0.0.1')
         ? 'https://castroast.vercel.app' 
         : window.location.href; 
       
-      const shareUrl = `https://farcaster.xyz/~/compose?text=${encodeURIComponent(shareText)}&embeds[]=${encodeURIComponent(appUrl)}`;
+      const shareUrl = `https://warpcast.com/~/compose?text=${encodeURIComponent(shareText)}&embeds[]=${encodeURIComponent(appUrl)}`;
       
-      // Open immediately to preserve user gesture
+      // Open Warpcast
       window.open(shareUrl, '_blank');
       
       setIsGeneratingImage(false);
-      // Don't clear status message immediately so user sees "Copied"
-      setTimeout(() => setStatusMessage(null), 3000);
+      setTimeout(() => setStatusMessage(null), 10000);
 
     } catch (error) {
       console.error("Share failed", error);
@@ -228,7 +225,8 @@ export const RoastCard: React.FC<RoastCardProps> = ({ user, roast, memeUrl, isMe
 
   return (
     <div className="w-full max-w-2xl animate-slide-up pb-12">
-      <div className="bg-[#1a1625] rounded-2xl overflow-hidden shadow-2xl border border-gray-800 relative flex flex-col">
+      {/* Updated Background Color to #280b51 (Deep Purple) */}
+      <div className="bg-[#280b51] rounded-2xl overflow-hidden shadow-2xl border border-gray-800 relative flex flex-col">
         
         {/* Header */}
         <div className="bg-brand-500 p-2 text-center shadow-lg z-10">
@@ -237,7 +235,8 @@ export const RoastCard: React.FC<RoastCardProps> = ({ user, roast, memeUrl, isMe
              </h3>
         </div>
 
-        <div className="p-6 sm:p-8 flex flex-col md:flex-row items-center gap-6 bg-[#1a1625]">
+        {/* Updated Background Color to #280b51 */}
+        <div className="p-6 sm:p-8 flex flex-col md:flex-row items-center gap-6 bg-[#280b51]">
           <div className="flex-1 order-2 md:order-1 w-full">
             <div className="text-lg sm:text-2xl leading-loose text-center md:text-left text-white drop-shadow-md prose prose-invert max-w-none font-normal font-comic">
                <ReactMarkdown>{roast}</ReactMarkdown>
@@ -281,7 +280,9 @@ export const RoastCard: React.FC<RoastCardProps> = ({ user, roast, memeUrl, isMe
 
         <div className="bg-[#0f0e17] p-4 flex flex-col sm:flex-row gap-3 justify-center sm:justify-end border-t border-gray-900">
           {statusMessage && (
-             <div className="text-brand-400 text-sm font-bold self-center animate-pulse">{statusMessage}</div>
+             <div className="text-brand-400 text-sm font-bold self-center animate-pulse text-center">
+               {statusMessage}
+             </div>
           )}
           <Button variant="outline" onClick={handleRoastAnother} className="text-sm px-4 py-2">
             Roast Another

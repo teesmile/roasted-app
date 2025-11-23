@@ -22,6 +22,7 @@ const LOADING_MESSAGES = [
 ];
 
 export default function Home() {
+  const [showSplash, setShowSplash] = useState(true);
   const [state, setState] = useState<RoastState>({
     status: 'idle',
     user: null,
@@ -34,6 +35,14 @@ export default function Home() {
   const [loadingMessage, setLoadingMessage] = useState("Cooking up something spicy...");
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const successAudioRef = useRef<HTMLAudioElement | null>(null);
+
+  // Splash Screen Timer
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowSplash(false);
+    }, 2000);
+    return () => clearTimeout(timer);
+  }, []);
 
   const startBackgroundMusic = () => {
     if (typeof window !== 'undefined') {
@@ -123,11 +132,9 @@ export default function Home() {
            } else {
              // Failure Case (e.g. Rate Limit)
              console.warn("Meme generation skipped:", memeResult.error);
-             // We update state to stop loading, but keep the roast text
              setState(prev => ({ 
                ...prev, 
                isMemeLoading: false,
-               // Optional: You could add a 'warning' field to state to show a toast
              }));
            }
         })
@@ -185,6 +192,17 @@ export default function Home() {
     </svg>
   );
 
+  // Splash Screen View
+  if (showSplash) {
+    return (
+      <div className="min-h-screen animated-bg flex items-center justify-center">
+        <div className="w-48 h-48 animate-scale-pulse drop-shadow-2xl">
+          <LogoSVG />
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen animated-bg text-white flex flex-col">
       <header className="p-6 border-b border-white/10 bg-black/20 backdrop-blur-md sticky top-0 z-10">
@@ -201,7 +219,7 @@ export default function Home() {
           <div className="flex items-center gap-3">
             <span className="text-sm text-white/80 hidden sm:block font-medium shadow-sm">Built by</span>
             <a 
-              href="https://warpcast.com/teesmilex.base.eth" 
+              href="https://farcaster.xyz/teesmilex.base.eth" 
               target="_blank" 
               rel="noopener noreferrer"
               className="px-5 py-2 bg-black/40 hover:bg-black/60 border border-white/20 text-white rounded-full text-sm font-medium transition-all flex items-center gap-2 backdrop-blur-sm"
@@ -218,7 +236,8 @@ export default function Home() {
         </div>
       </header>
 
-      <main className="flex-1 flex flex-col items-center justify-center p-4 md:p-8 w-full max-w-5xl mx-auto">
+      {/* Added pb-32 to move vertical visual center upwards */}
+      <main className="flex-1 flex flex-col items-center justify-center p-4 md:p-8 pb-32 w-full max-w-5xl mx-auto">
         
         {state.status === 'idle' && (
           <UserSearch onSearch={handleSearch} isLoading={false} />
@@ -229,7 +248,8 @@ export default function Home() {
              <div className="bg-gradient-to-br from-yellow-400 via-orange-500 to-pink-500 p-1 rounded-3xl shadow-2xl">
                <div className="bg-gradient-to-br from-yellow-400 via-orange-500 to-pink-500 p-10 rounded-[1.4rem] flex flex-col items-center text-center space-y-8 min-h-[400px] justify-center">
                  
-                 <div className="w-40 h-40 rounded-2xl overflow-hidden shadow-2xl ring-4 ring-white/30 flex items-center justify-center transform animate-bounce">
+                 {/* Updated Animation to scale-pulse instead of bounce */}
+                 <div className="w-40 h-40 rounded-2xl overflow-hidden shadow-2xl ring-4 ring-white/30 flex items-center justify-center transform animate-scale-pulse">
                     <LogoSVG />
                  </div>
 
@@ -238,7 +258,7 @@ export default function Home() {
                      {state.status === 'fetching_user' && 'Locating Target'}
                      {(state.status === 'analyzing' || state.status === 'generating_meme') && 'Cooking you up real soon...'}
                    </h2>
-                   <p className="text-white text-base sm:text-lg drop-shadow-md min-h-[3rem] max-w-[90%] mx-auto font-chewy">
+                   <p className="text-white text-base sm:text-lg drop-shadow-md min-h-[3rem] max-w-[90%] mx-auto font-chewy truncate px-2">
                      {loadingMessage}
                    </p>
                  </div>
@@ -268,7 +288,7 @@ export default function Home() {
           </div>
         )}
 
-        <footer className="mt-8 text-center text-white/50 text-xs font-medium drop-shadow-sm">
+        <footer className="mt-2 text-center text-white/50 text-xs font-medium drop-shadow-sm">
           <p>This is a fun app. Use at your own emotional risk.</p>
         </footer>
 

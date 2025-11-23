@@ -1,6 +1,10 @@
 @import "tailwindcss";
 
 @theme {
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-chewy: 'Chewy', cursive;
+  --font-comic: 'Comic Sans MS', 'Comic Sans', cursive;
+
   --color-brand-50: #fff3f0;
   --color-brand-100: #ffe6e0;
   --color-brand-200: #ffd0c2;
@@ -12,13 +16,9 @@
   --color-brand-800: #912a10;
   --color-brand-900: #782510;
 
-  --font-sans: var(--font-inter);
-  --font-chewy: var(--font-chewy);
-  --font-comic: "Comic Sans MS", "Comic Sans", cursive;
-
   --animate-fade-in: fadeIn 0.5s ease-out forwards;
   --animate-slide-up: slideUp 0.5s ease-out forwards;
-  --animate-bounce: bounce 1s infinite;
+  --animate-scale-pulse: scalePulse 2s ease-in-out infinite;
 }
 
 @keyframes fadeIn {
@@ -31,21 +31,26 @@
   to { transform: translateY(0); opacity: 1; }
 }
 
-@keyframes gradientBG {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+@keyframes scalePulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
 }
 
 body {
-  background-color: #1a1625;
+  background-color: #280b51; /* Base requested color */
   color: #ffffff;
   font-family: var(--font-sans);
 }
 
 .animated-bg {
-  /* Deep Dark Slate/Purple Gradient */
-  background: linear-gradient(-45deg, #1a1625, #231e32, #0f0e17, #1e1b2e);
+  /* Requested #280b51 Purple Theme Gradient */
+  background: linear-gradient(-45deg, #280b51, #15052d, #3b1078, #1e083d);
   background-size: 400% 400%;
   animation: gradientBG 15s ease infinite;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
