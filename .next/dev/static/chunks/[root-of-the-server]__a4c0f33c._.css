@@ -235,7 +235,6 @@
     --drop-shadow-2xl: 0 25px 25px #00000026;
     --animate-spin: spin 1s linear infinite;
     --animate-pulse: pulse 2s cubic-bezier(.4, 0, .6, 1) infinite;
-    --animate-bounce: bounce 1s infinite;
     --blur-sm: 8px;
     --blur-md: 12px;
     --default-transition-duration: .15s;
@@ -251,7 +250,7 @@
     --color-brand-900: #782510;
     --animate-fade-in: fadeIn .5s ease-out forwards;
     --animate-slide-up: slideUp .5s ease-out forwards;
-    --animate-scale-pulse: scalePulse 2s ease-in-out infinite;
+    --animate-scale-pulse: scalePulse 3s ease-in-out infinite;
   }
 
   @supports (color: lab(0% 0 0)) {
@@ -717,10 +716,6 @@
 
   .transform {
     transform: var(--tw-rotate-x, ) var(--tw-rotate-y, ) var(--tw-rotate-z, ) var(--tw-skew-x, ) var(--tw-skew-y, );
-  }
-
-  .animate-bounce {
-    animation: var(--animate-bounce);
   }
 
   .animate-fade-in {
@@ -1613,7 +1608,7 @@ body {
 }
 
 .animated-bg {
-  background: linear-gradient(-45deg, #280b51, #15052d, #3b1078, #1e083d) 0 0 / 400% 400%;
+  background: linear-gradient(-45deg, #280b51, #1e083d, #3b1078, #15052d) 0 0 / 400% 400%;
   animation: 15s infinite gradientBG;
 }
 
@@ -1962,18 +1957,6 @@ body {
 @keyframes pulse {
   50% {
     opacity: .5;
-  }
-}
-
-@keyframes bounce {
-  0%, 100% {
-    animation-timing-function: cubic-bezier(.8, 0, 1, 1);
-    transform: translateY(-25%);
-  }
-
-  50% {
-    animation-timing-function: cubic-bezier(0, 0, .2, 1);
-    transform: none;
   }
 }
 

@@ -1,34 +1,34 @@
 {
   "node": {
-    "401e6139cb5f8ae9d2de21053de30fd0708bce5b42": {
+    "406e3405653d65e174f660fc48b6a1922983761d12": {
       "workers": {
         "app/page": {
-          "moduleId": "[project]/.next-internal/server/app/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/app/action.tsx [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "moduleId": "[project]/.next-internal/server/app/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/app/actions.tsx [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
           "async": false,
           "exportedName": "roastUserAction",
-          "filename": "src/app/action.tsx"
+          "filename": "src/app/actions.tsx"
         }
       },
       "layer": {
         "app/page": "action-browser"
       },
       "exportedName": "roastUserAction",
-      "filename": "src/app/action.tsx"
+      "filename": "src/app/actions.tsx"
     },
-    "607833dc1c5672c535aad402fbbfaccd40622d19c0": {
+    "60d9fe79e76b1a05989be5e34f60e48cfebb8cb151": {
       "workers": {
         "app/page": {
-          "moduleId": "[project]/.next-internal/server/app/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/app/action.tsx [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "moduleId": "[project]/.next-internal/server/app/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/app/actions.tsx [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
           "async": false,
           "exportedName": "generateMemeAction",
-          "filename": "src/app/action.tsx"
+          "filename": "src/app/actions.tsx"
         }
       },
       "layer": {
         "app/page": "action-browser"
       },
       "exportedName": "generateMemeAction",
-      "filename": "src/app/action.tsx"
+      "filename": "src/app/actions.tsx"
     }
   },
   "edge": {}

@@ -3,7 +3,7 @@
 @theme {
   --font-sans: 'Inter', system-ui, sans-serif;
   --font-chewy: 'Chewy', cursive;
-  --font-comic: 'Comic Sans MS', 'Comic Sans', cursive;
+  --font-roboto: var(--font-roboto);
 
   --color-brand-50: #fff3f0;
   --color-brand-100: #ffe6e0;
@@ -18,7 +18,7 @@
 
   --animate-fade-in: fadeIn 0.5s ease-out forwards;
   --animate-slide-up: slideUp 0.5s ease-out forwards;
-  --animate-scale-pulse: scalePulse 2s ease-in-out infinite;
+  --animate-scale-pulse: scalePulse 3s ease-in-out infinite;
 }
 
 @keyframes fadeIn {
@@ -37,14 +37,14 @@
 }
 
 body {
-  background-color: #280b51; /* Base requested color */
+  background-color: #280b51;
   color: #ffffff;
   font-family: var(--font-sans);
 }
 
 .animated-bg {
   /* Requested #280b51 Purple Theme Gradient */
-  background: linear-gradient(-45deg, #280b51, #15052d, #3b1078, #1e083d);
+  background: linear-gradient(-45deg, #280b51, #1e083d, #3b1078, #15052d);
   background-size: 400% 400%;
   animation: gradientBG 15s ease infinite;
 }
