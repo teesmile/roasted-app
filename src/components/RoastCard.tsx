@@ -1,3 +1,5 @@
+'use client'; // Client component due to Canvas/Audio usage
+
 import React, { useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { FarcasterUser } from '../types';
@@ -49,30 +51,41 @@ export const RoastCard: React.FC<RoastCardProps> = ({ user, roast, memeUrl, isMe
         return;
       }
 
+      // Get correct font family names injected by Next.js
+      const styles = getComputedStyle(document.body);
+      // Fallback to generic names if variable not found
+      const chewyFont = styles.getPropertyValue('--font-chewy') || 'cursive'; 
+      const comicFont = styles.getPropertyValue('--font-comic') || 'Comic Sans MS';
+
       const width = 1080;
       const height = 1080;
       canvas.width = width;
       canvas.height = height;
 
+      // 1. Background
       const gradient = ctx.createLinearGradient(0, 0, 0, height);
       gradient.addColorStop(0, '#1a1625');
       gradient.addColorStop(1, '#0f0e17');
       ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, width, height);
 
+      // 2. Header
       ctx.fillStyle = '#f15a24';
       ctx.fillRect(0, 0, width, 100);
       
       ctx.fillStyle = '#ffffff';
-      ctx.font = '50px "Chewy", cursive';
+      // Use the actual font family name from CSS variable
+      ctx.font = `50px ${chewyFont}`;
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
       ctx.fillText('⚠️ EMOTIONAL DAMAGE DETECTED ⚠️', width / 2, 50);
 
+      // 3. Draw Content Function
       const drawContent = (memeImg?: HTMLImageElement) => {
         ctx.textAlign = 'center'; 
         const footerTextX = width - 120; 
 
+        // Footer Text
         ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
         ctx.font = '24px Inter, sans-serif';
         ctx.fillText('Roasted Analysis', footerTextX, height - 65);
@@ -81,13 +94,16 @@ export const RoastCard: React.FC<RoastCardProps> = ({ user, roast, memeUrl, isMe
         ctx.fillStyle = 'rgba(255, 255, 255, 0.5)'; 
         ctx.fillText('teesmile', footerTextX, height - 35);
         
+        // User Handle
         ctx.fillStyle = '#ffffff';
         ctx.font = 'bold 32px Inter, sans-serif';
         ctx.textAlign = 'left';
         ctx.fillText(`@${user.username}`, 50, height - 40);
         
+        // Roast Text
         ctx.fillStyle = '#ffffff';
-        ctx.font = '36px "Comic Sans MS", "Comic Sans", cursive'; 
+        // Use correct font variable for Comic Sans
+        ctx.font = `36px ${comicFont}`; 
         ctx.textAlign = 'center';
         
         const imgSize = 320;
@@ -180,14 +196,24 @@ export const RoastCard: React.FC<RoastCardProps> = ({ user, roast, memeUrl, isMe
         setStatusMessage("Image downloaded! Attach it to your cast.");
       }
 
-      setTimeout(() => {
-         const shareText = `I just got roasted by Roasted.\n\nCheck yours:`;
-         const appUrl = window.location.href; 
-         const shareUrl = `https://warpcast.com/~/compose?text=${encodeURIComponent(shareText)}&embeds[]=${encodeURIComponent(appUrl)}`;
-         window.open(shareUrl, '_blank');
-         setIsGeneratingImage(false);
-         setStatusMessage(null);
-      }, 1500);
+      // REMOVED TIMEOUT: This fixes the popup blocker issue
+      const shareText = `I just got roasted by Roasted.\n\nCheck yours:`;
+      
+      // Use Production URL if sharing from Localhost (so the embed works for others)
+      const currentHost = window.location.hostname;
+      const appUrl = (currentHost === 'localhost' || currentHost === '127.0.0.1')
+        ? 'https://castroast.vercel.app' 
+        : window.location.href; 
+      
+      const shareUrl = `https://farcaster.xyz/~/compose?text=${encodeURIComponent(shareText)}&embeds[]=${encodeURIComponent(appUrl)}`;
+      
+      // Open immediately to preserve user gesture
+      window.open(shareUrl, '_blank');
+      
+      setIsGeneratingImage(false);
+      // Don't clear status message immediately so user sees "Copied"
+      setTimeout(() => setStatusMessage(null), 3000);
+
     } catch (error) {
       console.error("Share failed", error);
       setIsGeneratingImage(false);
