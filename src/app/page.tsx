@@ -1,12 +1,11 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { UserSearch } from '@/components/UserSearch';
-import { RoastCard } from '@/components/RoastCard';
-import { Button } from '@/components/Button';
-import { fetchUserByUsername, fetchUserCasts } from '@/services/naynarService';
-import { generateRoast, generateMeme } from '@/services/geminiService';
-import { RoastState } from '@/types';
+import { UserSearch } from '../components/UserSearch';
+import { RoastCard } from '../components/RoastCard';
+import { Button } from '../components/Button';
+import { RoastState } from '../types';
+import { roastUserAction, generateMemeAction } from '@/app/action';
 
 const LOADING_MUSIC_URL = "https://codeskulptor-demos.commondatastorage.googleapis.com/pang/paza-moduless.mp3";
 const SUCCESS_SFX_URL = "https://codeskulptor-demos.commondatastorage.googleapis.com/GalaxyInvaders/bonus.mp3";
@@ -58,7 +57,7 @@ export default function Home() {
 
   useEffect(() => {
     const isLoading = ['fetching_user', 'analyzing', 'generating_meme'].includes(state.status);
-    let interval: NodeJS.Timeout;
+    let interval: any;
 
     if (isLoading) {
       setLoadingMessage(LOADING_MESSAGES[Math.floor(Math.random() * LOADING_MESSAGES.length)]);
@@ -89,29 +88,48 @@ export default function Home() {
 
       setState(prev => ({ ...prev, status: 'fetching_user', error: null, memeUrl: null, isMemeLoading: false }));
 
-      const user = await fetchUserByUsername(username);
-      setState(prev => ({ ...prev, status: 'analyzing', user }));
-
-      const casts = await fetchUserCasts(user.fid);
-      const roast = await generateRoast(user, casts);
+      // 1. Call Server Action (Roast)
+      const result = await roastUserAction(username);
+      
+      if (!result.success || !result.user || !result.roast) {
+        throw new Error(result.error || "Failed to generate roast");
+      }
 
       stopBackgroundMusic();
       
       setState(prev => ({ 
         ...prev, 
         status: 'complete', 
-        roast,
+        user: result.user!,
+        roast: result.roast!,
         memeUrl: null,
         isMemeLoading: true 
       }));
 
-      generateMeme(user, roast)
-        .then((memeUrl) => {
-           if (successAudioRef.current) {
-             successAudioRef.current.currentTime = 0;
-             successAudioRef.current.play().catch(e => console.warn("Success SFX failed", e));
+      // 2. Call Server Action (Meme)
+      generateMemeAction(result.user, result.roast)
+        .then((memeResult) => {
+           if (memeResult.success && memeResult.memeUrl) {
+             // Success Case
+             if (successAudioRef.current) {
+               successAudioRef.current.currentTime = 0;
+               successAudioRef.current.play().catch(e => console.warn("Success SFX failed", e));
+             }
+             setState(prev => ({ 
+               ...prev, 
+               memeUrl: memeResult.memeUrl!, 
+               isMemeLoading: false 
+             }));
+           } else {
+             // Failure Case (e.g. Rate Limit)
+             console.warn("Meme generation skipped:", memeResult.error);
+             // We update state to stop loading, but keep the roast text
+             setState(prev => ({ 
+               ...prev, 
+               isMemeLoading: false,
+               // Optional: You could add a 'warning' field to state to show a toast
+             }));
            }
-           setState(prev => ({ ...prev, memeUrl, isMemeLoading: false }));
         })
         .catch(err => {
            console.warn("Meme generation failed", err);
@@ -250,11 +268,11 @@ export default function Home() {
           </div>
         )}
 
+        <footer className="mt-8 text-center text-white/50 text-xs font-medium drop-shadow-sm">
+          <p>This is a fun app. Use at your own emotional risk.</p>
+        </footer>
+
       </main>
-      
-      <footer className="p-6 text-center text-white/70 text-sm font-medium drop-shadow-sm">
-        <p>This is a fun app. Use at your own emotional risk.</p>
-      </footer>
     </div>
   );
 }

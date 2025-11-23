@@ -450,7 +450,7 @@ const RoastCard = ({ user, roast, memeUrl, isMemeLoading, onReset })=>{
             setTimeout(()=>{
                 const shareText = `I just got roasted by Roasted.\n\nCheck yours:`;
                 const appUrl = window.location.href;
-                const shareUrl = `https://warpcast.com/~/compose?text=${encodeURIComponent(shareText)}&embeds[]=${encodeURIComponent(appUrl)}`;
+                const shareUrl = `https://farcaster.xyz/~/compose?text=${encodeURIComponent(shareText)}&embeds[]=${encodeURIComponent(appUrl)}`;
                 window.open(shareUrl, '_blank');
                 setIsGeneratingImage(false);
                 setStatusMessage(null);
@@ -722,72 +722,146 @@ const RoastCard = ({ user, roast, memeUrl, isMemeLoading, onReset })=>{
 "use strict";
 
 __turbopack_context__.s([
+    "default",
+    ()=>handler,
     "fetchUserByUsername",
     ()=>fetchUserByUsername,
     "fetchUserCasts",
     ()=>fetchUserCasts
 ]);
-const NEYNAR_API_URL = "https://api.neynar.com/v2/farcaster";
-const NEYNAR_API_KEY = "E48FE171-48D5-4FB7-A33B-4AC275E14E65";
+async function handler(req, res) {
+    if (req.method === 'POST') {
+        try {
+            const { username } = req.body;
+            const cleanUsername = username.replace(/^@/, '').trim().toLowerCase();
+            // Get API key from environment variable
+            const neynarApiKey = process.env.NEYNAR_API_KEY || '';
+            if (!neynarApiKey) {
+                return res.status(401).json({
+                    error: "Invalid Neynar API Key configuration."
+                });
+            }
+            // Use Neynar API URL from environment or default
+            const NEYNAR_API_URL = process.env.NEYNAR_API_URL || "https://api.neynar.com/v2/farcaster";
+            const response = await fetch(`${NEYNAR_API_URL}/user/by_username?username=${cleanUsername}&viewer_fid=3`, {
+                method: 'GET',
+                headers: {
+                    'accept': 'application/json',
+                    'api_key': neynarApiKey
+                }
+            });
+            if (!response.ok) {
+                if (response.status === 429) {
+                    return res.status(429).json({
+                        error: "Rate limit hit. Please wait a minute before roasting again."
+                    });
+                }
+                let errorMsg = "User not found or API error.";
+                try {
+                    const errorBody = await response.json();
+                    if (errorBody.message) errorMsg = errorBody.message;
+                } catch (e) {}
+                console.error(`Fetch User Error (${response.status}):`, errorMsg);
+                if (response.status === 404) {
+                    return res.status(404).json({
+                        error: `User @${cleanUsername} does not exist.`
+                    });
+                }
+                return res.status(response.status).json({
+                    error: errorMsg
+                });
+            }
+            const data = await response.json();
+            return res.status(200).json(data.user);
+        } catch (error) {
+            console.error("Server Error:", error);
+            return res.status(500).json({
+                error: "An internal server error occurred."
+            });
+        }
+    } else {
+        res.setHeader('Allow', [
+            'POST'
+        ]);
+        return res.status(405).end(`Method ${req.method} Not Allowed`);
+    }
+}
 const fetchUserByUsername = async (username)=>{
     const cleanUsername = username.replace(/^@/, '').trim().toLowerCase();
-    const response = await fetch(`${NEYNAR_API_URL}/user/by_username?username=${cleanUsername}&viewer_fid=3`, {
-        method: 'GET',
-        headers: {
-            'accept': 'application/json',
-            'api_key': NEYNAR_API_KEY
-        }
-    });
-    if (!response.ok) {
-        if (response.status === 429) {
-            throw new Error("Rate limit hit. Please wait a minute before roasting again.");
-        }
-        let errorMsg = "User not found or API error.";
-        try {
-            const errorBody = await response.json();
-            if (errorBody.message) errorMsg = errorBody.message;
-        } catch (e) {}
-        console.error(`Fetch User Error (${response.status}):`, errorMsg);
-        if (response.status === 404) {
-            throw new Error(`User @${cleanUsername} does not exist.`);
-        }
-        if (response.status === 401 || response.status === 403) {
-            throw new Error("Invalid Neynar API Key configuration.");
-        }
-        throw new Error(errorMsg);
+    const neynarApiKey = process.env.NEYNAR_API_KEY || '';
+    const NEYNAR_API_URL = process.env.NEYNAR_API_URL || "https://api.neynar.com/v2/farcaster";
+    if (!neynarApiKey) {
+        throw new Error("Invalid Neynar API Key configuration.");
     }
-    const data = await response.json();
-    return data.user;
+    try {
+        const response = await fetch(`${NEYNAR_API_URL}/user/by_username?username=${cleanUsername}&viewer_fid=3`, {
+            method: 'GET',
+            headers: {
+                'accept': 'application/json',
+                'api_key': neynarApiKey
+            }
+        });
+        if (!response.ok) {
+            if (response.status === 429) {
+                throw new Error("Rate limit hit. Please wait a minute before roasting again.");
+            }
+            let errorMsg = "User not found or API error.";
+            try {
+                const errorBody = await response.json();
+                if (errorBody.message) errorMsg = errorBody.message;
+            } catch (e) {}
+            console.error(`Fetch User Error (${response.status}):`, errorMsg);
+            if (response.status === 404) {
+                throw new Error(`User @${cleanUsername} does not exist.`);
+            }
+            throw new Error(errorMsg);
+        }
+        const data = await response.json();
+        return data.user;
+    } catch (error) {
+        console.error("API Error:", error);
+        throw error;
+    }
 };
 const fetchUserCasts = async (fid)=>{
-    const response = await fetch(`${NEYNAR_API_URL}/feed/user/casts?fid=${fid}&limit=15&include_replies=false&include_recasts=false`, {
-        method: 'GET',
-        headers: {
-            'accept': 'application/json',
-            'api_key': NEYNAR_API_KEY
-        }
-    });
-    if (!response.ok) {
-        if (response.status === 429) {
-            throw new Error("Rate limit hit. Please wait a minute.");
-        }
-        let errorMessage = `Failed to fetch casts (Status: ${response.status})`;
-        try {
-            const errorBody = await response.json();
-            if (errorBody.message) errorMessage += `: ${errorBody.message}`;
-        } catch (e) {}
-        throw new Error(errorMessage);
+    const neynarApiKey = process.env.NEYNAR_API_KEY || '';
+    const NEYNAR_API_URL = process.env.NEYNAR_API_URL || "https://api.neynar.com/v2/farcaster";
+    if (!neynarApiKey) {
+        throw new Error("Invalid Neynar API Key configuration.");
     }
-    const data = await response.json();
-    return data.casts.map((c)=>({
-            hash: c.hash,
-            text: c.text,
-            timestamp: c.timestamp,
-            reactions: {
-                likes_count: c.reactions.likes_count,
-                recasts_count: c.reactions.recasts_count
+    try {
+        const response = await fetch(`${NEYNAR_API_URL}/feed/user/casts?fid=${fid}&limit=15&include_replies=false&include_recasts=false`, {
+            method: 'GET',
+            headers: {
+                'accept': 'application/json',
+                'api_key': neynarApiKey
             }
-        }));
+        });
+        if (!response.ok) {
+            if (response.status === 429) {
+                throw new Error("Rate limit hit. Please wait a minute.");
+            }
+            let errorMessage = `Failed to fetch casts (Status: ${response.status})`;
+            try {
+                const errorBody = await response.json();
+                if (errorBody.message) errorMessage += `: ${errorBody.message}`;
+            } catch (e) {}
+            throw new Error(errorMessage);
+        }
+        const data = await response.json();
+        return data.casts.map((c)=>({
+                hash: c.hash,
+                text: c.text,
+                timestamp: c.timestamp,
+                reactions: {
+                    likes_count: c.reactions.likes_count,
+                    recasts_count: c.reactions.recasts_count
+                }
+            }));
+    } catch (error) {
+        console.error("API Error:", error);
+        throw error;
+    }
 };
 }),
 "[externals]/child_process [external] (child_process, cjs)", ((__turbopack_context__, module, exports) => {
@@ -909,10 +983,10 @@ __turbopack_context__.s([
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f40$google$2b$genai$40$1$2e$30$2e$0$2f$node_modules$2f40$google$2f$genai$2f$dist$2f$node$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/.pnpm/@google+genai@1.30.0/node_modules/@google/genai/dist/node/index.mjs [app-ssr] (ecmascript)");
 ;
-// In Next.js, client-side env vars must be prefixed with NEXT_PUBLIC_
-const apiKey = ("TURBOPACK compile-time value", "AIzaSyDD9yy38AKJM73DTeL-wmygZ2d0N6b3Bs0") || "";
+const apiKey = process.env.NEXT_PUBLIC_API_KEY || "";
+const googleGeminiApiKey = process.env.GOOGLE_GEMINI_API_KEY || '';
 const ai = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f40$google$2b$genai$40$1$2e$30$2e$0$2f$node_modules$2f40$google$2f$genai$2f$dist$2f$node$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["GoogleGenAI"]({
-    apiKey
+    apiKey: googleGeminiApiKey
 });
 // Helper to fetch image and convert to base64
 async function urlToBase64(url) {
@@ -1642,7 +1716,7 @@ function Home() {
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$3_$40$babel$2b$core$40$7$2e$28$2e$5_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("footer", {
-                className: "p-6 text-center text-white/70 text-sm font-medium drop-shadow-sm",
+                className: "p-6 top-0 text-center text-white/70 text-sm font-medium drop-shadow-sm",
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$3_$40$babel$2b$core$40$7$2e$28$2e$5_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                     children: "This is a fun app. Use at your own emotional risk."
                 }, void 0, false, {

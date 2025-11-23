@@ -1,5 +1,36 @@
 {
-  "node": {},
+  "node": {
+    "401e6139cb5f8ae9d2de21053de30fd0708bce5b42": {
+      "workers": {
+        "app/page": {
+          "moduleId": "[project]/.next-internal/server/app/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/app/action.tsx [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "roastUserAction",
+          "filename": "src/app/action.tsx"
+        }
+      },
+      "layer": {
+        "app/page": "action-browser"
+      },
+      "filename": "src/app/action.tsx",
+      "exportedName": "roastUserAction"
+    },
+    "607833dc1c5672c535aad402fbbfaccd40622d19c0": {
+      "workers": {
+        "app/page": {
+          "moduleId": "[project]/.next-internal/server/app/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/app/action.tsx [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "generateMemeAction",
+          "filename": "src/app/action.tsx"
+        }
+      },
+      "layer": {
+        "app/page": "action-browser"
+      },
+      "filename": "src/app/action.tsx",
+      "exportedName": "generateMemeAction"
+    }
+  },
   "edge": {},
-  "encryptionKey": "Bfv+oiO1kmZSoTrNu9Dp7UsmlK7fz18VmFemPOxiazQ="
+  "encryptionKey": "PcGwiuzc0mJelItW8vz9WWh1NmAbtv0Fzw+JSNjixS0="
 }

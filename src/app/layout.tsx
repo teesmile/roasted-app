@@ -23,12 +23,12 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Roasted - Get Your Farcaster Profile Roasted",
     description: "AI-powered roasts for your Farcaster profile",
-    images: [`${appUrl}/og-image.png`],
+    images: [`${appUrl}/og-roasted.png`],
     url: appUrl,
   },
   other: {
     "fc:frame": "vNext",
-    "fc:frame:image": `${appUrl}/og-image.png`,
+    "fc:frame:image": `${appUrl}/og-roasted.png`,
     "fc:frame:button:1": "Get Roasted",
     "fc:frame:button:1:action": "link",
     "fc:frame:button:1:target": appUrl,
