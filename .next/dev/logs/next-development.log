@@ -1,0 +1,6 @@
+[00:00:01.100] Server  LOG      ✓ Ready in 810ms
+[00:00:07.508] Server  LOG      ○ Compiling / ...
+[00:00:18.647] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:37.367] Browser WARN    Autoplay blocked: {}
+[00:01:19.835] Browser WARN    Meme generation failed: {"name":"ApiError","status":429}
+[00:01:19.835] Browser WARN    Success SFX failed {}
