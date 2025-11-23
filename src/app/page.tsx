@@ -5,7 +5,7 @@ import { UserSearch } from '../components/UserSearch';
 import { RoastCard } from '../components/RoastCard';
 import { Button } from '../components/Button';
 import { RoastState } from '../types';
-import { roastUserAction, generateMemeAction } from '@/app/action';
+import { roastUserAction, generateMemeAction } from './actions';
 
 const LOADING_MUSIC_URL = "https://codeskulptor-demos.commondatastorage.googleapis.com/pang/paza-moduless.mp3";
 const SUCCESS_SFX_URL = "https://codeskulptor-demos.commondatastorage.googleapis.com/GalaxyInvaders/bonus.mp3";
@@ -36,7 +36,7 @@ export default function Home() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const successAudioRef = useRef<HTMLAudioElement | null>(null);
 
-  // Splash Screen Timer
+  // Splash Screen Timer (2 seconds)
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowSplash(false);
@@ -168,35 +168,18 @@ export default function Home() {
   };
 
   const LogoSVG = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="w-full h-full">
-      <rect width="512" height="512" fill="#f15a24" />
-      <circle cx="256" cy="266" r="180" fill="white" />
-      <circle cx="256" cy="266" r="165" fill="#f97316" />
-      <path d="M146 220c0-25 15-40 50-40h10c20 0 30 10 40 25 10-15 20-25 40-25h10c35 0 50 15 50 40v25c0 45-25 65-55 65h-5l-15-20-20 10-20-10-15 20h-5c-30 0-55-20-55-65v-25z" fill="#1a1a1a"/>
-      <path d="M160 210h30v15h-30z M295 210h30v15h-30z" fill="white" opacity="0.2"/>
-      <path d="M196 340c0 0 30 40 60 40s60-40 60-40" fill="none" stroke="#4a0404" strokeWidth="15" strokeLinecap="round" /> 
-      <g transform="translate(120, 320) rotate(-15)">
-         <rect x="0" y="0" width="30" height="50" rx="5" fill="#ddd" stroke="#333" strokeWidth="4" />
-         <line x1="0" y1="10" x2="30" y2="10" stroke="#333" strokeWidth="2" />
-         <line x1="0" y1="20" x2="30" y2="20" stroke="#333" strokeWidth="2" />
-         <line x1="0" y1="30" x2="30" y2="30" stroke="#333" strokeWidth="2" />
-         <rect x="8" y="50" width="14" height="20" fill="#333" />
-      </g>
-       <g transform="translate(360, 320) rotate(15) scale(-1, 1)">
-         <rect x="0" y="0" width="30" height="50" rx="5" fill="#ddd" stroke="#333" strokeWidth="4" />
-         <line x1="0" y1="10" x2="30" y2="10" stroke="#333" strokeWidth="2" />
-         <line x1="0" y1="20" x2="30" y2="20" stroke="#333" strokeWidth="2" />
-         <line x1="0" y1="30" x2="30" y2="30" stroke="#333" strokeWidth="2" />
-         <rect x="8" y="50" width="14" height="20" fill="#333" />
-      </g>
-    </svg>
+    <img 
+      src="/roasted-logo.png" 
+      alt="Roasted Logo" 
+      className="w-full h-full object-contain" 
+    />
   );
 
-  // Splash Screen View
+  // Splash Screen
   if (showSplash) {
     return (
-      <div className="min-h-screen animated-bg flex items-center justify-center">
-        <div className="w-48 h-48 animate-scale-pulse drop-shadow-2xl">
+      <div className="min-h-screen animated-bg flex items-center justify-center z-50 fixed inset-0">
+        <div className="w-56 h-56 rounded-2xl p-4 animate-scale-pulse drop-shadow-2xl">
           <LogoSVG />
         </div>
       </div>
@@ -208,7 +191,8 @@ export default function Home() {
       <header className="p-6 border-b border-white/10 bg-black/20 backdrop-blur-md sticky top-0 z-10">
         <div className="max-w-5xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-lg overflow-hidden shadow-lg hover:scale-105 transition-transform">
+            {/* Header Logo: Added bg-brand-500 and increased size */}
+            <div className="w-14 h-14 bg-brand-500 p-1 rounded-lg overflow-hidden shadow-lg hover:scale-105 transition-transform">
               <LogoSVG />
             </div>
             <h1 className="text-2xl font-bold tracking-tight drop-shadow-sm uppercase italic font-chewy">
@@ -236,8 +220,8 @@ export default function Home() {
         </div>
       </header>
 
-      {/* Added pb-32 to move vertical visual center upwards */}
-      <main className="flex-1 flex flex-col items-center justify-center p-4 md:p-8 pb-32 w-full max-w-5xl mx-auto">
+      {/* Main Container */}
+      <main className="flex-1 flex flex-col items-center justify-center p-4 md:p-8 pb-40 w-full max-w-5xl mx-auto">
         
         {state.status === 'idle' && (
           <UserSearch onSearch={handleSearch} isLoading={false} />
@@ -246,10 +230,10 @@ export default function Home() {
         {(state.status === 'fetching_user' || state.status === 'analyzing' || state.status === 'generating_meme') && (
            <div className="max-w-md w-full mx-auto animate-fade-in">
              <div className="bg-gradient-to-br from-yellow-400 via-orange-500 to-pink-500 p-1 rounded-3xl shadow-2xl">
-               <div className="bg-gradient-to-br from-yellow-400 via-orange-500 to-pink-500 p-10 rounded-[1.4rem] flex flex-col items-center text-center space-y-8 min-h-[400px] justify-center">
+               <div className="bg-gradient-to-br from-yellow-400 via-orange-500 to-pink-500 p-6 rounded-[1.4rem] flex flex-col items-center text-center space-y-8 min-h-[400px] justify-center">
                  
-                 {/* Updated Animation to scale-pulse instead of bounce */}
-                 <div className="w-40 h-40 rounded-2xl overflow-hidden shadow-2xl ring-4 ring-white/30 flex items-center justify-center transform animate-scale-pulse">
+                 {/* Generation Logo: Transparent (no background class), mimic splash screen style */}
+                 <div className="w-56 h-56 rounded-2xl p-2 flex items-center justify-center transform animate-scale-pulse">
                     <LogoSVG />
                  </div>
 

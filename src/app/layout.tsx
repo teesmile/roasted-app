@@ -1,12 +1,14 @@
 import React from 'react';
 import type { Metadata } from "next";
-import { Inter, Chewy } from "next/font/google";
+import { Inter, Chewy, Roboto } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 const chewy = Chewy({ weight: "400", subsets: ["latin"], variable: "--font-chewy" });
+const roboto = Roboto({ weight: "400", subsets: ["latin"], variable: "--font-roboto" });
 
 const appUrl = process.env.NEXT_PUBLIC_APP_URL || "https://castroast.vercel.app";
+// Updated OG Image URL from GitHub
 const ogImageUrl = "https://github.com/teesmile/roasted-app/blob/7139511c975591c06a00479fa3d63129c150caf2/public/og-roasted.png?raw=true";
 
 export const metadata: Metadata = {
@@ -34,7 +36,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${chewy.variable} antialiased`}>
+      <body className={`${inter.variable} ${chewy.variable} ${roboto.variable} antialiased`}>
         {children}
       </body>
     </html>

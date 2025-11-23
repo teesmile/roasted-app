@@ -18,6 +18,9 @@ const SFX = {
   BOING: 'https://commondatastorage.googleapis.com/codeskulptor-assets/jump.m4a'
 };
 
+// Mascot Logo - Updated to new file
+const LOGO_DATA_URI = "/roasted-logo.png";
+
 export const RoastCard: React.FC<RoastCardProps> = ({ user, roast, memeUrl, isMemeLoading, onReset }) => {
   const [isGeneratingImage, setIsGeneratingImage] = useState(false);
   const [statusMessage, setStatusMessage] = useState<string | null>(null);
@@ -53,17 +56,17 @@ export const RoastCard: React.FC<RoastCardProps> = ({ user, roast, memeUrl, isMe
 
       const styles = getComputedStyle(document.body);
       const chewyFont = styles.getPropertyValue('--font-chewy') || 'cursive'; 
-      const comicFont = styles.getPropertyValue('--font-comic') || 'Comic Sans MS';
+      const robotoFont = styles.getPropertyValue('--font-roboto') || 'Roboto, sans-serif';
 
       const width = 1080;
       const height = 1080;
       canvas.width = width;
       canvas.height = height;
 
-      // 1. Background - New #280b51 Theme
+      // 1. Background - #280b51 Theme
       const gradient = ctx.createLinearGradient(0, 0, 0, height);
-      gradient.addColorStop(0, '#280b51'); // Deep Purple
-      gradient.addColorStop(1, '#0f0e17'); // Almost Black
+      gradient.addColorStop(0, '#280b51'); 
+      gradient.addColorStop(1, '#0f0e17');
       ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, width, height);
 
@@ -90,47 +93,61 @@ export const RoastCard: React.FC<RoastCardProps> = ({ user, roast, memeUrl, isMe
         ctx.font = 'italic 20px Inter, sans-serif';
         ctx.fillStyle = 'rgba(255, 255, 255, 0.5)'; 
         ctx.fillText('teesmile', footerTextX, height - 35);
-        
-        // User Handle
-        ctx.fillStyle = '#ffffff';
-        ctx.font = 'bold 32px Inter, sans-serif';
-        ctx.textAlign = 'left';
-        ctx.fillText(`@${user.username}`, 50, height - 40);
-        
-        // Roast Text
-        ctx.fillStyle = '#ffffff';
-        ctx.font = `36px ${comicFont}`; 
-        ctx.textAlign = 'center';
-        
-        const imgSize = 320;
-        const textX = width / 2;
-        const textY = memeImg ? (150 + imgSize + 60) : 300; 
-        const maxWidth = 950;
-        const lineHeight = 70; 
-        
-        const words = roast.split(' ');
-        let line = '';
-        let y = textY;
-        
-        ctx.textBaseline = 'alphabetic';
 
-        for (let n = 0; n < words.length; n++) {
-          const testLine = line + words[n] + ' ';
-          const metrics = ctx.measureText(testLine);
-          const testWidth = metrics.width;
-          if (testWidth > maxWidth && n > 0) {
-            ctx.fillText(line, textX, y);
-            line = words[n] + ' ';
-            y += lineHeight;
-          } else {
-            line = testLine;
+        // Draw Logo next to footer text
+        const logoImg = new Image();
+        logoImg.onload = () => {
+          // REMOVED orange rounded rectangle drawing
+          
+          // Draw logo on top (transparent PNG)
+          ctx.drawImage(logoImg, footerTextX - 140, height - 80, 50, 50);
+          finalize();
+        };
+        logoImg.onerror = finalize; // Proceed if logo fails
+        logoImg.src = LOGO_DATA_URI;
+        
+        function finalize() {
+          // User Handle
+          ctx.fillStyle = '#ffffff';
+          ctx.font = 'bold 32px Inter, sans-serif';
+          ctx.textAlign = 'left';
+          ctx.fillText(`@${user.username}`, 50, height - 40);
+          
+          // Roast Text - Roboto
+          ctx.fillStyle = '#ffffff';
+          ctx.font = `36px ${robotoFont}`; 
+          ctx.textAlign = 'center';
+          
+          const imgSize = 320;
+          const textX = width / 2;
+          const textY = memeImg ? (150 + imgSize + 60) : 300; 
+          const maxWidth = 950;
+          const lineHeight = 70; 
+          
+          const words = roast.split(' ');
+          let line = '';
+          let y = textY;
+          
+          ctx.textBaseline = 'alphabetic';
+
+          for (let n = 0; n < words.length; n++) {
+            const testLine = line + words[n] + ' ';
+            const metrics = ctx.measureText(testLine);
+            const testWidth = metrics.width;
+            if (testWidth > maxWidth && n > 0) {
+              ctx.fillText(line, textX, y);
+              line = words[n] + ' ';
+              y += lineHeight;
+            } else {
+              line = testLine;
+            }
           }
-        }
-        ctx.fillText(line, textX, y);
+          ctx.fillText(line, textX, y);
 
-        canvas.toBlob((blob) => {
-          resolve(blob);
-        }, 'image/png');
+          canvas.toBlob((blob) => {
+            resolve(blob);
+          }, 'image/png');
+        }
       };
 
       if (memeUrl) {
@@ -174,13 +191,10 @@ export const RoastCard: React.FC<RoastCardProps> = ({ user, roast, memeUrl, isMe
       const imageBlob = await generateCompositeImage();
       if (!imageBlob) throw new Error("Failed to generate image");
 
-      let copySuccess = false;
-
       try {
         await navigator.clipboard.write([
           new ClipboardItem({ [imageBlob.type]: imageBlob })
         ]);
-        copySuccess = true;
         setStatusMessage("✅ Image Copied! PASTE IT (Ctrl+V) manually!");
       } catch (err) {
         console.warn("Clipboard failed, downloading", err);
@@ -203,9 +217,8 @@ export const RoastCard: React.FC<RoastCardProps> = ({ user, roast, memeUrl, isMe
         ? 'https://castroast.vercel.app' 
         : window.location.href; 
       
-      const shareUrl = `https://warpcast.com/~/compose?text=${encodeURIComponent(shareText)}&embeds[]=${encodeURIComponent(appUrl)}`;
+      const shareUrl = `https://farcaster.xyz/~/compose?text=${encodeURIComponent(shareText)}&embeds[]=${encodeURIComponent(appUrl)}`;
       
-      // Open Warpcast
       window.open(shareUrl, '_blank');
       
       setIsGeneratingImage(false);
@@ -223,9 +236,13 @@ export const RoastCard: React.FC<RoastCardProps> = ({ user, roast, memeUrl, isMe
     setTimeout(() => onReset(), 150);
   };
 
+  // Inline Logo Component for UI
+  const LogoIcon = () => (
+    <img src={LOGO_DATA_URI} alt="Roasted Logo" className="w-10 h-10 object-contain rounded-lg shadow-sm" />
+  );
+
   return (
     <div className="w-full max-w-2xl animate-slide-up pb-12">
-      {/* Updated Background Color to #280b51 (Deep Purple) */}
       <div className="bg-[#280b51] rounded-2xl overflow-hidden shadow-2xl border border-gray-800 relative flex flex-col">
         
         {/* Header */}
@@ -235,10 +252,14 @@ export const RoastCard: React.FC<RoastCardProps> = ({ user, roast, memeUrl, isMe
              </h3>
         </div>
 
-        {/* Updated Background Color to #280b51 */}
+        {/* Content Body - Background #280b51 */}
         <div className="p-6 sm:p-8 flex flex-col md:flex-row items-center gap-6 bg-[#280b51]">
           <div className="flex-1 order-2 md:order-1 w-full">
-            <div className="text-lg sm:text-2xl leading-loose text-center md:text-left text-white drop-shadow-md prose prose-invert max-w-none font-normal font-comic">
+            <div 
+              // Roboto Font
+              className="text-lg sm:text-2xl leading-loose text-center md:text-left text-white drop-shadow-md prose prose-invert max-w-none font-normal"
+              style={{ fontFamily: 'var(--font-roboto)' }}
+            >
                <ReactMarkdown>{roast}</ReactMarkdown>
             </div>
           </div>
@@ -272,9 +293,13 @@ export const RoastCard: React.FC<RoastCardProps> = ({ user, roast, memeUrl, isMe
               <p className="text-gray-500 text-xs">FID: {user.fid}</p>
             </div>
           </div>
-          <div className="text-gray-500 text-xs flex flex-col items-center">
-             <p>Roasted Analysis</p>
-             <p className="text-gray-500 italic">teesmile</p>
+          {/* Footer Right Side - Added Logo */}
+          <div className="flex items-center gap-4">
+            <LogoIcon />
+            <div className="text-gray-500 text-xs flex flex-col items-center">
+               <p>Roasted Analysis</p>
+               <p className="text-gray-500 italic">teesmile</p>
+            </div>
           </div>
         </div>
 
