@@ -6,6 +6,7 @@ import { RoastCard } from '../components/RoastCard';
 import { Button } from '../components/Button';
 import { RoastState } from '../types';
 import { roastUserAction, generateMemeAction } from './actions';
+import {sdk} from "@farcaster/frame-sdk"
 
 const LOADING_MUSIC_URL = "https://codeskulptor-demos.commondatastorage.googleapis.com/pang/paza-moduless.mp3";
 const SUCCESS_SFX_URL = "https://codeskulptor-demos.commondatastorage.googleapis.com/GalaxyInvaders/bonus.mp3";
@@ -31,10 +32,21 @@ export default function Home() {
     isMemeLoading: false,
     error: null,
   });
+  const [isReady, setIsReady] = useState(false);
   
   const [loadingMessage, setLoadingMessage] = useState("Cooking up something spicy...");
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const successAudioRef = useRef<HTMLAudioElement | null>(null);
+
+  useEffect(() => {
+    const load = async () => {
+      await sdk.actions.ready();
+      setIsReady(true);
+    }
+    if (!isReady) {
+      load();
+    }
+  }, [isReady]);
 
   // Splash Screen Timer (2 seconds)
   useEffect(() => {
