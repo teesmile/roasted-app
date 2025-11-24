@@ -9,7 +9,7 @@ const roboto = Roboto({ weight: "400", subsets: ["latin"], variable: "--font-rob
 
 const appUrl = process.env.NEXT_PUBLIC_APP_URL || "https://castroast.vercel.app";
 // Updated OG Image URL from GitHub
-const ogImageUrl = "https://github.com/teesmile/roasted-app/blob/7139511c975591c06a00479fa3d63129c150caf2/public/og-roasted.png?raw=true";
+const ogImageUrl = "https://github.com/teesmile/roasted-app/blob/917c3d500f28979f41dc24d93d298e0fc440ede7/public/og-roasted.png?raw=true";
 
 export const metadata: Metadata = {
   title: "Roasted - Get Your Farcaster Profile Roasted",
