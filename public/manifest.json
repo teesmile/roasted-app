@@ -3,7 +3,7 @@
   "description": "Check your roast or roast your frens' casts and share the fun with Farcaster frens",
   "homepage_url": "https://castroast.vercel.app/",
   "frame_api_version": "v2",
-  "icon_url": "https://github.com/teesmile/roasted-app/blob/b6715d78d9670d0802edcdc3278e1fd0722e6f76/public/logo-header.svg?raw=true",
+  "icon_url": "https://castroast.vercel.app/icon.svg",
   "entrypoint_url": "https://castroast.vercel.app/api/frame",
   "developer": {
     "name": "teesmilex.base.eth",
