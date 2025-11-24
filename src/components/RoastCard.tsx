@@ -213,7 +213,7 @@ export const RoastCard: React.FC<RoastCardProps> = ({ user, roast, memeUrl, isMe
 
       await new Promise(r => setTimeout(r, 1500));
 
-      const shareText = `I just got roasted by Roasted.\n\nCheck yours:`;
+      const shareText = `I just got roasted by the roast whiz😂.\n\nCheck yours:`;
       const currentHost = window.location.hostname;
       const appUrl = (currentHost === 'localhost' || currentHost === '127.0.0.1')
         ? 'https://castroast.vercel.app' 
