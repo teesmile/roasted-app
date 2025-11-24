@@ -53,6 +53,8 @@ export const RoastCard: React.FC<RoastCardProps> = ({ user, roast, memeUrl, isMe
         resolve(null);
         return;
       }
+      // Narrow the 2D context to a non-null type for use inside async callbacks
+      const ctx2: CanvasRenderingContext2D = ctx;
 
       const styles = getComputedStyle(document.body);
       const chewyFont = styles.getPropertyValue('--font-chewy') || 'cursive'; 
@@ -64,43 +66,41 @@ export const RoastCard: React.FC<RoastCardProps> = ({ user, roast, memeUrl, isMe
       canvas.height = height;
 
       // 1. Background - #280b51 Theme
-      const gradient = ctx.createLinearGradient(0, 0, 0, height);
-      gradient.addColorStop(0, '#280b51'); 
-      gradient.addColorStop(1, '#0f0e17');
-      ctx.fillStyle = gradient;
-      ctx.fillRect(0, 0, width, height);
+  const gradient = ctx2.createLinearGradient(0, 0, 0, height);
+  gradient.addColorStop(0, '#280b51'); 
+  gradient.addColorStop(1, '#0f0e17');
+  ctx2.fillStyle = gradient;
+  ctx2.fillRect(0, 0, width, height);
 
       // 2. Header
-      ctx.fillStyle = '#f15a24';
-      ctx.fillRect(0, 0, width, 100);
+  ctx2.fillStyle = '#f15a24';
+  ctx2.fillRect(0, 0, width, 100);
       
-      ctx.fillStyle = '#ffffff';
-      ctx.font = `50px ${chewyFont}`;
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
-      ctx.fillText('⚠️ EMOTIONAL DAMAGE DETECTED ⚠️', width / 2, 50);
+  ctx2.fillStyle = '#ffffff';
+  ctx2.font = `50px ${chewyFont}`;
+  ctx2.textAlign = 'center';
+  ctx2.textBaseline = 'middle';
+  ctx2.fillText('⚠️ EMOTIONAL DAMAGE DETECTED ⚠️', width / 2, 50);
 
       // 3. Draw Content Function
       const drawContent = (memeImg?: HTMLImageElement) => {
-        ctx.textAlign = 'center'; 
+        ctx2.textAlign = 'center'; 
         const footerTextX = width - 120; 
 
         // Footer Text
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
-        ctx.font = '24px Inter, sans-serif';
-        ctx.fillText('Roasted Analysis', footerTextX, height - 65);
+        ctx2.fillStyle = 'rgba(255, 255, 255, 0.5)';
+        ctx2.font = '24px Inter, sans-serif';
+        ctx2.fillText('Roasted Analysis', footerTextX, height - 65);
         
-        ctx.font = 'italic 20px Inter, sans-serif';
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.5)'; 
-        ctx.fillText('teesmile', footerTextX, height - 35);
+        ctx2.font = 'italic 20px Inter, sans-serif';
+        ctx2.fillStyle = 'rgba(255, 255, 255, 0.5)'; 
+        ctx2.fillText('teesmile', footerTextX, height - 35);
 
         // Draw Logo next to footer text
         const logoImg = new Image();
         logoImg.onload = () => {
-          // REMOVED orange rounded rectangle drawing
-          
           // Draw logo on top (transparent PNG)
-          ctx.drawImage(logoImg, footerTextX - 140, height - 80, 50, 50);
+          ctx2.drawImage(logoImg, footerTextX - 140, height - 80, 50, 50);
           finalize();
         };
         logoImg.onerror = finalize; // Proceed if logo fails
@@ -108,15 +108,17 @@ export const RoastCard: React.FC<RoastCardProps> = ({ user, roast, memeUrl, isMe
         
         function finalize() {
           // User Handle
-          ctx.fillStyle = '#ffffff';
-          ctx.font = 'bold 32px Inter, sans-serif';
-          ctx.textAlign = 'left';
-          ctx.fillText(`@${user.username}`, 50, height - 40);
+          ctx2.fillStyle = '#ffffff';
+          ctx2.font = 'bold 32px Inter, sans-serif';
+          ctx2.textAlign = 'left';
+          // Ensure backticks are used here
+          ctx2.fillText(`@${user.username}`, 50, height - 40);
           
           // Roast Text - Roboto
-          ctx.fillStyle = '#ffffff';
-          ctx.font = `36px ${robotoFont}`; 
-          ctx.textAlign = 'center';
+          ctx2.fillStyle = '#ffffff';
+          // Ensure backticks are used here
+          ctx2.font = `36px ${robotoFont}`; 
+          ctx2.textAlign = 'center';
           
           const imgSize = 320;
           const textX = width / 2;
@@ -128,21 +130,21 @@ export const RoastCard: React.FC<RoastCardProps> = ({ user, roast, memeUrl, isMe
           let line = '';
           let y = textY;
           
-          ctx.textBaseline = 'alphabetic';
+          ctx2.textBaseline = 'alphabetic';
 
           for (let n = 0; n < words.length; n++) {
             const testLine = line + words[n] + ' ';
-            const metrics = ctx.measureText(testLine);
+            const metrics = ctx2.measureText(testLine);
             const testWidth = metrics.width;
             if (testWidth > maxWidth && n > 0) {
-              ctx.fillText(line, textX, y);
+              ctx2.fillText(line, textX, y);
               line = words[n] + ' ';
               y += lineHeight;
             } else {
               line = testLine;
             }
           }
-          ctx.fillText(line, textX, y);
+          ctx2.fillText(line, textX, y);
 
           canvas.toBlob((blob) => {
             resolve(blob);
@@ -158,20 +160,20 @@ export const RoastCard: React.FC<RoastCardProps> = ({ user, roast, memeUrl, isMe
           const cx = width / 2;
           const cy = 150 + (imgSize / 2);
 
-          ctx.save();
-          ctx.translate(cx, cy);
-          ctx.rotate(-5 * Math.PI / 180);
+          ctx2.save();
+          ctx2.translate(cx, cy);
+          ctx2.rotate(-5 * Math.PI / 180);
           
-          ctx.shadowColor = '#f15a24';
-          ctx.shadowBlur = 40;
+          ctx2.shadowColor = '#f15a24';
+          ctx2.shadowBlur = 40;
           
-          ctx.drawImage(img, -imgSize/2, -imgSize/2, imgSize, imgSize);
+          ctx2.drawImage(img, -imgSize/2, -imgSize/2, imgSize, imgSize);
           
-          ctx.shadowBlur = 0; 
-          ctx.strokeStyle = '#374151';
-          ctx.lineWidth = 4;
-          ctx.strokeRect(-imgSize/2, -imgSize/2, imgSize, imgSize);
-          ctx.restore(); 
+          ctx2.shadowBlur = 0; 
+          ctx2.strokeStyle = '#374151';
+          ctx2.lineWidth = 4;
+          ctx2.strokeRect(-imgSize/2, -imgSize/2, imgSize, imgSize);
+          ctx2.restore(); 
 
           drawContent(img);
         };
@@ -195,7 +197,7 @@ export const RoastCard: React.FC<RoastCardProps> = ({ user, roast, memeUrl, isMe
         await navigator.clipboard.write([
           new ClipboardItem({ [imageBlob.type]: imageBlob })
         ]);
-        setStatusMessage("✅ Image Copied! PASTE IT (Ctrl+V) manually!");
+        setStatusMessage("Image Copied");
       } catch (err) {
         console.warn("Clipboard failed, downloading", err);
         const url = URL.createObjectURL(imageBlob);
