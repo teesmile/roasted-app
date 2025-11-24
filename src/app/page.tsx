@@ -175,6 +175,13 @@ export default function Home() {
     />
   );
 
+  const LogoSVGHeader = () => (
+    <img 
+      src="/logo-header.svg" 
+      alt="Roasted Header Logo" 
+      className="w-full h-full object-contain" 
+    />
+  );
   // Splash Screen
   if (showSplash) {
     return (
@@ -187,13 +194,13 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen animated-bg text-white flex flex-col">
+    <div className=" custom-cursor min-h-screen animated-bg text-white flex flex-col">
       <header className="p-6 border-b border-white/10 bg-black/20 backdrop-blur-md sticky top-0 z-10">
         <div className="max-w-5xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-3">
             {/* Header Logo: Added bg-brand-500 and increased size */}
-            <div className="w-14 h-14 bg-brand-500 p-1 rounded-lg overflow-hidden shadow-lg hover:scale-105 transition-transform">
-              <LogoSVG />
+            <div className="w-16 h-16  cursor-pointer p-1 rounded-lg overflow-hidden shadow-lg hover:scale-105 transition-transform">
+              <LogoSVGHeader />
             </div>
             <h1 className="text-2xl font-bold tracking-tight drop-shadow-sm uppercase italic font-chewy">
               Roasted
