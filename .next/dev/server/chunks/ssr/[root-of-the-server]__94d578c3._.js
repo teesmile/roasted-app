@@ -105,7 +105,7 @@ var __TURBOPACK__imported__module__$5b$next$5d2f$internal$2f$font$2f$google$2f$r
 ;
 const appUrl = ("TURBOPACK compile-time value", "https://castroasted.vercel.app") || "https://castroast.vercel.app";
 // Updated OG Image URL from GitHub
-const ogImageUrl = "https://github.com/teesmile/roasted-app/blob/7139511c975591c06a00479fa3d63129c150caf2/public/og-roasted.png?raw=true";
+const ogImageUrl = "https://github.com/teesmile/roasted-app/blob/917c3d500f28979f41dc24d93d298e0fc440ede7/public/og-roasted.png?raw=true";
 const metadata = {
     title: "Roasted - Get Your Farcaster Profile Roasted",
     description: "AI-powered roasts for your Farcaster profile. Can you handle the heat?",
