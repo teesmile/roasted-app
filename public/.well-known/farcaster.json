@@ -1,0 +1,25 @@
+{
+"accountAssociation": {
+    "header": "eyJmaWQiOjI3OTc2NiwidHlwZSI6ImN1c3RvZHkiLCJrZXkiOiIweDliYTE4MjAyMEFkZEIyMGM0NmU2ZURlYWZEOUEwZDA5MTI4RjQyMDYifQ",
+    "payload": "eyJkb21haW4iOiJjYXN0cm9hc3QudmVyY2VsLmFwcCJ9",
+    "signature": "UNxAULV1ySzw56dTrOSpteY10zASBxylC4VtjWL+5pVNlDnoJIYWK9D8LyFHArC1PWOsQpBXSKJJ8ZKyUf6jvhs="
+  },
+
+
+  "frame": {
+    "version": "1",
+    "name": "Roasted",
+    "iconUrl": "https://castroast.vercel.app/roasted.png",
+    "homeUrl": "https://castroast.vercel.app",
+    "imageUrl": "https://castroast.vercel.app/og-roasted.png",
+    "buttonTitle": "Roast Me",
+    "splashImageUrl": "https://castroast.vercel.app/roasted.png",
+    "splashBackgroundColor": "#3b1078",
+    "description": "Check your roast or roast your frens' casts and share the fun with Farcaster frens.",
+    "primaryCategory": "entertainment",
+    "secondaryCategory": "social",
+    "tags": ["roast", "social", "fun", "roasted", "meme"],
+    "webhookUrl": "https://castroast.vercel.app/api/webhook"
+  }
+}
+
