@@ -17,6 +17,7 @@ export interface FarcasterUser {
 export interface Cast {
   hash: string;
   text: string;
+  parent_hash: string | null;
   timestamp: string;
   reactions: { likes_count: number; recasts_count: number };
 }
@@ -56,112 +57,144 @@ export async function roastUserAction(username: string): Promise<{
     const userData = await userRes.json();
     const user = userData.user as FarcasterUser;
 
-    // 2. Fetch Casts
+    // 2. Fetch Casts (Increased limit and INCLUDED replies for the audit)
     const castsRes = await fetch(
-      `${NEYNAR_API_URL}/feed/user/casts?fid=${user.fid}&limit=15&include_replies=false&include_recasts=false`,
+      `${NEYNAR_API_URL}/feed/user/casts?fid=${user.fid}&limit=30&include_replies=true&include_recasts=false`,
       { headers: { 'accept': 'application/json', 'api_key': NEYNAR_API_KEY }, cache: 'no-store' }
     );
 
     let castTexts = "";
+    let replyTexts = "";
+
     if (castsRes.ok) {
       const castsData = await castsRes.json();
-      const casts = (castsData.casts || []) as Cast[];
-      castTexts = casts.map(c => `- "${c.text}" (Likes: ${c.reactions.likes_count})`).join('\n');
+      const allCasts = (castsData.casts || []) as Cast[];
+      
+      // Separate primary casts from replies
+      const primaryCasts = allCasts.filter(c => !c.parent_hash);
+      const replies = allCasts.filter(c => c.parent_hash);
+
+      castTexts = primaryCasts.slice(0, 10).map(c => `- ${c.text} (Likes: ${c.reactions.likes_count})`).join('\n');
+      replyTexts = replies.slice(0, 10).map(c => `- ${c.text}`).join('\n');
     }
 
-    // 3. Generate Roast
+    // 3. Generate Roast - PSYCHOLOGICAL MIND READER PROMPT
+    const ratio = user.follower_count > 0 
+      ? (user.following_count / user.follower_count * 100).toFixed(0) 
+      : "0";
+
     const prompt = `
-      Identify: Farcaster User @${user.username} (${user.display_name})
+      TARGET: @${user.username} (${user.display_name})
       Bio: "${user.profile.bio.text}"
-      Followers: ${user.follower_count}
-      Following: ${user.following_count}
-      
-      Recent Activity:
+      Stats: ${user.follower_count} followers vs ${user.following_count} following (${ratio}% ratio).
+
+      DATA DUMP (Their recent thoughts):
       ${castTexts}
+      ${replyTexts || 'NO REPLIES (ghost account vibes)'}
+
+      CRINGE AUDIT PARAMETERS:
+      - Bio Cringe: Tryhard keywords, emoji spam, humblebrags.
+      - Content Patterns: Crypto zombie slang, engagement farming, self-quotes.
+      - Personality Flaws: Desperation, arrogance, boredom.
+
+      TASK: Deliver a STAND-UP COMEDIAN HECKLER ROAST (Max 60 words).
       
-      Task: Roast this user.
-      Guidelines:
-      - Length: Under 50 words.
-      - Style: Savage, witty, direct. Stand-up comedian roasting a heckler.
-      - No hashtags.
+      STRICT RULES:
+      1. **NO QUOTES**: Do not quote their posts. Do not say "You said...".
+      2. **NO DASHES/LISTS**: Write a cohesive paragraph.
+      3. **MIND READER STYLE**: Look into their soul and describe their pathetic reality with additional savage.
+      4. **BE BRUTAL**: Attack their specific insecurities revealed by the data (like, last 100 casts and replies).
+      
+      Example of Desired Style:
+      be creative, brutal, and specific. be unpredictable too
     `;
 
-    const aiRes = await ai.models.generateContent({
+    const roastRes = await ai.models.generateContent({
       model: 'gemini-2.5-flash',
       contents: prompt,
-      config: { temperature: 1 }
+      config: {
+        systemInstruction: "You are a brutal, psychic roast master. You do not quote people; you analyze their soul and destroy them directly.",
+        temperature: 1,
+      }
     });
 
-    const roast = aiRes.text || "You are too boring to roast.";
+    const roast = roastRes.text || "You're too boring to roast.";
 
     return { success: true, user, roast };
 
   } catch (error: any) {
-    console.error("Roast Action Error:", error);
-    return { success: false, error: error.message || "Something went wrong." };
+    console.error('Roast Action Error:', error);
+    return { success: false, error: error.message || 'Server error' };
   }
 }
 
-// --- ACTION 2: Generate Meme ---
+// --- ACTION 2: Generate Meme (Progressive Loading) ---
 export async function generateMemeAction(user: FarcasterUser, roast: string): Promise<{
   success: boolean;
   memeUrl?: string;
   error?: string;
 }> {
   try {
-    if (!GEMINI_API_KEY) return { success: false, error: "API Key Missing" };
+    if (!GEMINI_API_KEY) throw new Error("Missing GEMINI_API_KEY");
 
-    // 1. Fetch PFP
-    const imgRes = await fetch(user.pfp_url);
-    if (!imgRes.ok) throw new Error("Failed to access profile picture.");
-    
-    const arrayBuffer = await imgRes.arrayBuffer();
-    const base64Data = Buffer.from(arrayBuffer).toString('base64');
-    const mimeType = imgRes.headers.get('content-type') || 'image/png';
-
-    // 2. Generate Meme
-    const prompt = `
-      Context: Profile picture of a roasted user.
-      Roast: "${roast}"
-      Task: Create a distorted "meme" version of this image.
-      Style: Deep fried, glitch, melting, or clown makeup. 
-      IMPORTANT: NO TEXT. Pure visual distortion.
-      Output: 1:1 Aspect Ratio.
-    `;
-
-    try {
-      const aiRes = await ai.models.generateContent({
-        model: 'gemini-2.5-flash-image',
-        contents: {
-          parts: [
-            { inlineData: { mimeType, data: base64Data } },
-            { text: prompt }
-          ]
-        },
-        config: { imageConfig: { aspectRatio: "1:1" } }
-      });
-
-      for (const part of aiRes.candidates?.[0]?.content?.parts || []) {
-        if (part.inlineData) {
-          return { 
-            success: true, 
-            memeUrl: `data:image/png;base64,${part.inlineData.data}` 
-          };
-        }
-      }
-      return { success: false, error: "AI generated no image." };
-      
-    } catch (apiError: any) {
-      // Handle Specific 429 Quota Error specifically for images
-      if (apiError.status === 429 || (apiError.message && apiError.message.includes("429"))) {
-        console.warn("Meme Generation Quota Exceeded (Local Env):", apiError.message);
-        return { success: false, error: "Quota exceeded. Image generation unavailable in this region/tier." };
-      }
-      throw apiError;
+    // Helper to fetch image buffer
+    async function urlToBase64(url: string) {
+      const response = await fetch(url);
+      if (!response.ok) throw new Error("Failed to fetch image");
+      const arrayBuffer = await response.arrayBuffer();
+      const buffer = Buffer.from(arrayBuffer);
+      return {
+        data: buffer.toString('base64'),
+        mimeType: response.headers.get('content-type') || 'image/png'
+      };
     }
 
+    const imagePart = await urlToBase64(user.pfp_url);
+
+    // Prompt: Focus on VISUAL DISTORTION ONLY. No text inside the image.
+    const memePrompt = `
+      This is the profile picture of a user who just got roasted.
+      Roast context: "${roast}"
+      
+      TASK: Apply a heavy, funny visual filter/distortion to this face.
+      Styles: Deep fried, clown makeup, melting, high contrast, or glitch art.
+      
+      IMPORTANT:
+      - OUTPUT ASPECT RATIO MUST BE 1:1.
+      - DO NOT ADD ANY TEXT TO THE IMAGE.
+      - Keep the face recognizable but ridiculed.
+    `;
+
+    const memeRes = await ai.models.generateContent({
+      model: 'gemini-2.5-flash-image',
+      contents: {
+        parts: [
+          { inlineData: imagePart },
+          { text: memePrompt }
+        ]
+      },
+      config: { imageConfig: { aspectRatio: "1:1" } }
+    });
+
+    let memeUrl = null;
+    for (const part of memeRes.candidates?.[0]?.content?.parts || []) {
+      if (part.inlineData) {
+        memeUrl = `data:image/png;base64,${part.inlineData.data}`;
+        break;
+      }
+    }
+
+    if (!memeUrl) throw new Error("No image generated");
+
+    return { success: true, memeUrl };
+
   } catch (error: any) {
+    // Graceful handling for Rate Limits (429) so the app doesn't crash
+    if (error.status === 429 || error.message?.includes('429')) {
+      console.warn("Meme generation rate limited (local). Skipping.");
+      return { success: false, error: "Rate limit hit (Meme skipped)" };
+    }
     console.error("Meme Action Error:", error);
-    return { success: false, error: error.message };
+    return { success: false, error: "Failed to generate meme" };
   }
 }

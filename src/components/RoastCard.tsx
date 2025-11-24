@@ -315,7 +315,7 @@ export const RoastCard: React.FC<RoastCardProps> = ({ user, roast, memeUrl, isMe
             Roast Another
           </Button>
           <Button onClick={handleShare} isLoading={isGeneratingImage} className="text-sm px-4 py-2">
-            Share Link
+            Share
           </Button>
         </div>
       </div>

@@ -704,7 +704,7 @@ const RoastCard = ({ user, roast, memeUrl, isMemeLoading, onReset })=>{
                             onClick: handleShare,
                             isLoading: isGeneratingImage,
                             className: "text-sm px-4 py-2",
-                            children: "Share Link"
+                            children: "Share"
                         }, void 0, false, {
                             fileName: "[project]/src/components/RoastCard.tsx",
                             lineNumber: 317,

@@ -370,3 +370,214 @@ Import traces:
 [01:14:01.297] Browser WARN    Autoplay blocked: {}
 [01:14:13.769] Server  WARN    Meme Generation Quota Exceeded (Local Env): "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.5-flash-preview-image\\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.5-flash-preview-image\\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.5-flash-preview-image\\nPlease retry in 5.493360081s.\",\"status\":\"RESOURCE_EXHAUSTED\",\"details\":[{\"@type\":\"type.googleapis.com/google.rpc.Help\",\"links\":[{\"description\":\"Learn more about Gemini API quotas\",\"url\":\"https://ai.google.dev/gemini-api/docs/rate-limits\"}]},{\"@type\":\"type.googleapis.com/google.rpc.QuotaFailure\",\"violations\":[{\"quotaMetric\":\"generativelanguage.googleapis.com/generate_content_free_tier_requests\",\"quotaId\":\"GenerateRequestsPerDayPerProjectPerModel-FreeTier\",\"quotaDimensions\":{\"model\":\"gemini-2.5-flash-preview-image\",\"location\":\"global\"}},{\"quotaMetric\":\"generativelanguage.googleapis.com/generate_content_free_tier_requests\",\"quotaId\":\"GenerateRequestsPerMinutePerProjectPerModel-FreeTier\",\"quotaDimensions\":{\"location\":\"global\",\"model\":\"gemini-2.5-flash-preview-image\"}},{\"quotaMetric\":\"generativelanguage.googleapis.com/generate_content_free_tier_input_token_count\",\"quotaId\":\"GenerateContentInputTokensPerModelPerMinute-FreeTier\",\"quotaDimensions\":{\"location\":\"global\",\"model\":\"gemini-2.5-flash-preview-image\"}}]},{\"@type\":\"type.googleapis.com/google.rpc.RetryInfo\",\"retryDelay\":\"5s\"}]}}"
 [01:14:13.883] Browser WARN    Meme generation skipped: Quota exceeded. Image generation unavailable in this region/tier.
+[01:18:26.262] Server  LOG      ✓ Compiled in 90ms
+[01:19:45.601] Browser ERROR   ./src/app/actions.tsx:92:31
+Parsing ecmascript source code failed
+  90 |       model: 'gemini-2.5-flash',
+  91 |       contents: prompt,
+> 92 |       config: { temperature:  }
+     |                               ^
+  93 |     });
+  94 |
+  95 |     const roast = aiRes.text || "You are too boring to roast.";
+
+Expression expected
+[01:19:45.718] Browser ERROR   ./src/app/actions.tsx:92:31
+Parsing ecmascript source code failed
+  90 |       model: 'gemini-2.5-flash',
+  91 |       contents: prompt,
+> 92 |       config: { temperature:  }
+     |                               ^
+  93 |     });
+  94 |
+  95 |     const roast = aiRes.text || "You are too boring to roast.";
+
+Expression expected
+[01:19:55.318] Server  LOG      ✓ Compiled in 84ms
+[01:21:04.818] Browser WARN    Autoplay blocked: {}
+[01:21:25.150] Server  ERROR   Meme Action Error: TypeError: fetch failed
+[01:21:25.259] Browser WARN    Meme generation skipped: fetch failed
+[01:21:31.697] Browser WARN    Autoplay blocked: {}
+[01:22:10.121] Browser WARN    Autoplay blocked: {}
+[01:23:42.375] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:23:49.673] Browser WARN    Autoplay blocked: {}
+[01:24:15.362] Server  ERROR   Meme Action Error: TypeError: fetch failed
+[01:24:15.474] Browser WARN    Meme generation skipped: fetch failed
+[01:24:33.319] Server  WARN    Meme Generation Quota Exceeded (Local Env): "{\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.5-flash-preview-image\\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.5-flash-preview-image\\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.5-flash-preview-image\\nPlease retry in 46.406282394s.\",\"status\":\"RESOURCE_EXHAUSTED\",\"details\":[{\"@type\":\"type.googleapis.com/google.rpc.Help\",\"links\":[{\"description\":\"Learn more about Gemini API quotas\",\"url\":\"https://ai.google.dev/gemini-api/docs/rate-limits\"}]},{\"@type\":\"type.googleapis.com/google.rpc.QuotaFailure\",\"violations\":[{\"quotaMetric\":\"generativelanguage.googleapis.com/generate_content_free_tier_requests\",\"quotaId\":\"GenerateRequestsPerDayPerProjectPerModel-FreeTier\",\"quotaDimensions\":{\"location\":\"global\",\"model\":\"gemini-2.5-flash-preview-image\"}},{\"quotaMetric\":\"generativelanguage.googleapis.com/generate_content_free_tier_requests\",\"quotaId\":\"GenerateRequestsPerMinutePerProjectPerModel-FreeTier\",\"quotaDimensions\":{\"location\":\"global\",\"model\":\"gemini-2.5-flash-preview-image\"}},{\"quotaMetric\":\"generativelanguage.googleapis.com/generate_content_free_tier_input_token_count\",\"quotaId\":\"GenerateContentInputTokensPerModelPerMinute-FreeTier\",\"quotaDimensions\":{\"location\":\"global\",\"model\":\"gemini-2.5-flash-preview-image\"}}]},{\"@type\":\"type.googleapis.com/google.rpc.RetryInfo\",\"retryDelay\":\"46s\"}]}}"
+[01:24:49.424] Browser WARN    Autoplay blocked: {}
+[01:25:15.342] Server  ERROR   Meme Action Error: TypeError: fetch failed
+[01:25:15.449] Browser WARN    Meme generation skipped: fetch failed
+[01:34:55.717] Browser ERROR   ./src/app/actions.tsx:133:24
+Parsing ecmascript source code failed
+  131 |     // 2. Generate Meme
+  132 |     const prompt = `
+> 133 |       Context: Profile picture of a roasted user.
+      |                        ^^^^^^^
+  134 |       Roast: "${roast}"
+  135 |       Task: Create a distorted "meme" version of this image.
+  136 |       Style: Deep fried, glitch, melting, or clown makeup. 
+
+Expected ';', '}' or <eof>
+[01:34:55.718] Browser ERROR   ./src/app/actions.tsx:133:24
+Parsing ecmascript source code failed
+  131 |     // 2. Generate Meme
+  132 |     const prompt = `
+> 133 |       Context: Profile picture of a roasted user.
+      |                        ^^^^^^^
+  134 |       Roast: "${roast}"
+  135 |       Task: Create a distorted "meme" version of this image.
+  136 |       Style: Deep fried, glitch, melting, or clown makeup. 
+
+Expected ';', '}' or <eof>
+[01:35:01.671] Server  LOG      ✓ Compiled in 22ms
+[01:35:24.718] Browser ERROR   ./src/app/actions.tsx:133:24
+Parsing ecmascript source code failed
+  131 |     // 2. Generate Meme
+  132 |     const prompt = `
+> 133 |       Context: Profile picture of a roasted user.
+      |                        ^^^^^^^
+  134 |       Roast: "${roast}"
+  135 |       Task: Create a distorted "meme" version of this image.
+  136 |       Style: Deep fried, glitch, melting, or clown makeup. 
+
+Expected ';', '}' or <eof>
+[01:35:24.718] Browser ERROR   ./src/app/actions.tsx:133:24
+Parsing ecmascript source code failed
+  131 |     // 2. Generate Meme
+  132 |     const prompt = `
+> 133 |       Context: Profile picture of a roasted user.
+      |                        ^^^^^^^
+  134 |       Roast: "${roast}"
+  135 |       Task: Create a distorted "meme" version of this image.
+  136 |       Style: Deep fried, glitch, melting, or clown makeup. 
+
+Expected ';', '}' or <eof>
+[01:42:31.590] Server  LOG      ✓ Compiled in 0ms
+[01:42:32.359] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:42:32.523] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <RootLayout>
+                        <html lang="en">
+                          <body
+                            className="inter_b2991b2-module__9mH_6q__variable chewy_4bc7f1c-module__q_IKeG__variable r..."
+-                           cz-shortcut-listen="true"
+                          >
+                  ...
+
+[01:42:45.277] Browser WARN    Autoplay blocked: {}
+[01:43:17.981] Server  ERROR   Meme Action Error: TypeError: fetch failed
+[01:43:18.090] Browser WARN    Meme generation skipped: fetch failed
+[01:43:54.998] Browser WARN    Autoplay blocked: {}
+[01:44:22.912] Server  ERROR   Meme Action Error: TypeError: fetch failed
+[01:44:23.020] Browser WARN    Meme generation skipped: fetch failed
+[01:45:11.068] Browser WARN    Autoplay blocked: {}
+[01:45:39.569] Server  ERROR   Meme Action Error: TypeError: fetch failed
+[01:45:39.676] Browser WARN    Meme generation skipped: fetch failed
+[01:46:10.520] Browser ERROR   ./src/app/actions.tsx:115:31
+Parsing ecmascript source code failed
+  113 |       model: 'gemini-2.5-flash',
+  114 |       contents: prompt,
+> 115 |       config: { temperature:  }
+      |                               ^
+  116 |     });
+  117 |
+  118 |     const roast = aiRes.text || "You are too boring to roast.";
+
+Expression expected
+[01:46:10.718] Browser ERROR   ./src/app/actions.tsx:115:31
+Parsing ecmascript source code failed
+  113 |       model: 'gemini-2.5-flash',
+  114 |       contents: prompt,
+> 115 |       config: { temperature:  }
+      |                               ^
+  116 |     });
+  117 |
+  118 |     const roast = aiRes.text || "You are too boring to roast.";
+
+Expression expected
+[01:46:26.229] Browser WARN    Autoplay blocked: {}
+[01:46:56.138] Server  ERROR   Meme Action Error: TypeError: fetch failed
+[01:46:56.243] Browser WARN    Meme generation skipped: fetch failed
+[01:52:21.139] Browser WARN    Autoplay blocked: {}
+[01:52:48.454] Server  ERROR   Meme Action Error: TypeError: fetch failed
+[01:52:48.559] Browser WARN    Meme generation skipped: Failed to generate meme
+[01:54:25.089] Browser WARN    Autoplay blocked: {}
+[01:54:50.691] Server  ERROR   Meme Action Error: TypeError: fetch failed
+[01:54:51.717] Browser WARN    Meme generation skipped: Failed to generate meme
+[01:55:55.076] Browser WARN    Autoplay blocked: {}
+[01:56:22.813] Server  ERROR   Meme Action Error: TypeError: fetch failed
+[01:56:22.920] Browser WARN    Meme generation skipped: Failed to generate meme
+[01:57:04.465] Browser WARN    Autoplay blocked: {}
+[01:59:48.039] Server  WARN    Meme generation rate limited (local). Skipping.
+[01:59:48.153] Browser WARN    Meme generation skipped: Rate limit hit (Meme skipped)
+[02:02:40.121] Server  LOG      ✓ Compiled in 0ms
+[02:02:41.004] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:02:41.186] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <RootLayout>
+                        <html lang="en">
+                          <body
+                            className="inter_b2991b2-module__9mH_6q__variable chewy_4bc7f1c-module__q_IKeG__variable r..."
+-                           cz-shortcut-listen="true"
+                          >
+                  ...
+
+[02:02:48.467] Browser WARN    Autoplay blocked: {}
+[02:03:17.474] Server  ERROR   Meme Action Error: TypeError: fetch failed
+[02:03:17.581] Browser WARN    Meme generation skipped: Failed to generate meme
+[02:03:50.718] Browser WARN    Autoplay blocked: {}
+[02:04:17.709] Server  ERROR   Meme Action Error: TypeError: fetch failed
+[02:04:17.815] Browser WARN    Meme generation skipped: Failed to generate meme
+[02:04:58.116] Browser WARN    Autoplay blocked: {}
+[02:05:23.617] Server  ERROR   Meme Action Error: TypeError: fetch failed
+[02:05:23.728] Browser WARN    Meme generation skipped: Failed to generate meme
