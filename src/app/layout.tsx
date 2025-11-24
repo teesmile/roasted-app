@@ -1,3 +1,4 @@
+
 import React from 'react';
 import type { Metadata } from "next";
 import { Inter, Chewy, Roboto } from "next/font/google";
@@ -21,11 +22,20 @@ export const metadata: Metadata = {
     url: appUrl,
   },
   other: {
-    "fc:frame": "vNext",
-    "fc:frame:image": ogImageUrl,
-    "fc:frame:button:1": "Get Roasted",
-    "fc:frame:button:1:action": "link",
-    "fc:frame:button:1:target": appUrl,
+    "fc:frame": JSON.stringify({
+      version: "next",
+      imageUrl: ogImageUrl,
+      button: {
+        title: "Get Roasted",
+        action: {
+          type: "launch_miniapp",
+          name: "Roasted",
+          url: appUrl,
+          splashImageUrl: ogImageUrl,
+          splashBackgroundColor: "#f5f0ec"
+        }
+      }
+    }),
   },
 };
 
@@ -36,8 +46,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+      </head>
+      
       <body className={`${inter.variable} ${chewy.variable} ${roboto.variable} antialiased`}>
-        {children}
+
+          {children}
+
       </body>
     </html>
   );

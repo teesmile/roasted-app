@@ -1,109 +1,7 @@
 module.exports = [
-"[externals]/child_process [external] (child_process, cjs)", ((__turbopack_context__, module, exports) => {
-
-const mod = __turbopack_context__.x("child_process", () => require("child_process"));
-
-module.exports = mod;
-}),
-"[externals]/fs [external] (fs, cjs)", ((__turbopack_context__, module, exports) => {
-
-const mod = __turbopack_context__.x("fs", () => require("fs"));
-
-module.exports = mod;
-}),
-"[externals]/https [external] (https, cjs)", ((__turbopack_context__, module, exports) => {
-
-const mod = __turbopack_context__.x("https", () => require("https"));
-
-module.exports = mod;
-}),
-"[externals]/stream [external] (stream, cjs)", ((__turbopack_context__, module, exports) => {
-
-const mod = __turbopack_context__.x("stream", () => require("stream"));
-
-module.exports = mod;
-}),
-"[externals]/os [external] (os, cjs)", ((__turbopack_context__, module, exports) => {
-
-const mod = __turbopack_context__.x("os", () => require("os"));
-
-module.exports = mod;
-}),
-"[externals]/events [external] (events, cjs)", ((__turbopack_context__, module, exports) => {
-
-const mod = __turbopack_context__.x("events", () => require("events"));
-
-module.exports = mod;
-}),
-"[externals]/process [external] (process, cjs)", ((__turbopack_context__, module, exports) => {
-
-const mod = __turbopack_context__.x("process", () => require("process"));
-
-module.exports = mod;
-}),
-"[externals]/crypto [external] (crypto, cjs)", ((__turbopack_context__, module, exports) => {
-
-const mod = __turbopack_context__.x("crypto", () => require("crypto"));
-
-module.exports = mod;
-}),
-"[externals]/querystring [external] (querystring, cjs)", ((__turbopack_context__, module, exports) => {
-
-const mod = __turbopack_context__.x("querystring", () => require("querystring"));
-
-module.exports = mod;
-}),
 "[externals]/buffer [external] (buffer, cjs)", ((__turbopack_context__, module, exports) => {
 
 const mod = __turbopack_context__.x("buffer", () => require("buffer"));
-
-module.exports = mod;
-}),
-"[externals]/fs/promises [external] (fs/promises, cjs)", ((__turbopack_context__, module, exports) => {
-
-const mod = __turbopack_context__.x("fs/promises", () => require("fs/promises"));
-
-module.exports = mod;
-}),
-"[externals]/node:stream [external] (node:stream, cjs)", ((__turbopack_context__, module, exports) => {
-
-const mod = __turbopack_context__.x("node:stream", () => require("node:stream"));
-
-module.exports = mod;
-}),
-"[externals]/node:stream/promises [external] (node:stream/promises, cjs)", ((__turbopack_context__, module, exports) => {
-
-const mod = __turbopack_context__.x("node:stream/promises", () => require("node:stream/promises"));
-
-module.exports = mod;
-}),
-"[externals]/http [external] (http, cjs)", ((__turbopack_context__, module, exports) => {
-
-const mod = __turbopack_context__.x("http", () => require("http"));
-
-module.exports = mod;
-}),
-"[externals]/net [external] (net, cjs)", ((__turbopack_context__, module, exports) => {
-
-const mod = __turbopack_context__.x("net", () => require("net"));
-
-module.exports = mod;
-}),
-"[externals]/tls [external] (tls, cjs)", ((__turbopack_context__, module, exports) => {
-
-const mod = __turbopack_context__.x("tls", () => require("tls"));
-
-module.exports = mod;
-}),
-"[externals]/url [external] (url, cjs)", ((__turbopack_context__, module, exports) => {
-
-const mod = __turbopack_context__.x("url", () => require("url"));
-
-module.exports = mod;
-}),
-"[externals]/zlib [external] (zlib, cjs)", ((__turbopack_context__, module, exports) => {
-
-const mod = __turbopack_context__.x("zlib", () => require("zlib"));
 
 module.exports = mod;
 }),
@@ -117,7 +15,11 @@ module.exports = mod;
     ()=>roastUserAction
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$3_$40$babel$2b$core$40$7$2e$28$2e$5_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/.pnpm/next@16.0.3_@babel+core@7.28.5_react-dom@19.2.0_react@19.2.0__react@19.2.0/node_modules/next/dist/build/webpack/loaders/next-flight-loader/server-reference.js [app-rsc] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f40$google$2b$genai$40$1$2e$30$2e$0_bufferutil$40$4$2e$0$2e$9_utf$2d$8$2d$validate$40$5$2e$0$2e$10$2f$node_modules$2f40$google$2f$genai$2f$dist$2f$node$2f$index$2e$mjs__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/.pnpm/@google+genai@1.30.0_bufferutil@4.0.9_utf-8-validate@5.0.10/node_modules/@google/genai/dist/node/index.mjs [app-rsc] (ecmascript)");
+(()=>{
+    const e = new Error("Cannot find module '@google/genai'");
+    e.code = 'MODULE_NOT_FOUND';
+    throw e;
+})();
 var __TURBOPACK__imported__module__$5b$externals$5d2f$buffer__$5b$external$5d$__$28$buffer$2c$__cjs$29$__ = __turbopack_context__.i("[externals]/buffer [external] (buffer, cjs)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$3_$40$babel$2b$core$40$7$2e$28$2e$5_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$action$2d$validate$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/.pnpm/next@16.0.3_@babel+core@7.28.5_react-dom@19.2.0_react@19.2.0__react@19.2.0/node_modules/next/dist/build/webpack/loaders/next-flight-loader/action-validate.js [app-rsc] (ecmascript)");
 ;
@@ -127,7 +29,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$ne
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY || "";
 const NEYNAR_API_KEY = process.env.NEYNAR_API_KEY || "";
 const NEYNAR_API_URL = process.env.NEYNAR_API_URL || "https://api.neynar.com/v2/farcaster";
-const ai = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f40$google$2b$genai$40$1$2e$30$2e$0_bufferutil$40$4$2e$0$2e$9_utf$2d$8$2d$validate$40$5$2e$0$2e$10$2f$node_modules$2f40$google$2f$genai$2f$dist$2f$node$2f$index$2e$mjs__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["GoogleGenAI"]({
+const ai = new GoogleGenAI({
     apiKey: GEMINI_API_KEY
 });
 async function roastUserAction(username) {
@@ -320,6 +222,48 @@ __turbopack_context__.s([
 var __TURBOPACK__imported__module__$5b$project$5d2f2e$next$2d$internal$2f$server$2f$app$2f$page$2f$actions$2e$js__$7b$__ACTIONS_MODULE0__$3d3e$__$225b$project$5d2f$src$2f$app$2f$actions$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$2922$__$7d$__$5b$app$2d$rsc$5d$__$28$server__actions__loader$2c$__ecmascript$29$__$3c$locals$3e$__ = __turbopack_context__.i('[project]/.next-internal/server/app/page/actions.js { ACTIONS_MODULE0 => "[project]/src/app/actions.tsx [app-rsc] (ecmascript)" } [app-rsc] (server actions loader, ecmascript) <locals>');
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$actions$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/app/actions.tsx [app-rsc] (ecmascript)");
 }),
+"[project]/node_modules/.pnpm/next@16.0.3_@babel+core@7.28.5_react-dom@19.2.0_react@19.2.0__react@19.2.0/node_modules/next/dist/build/webpack/loaders/next-flight-loader/server-reference.js [app-rsc] (ecmascript)", ((__turbopack_context__, module, exports) => {
+"use strict";
+
+/* eslint-disable import/no-extraneous-dependencies */ Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+Object.defineProperty(exports, "registerServerReference", {
+    enumerable: true,
+    get: function() {
+        return _server.registerServerReference;
+    }
+});
+const _server = __turbopack_context__.r("[project]/node_modules/.pnpm/next@16.0.3_@babel+core@7.28.5_react-dom@19.2.0_react@19.2.0__react@19.2.0/node_modules/next/dist/server/route-modules/app-page/vendored/rsc/react-server-dom-turbopack-server.js [app-rsc] (ecmascript)"); //# sourceMappingURL=server-reference.js.map
+}),
+"[project]/node_modules/.pnpm/next@16.0.3_@babel+core@7.28.5_react-dom@19.2.0_react@19.2.0__react@19.2.0/node_modules/next/dist/build/webpack/loaders/next-flight-loader/action-validate.js [app-rsc] (ecmascript)", ((__turbopack_context__, module, exports) => {
+"use strict";
+
+// This function ensures that all the exported values are valid server actions,
+// during the runtime. By definition all actions are required to be async
+// functions, but here we can only check that they are functions.
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+Object.defineProperty(exports, "ensureServerEntryExports", {
+    enumerable: true,
+    get: function() {
+        return ensureServerEntryExports;
+    }
+});
+function ensureServerEntryExports(actions) {
+    for(let i = 0; i < actions.length; i++){
+        const action = actions[i];
+        if (typeof action !== 'function') {
+            throw Object.defineProperty(new Error(`A "use server" file can only export async functions, found ${typeof action}.\nRead more: https://nextjs.org/docs/messages/invalid-use-server-value`), "__NEXT_ERROR_CODE", {
+                value: "E352",
+                enumerable: false,
+                configurable: true
+            });
+        }
+    }
+} //# sourceMappingURL=action-validate.js.map
+}),
 ];
 
-//# sourceMappingURL=%5Broot-of-the-server%5D__6a910ca6._.js.map
+//# sourceMappingURL=%5Broot-of-the-server%5D__46a34675._.js.map
