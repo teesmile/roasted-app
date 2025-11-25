@@ -7,7 +7,7 @@
   "frame": {
     "version": "1",
     "name": "Roasted",
-    "iconUrl": "https://castroast.vercel.app/roasted.png",
+    "iconUrl": "https://castroast.vercel.app/logo-header.svg",
     "homeUrl": "https://castroast.vercel.app",
     "imageUrl": "https://castroast.vercel.app/og-roasted.png",
     "buttonTitle": "Roast Me",
@@ -17,7 +17,12 @@
     "primaryCategory": "entertainment",
     "secondaryCategory": "social",
     "tags": ["roast", "social", "fun", "roasted", "meme"],
-    "webhookUrl": "https://castroast.vercel.app/api/webhook"
+    "webhookUrl": "https://castroast.vercel.app/api/webhook",
+    "heroImageUrl": "https://castroast.vercel.app/og-roasted.png",
+    "tagline": "Best AI farcaster roaster",
+    "ogTitle": "Roasted",
+    "ogDescription": "Check your roast or roast your frens' casts and share the fun with Farcaster frens.",
+    "ogImageUrl": "https://castroast.vercel.app/og-roasted.png"
   }
 }
 
