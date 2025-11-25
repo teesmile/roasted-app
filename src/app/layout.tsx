@@ -8,9 +8,6 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 const chewy = Chewy({ weight: "400", subsets: ["latin"], variable: "--font-chewy" });
 const roboto = Roboto({ weight: "400", subsets: ["latin"], variable: "--font-roboto" });
 
-const appUrl = process.env.NEXT_PUBLIC_APP_URL || "https://castroast.vercel.app";
-// Updated OG Image URL from GitHub
-const ogImageUrl = "https://github.com/teesmile/roasted-app/blob/917c3d500f28979f41dc24d93d298e0fc440ede7/public/og-roasted.png?raw=true";
 
 export const metadata: Metadata = {
   title: "Roasted",
