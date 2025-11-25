@@ -6886,3 +6886,15 @@ Import traces:
 https://nextjs.org/docs/messages/module-not-found
 [01:29:54.633] Server  LOG      ✓ Compiled in 302ms
 [01:29:54.982] Browser WARN    @farcaster/frame-sdk is deprecated. Please use @farcaster/miniapp-sdk instead.
+[02:12:26.776] Browser ERROR   ./src/app/layout.tsx:11:51
+Parsing ecmascript source code failed
+   9 | const roboto = Roboto({ weight: "400", subsets: ["latin"], variable: "--font-roboto" });
+  10 |
+> 11 | const appUrl = process.env.NEXT_PUBLIC_APP_URL || "https://castroast.verc
+     |                                                   ^^^^^^^^^^^^^^^^^^^^^^^
+  12 |
+  13 | export const metadata: Metadata = {
+  14 |   title: "Roasted",
+
+Unterminated string constant
+[02:12:31.958] Server  LOG      ✓ Compiled in 63ms
