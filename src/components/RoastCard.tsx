@@ -5,7 +5,6 @@ import ReactMarkdown from 'react-markdown';
 import { FarcasterUser } from '../types';
 import { Button } from './Button';
 import { uploadImageAction } from '../app/actions'; 
-// ✅ Import the correct SDK
 import { sdk } from "@farcaster/miniapp-sdk";
 
 interface RoastCardProps {
@@ -23,6 +22,9 @@ const SFX = {
 };
 
 const LOGO_DATA_URI = "/roasted-logo.png";
+
+// ✅ Hardcode your Frame URL here to ensure the correct link is always shared
+const PRODUCTION_FRAME_URL = "https://castroast.vercel.app";
 
 export const RoastCard: React.FC<RoastCardProps> = ({ user, roast, memeUrl, isMemeLoading, viewerUsername, onReset }) => {
   const [isSharing, setIsSharing] = useState(false);
@@ -48,7 +50,7 @@ export const RoastCard: React.FC<RoastCardProps> = ({ user, roast, memeUrl, isMe
     playSound(SFX.WHOOSH, 0.8);
   }, []);
 
-  // --- CANVAS GENERATION (Kept exactly the same) ---
+  // --- CANVAS GENERATION ---
   const generateCompositeImage = async (): Promise<Blob | null> => {
     return new Promise((resolve) => {
       const canvas = document.createElement('canvas');
@@ -88,9 +90,10 @@ export const RoastCard: React.FC<RoastCardProps> = ({ user, roast, memeUrl, isMe
         ctx2.fillStyle = 'rgba(255, 255, 255, 0.5)';
         ctx2.font = '24px Inter, sans-serif';
         ctx2.fillText('Roasted Analysis', footerTextX, height - 65);
-        ctx2.font = 'italic 20px Inter, sans-serif';
-        ctx2.fillStyle = 'rgba(255, 255, 255, 0.5)'; 
-        ctx2.fillText('teesmile', footerTextX, height - 35);
+        
+        // ❌ REMOVED "teesmile" text from here as requested
+        // ctx2.font = 'italic 20px Inter, sans-serif';
+        // ctx2.fillText('teesmile', footerTextX, height - 35); 
 
         // Logo
         const logoImg = new Image();
@@ -168,25 +171,24 @@ export const RoastCard: React.FC<RoastCardProps> = ({ user, roast, memeUrl, isMe
     });
   };
 
-  // --- ✅ NEW SHARE LOGIC using sdk.actions.composeCast ---
+  // --- SHARE LOGIC ---
   const handleShare = async () => {
     setIsSharing(true);
-    setStatusMessage("Generating...");
+    setStatusMessage("Generating Image...");
 
     try {
-      // 1. Generate Blob
+      // 1. Generate Blob locally
       const imageBlob = await generateCompositeImage();
       if (!imageBlob) throw new Error("Failed to generate image");
 
-      // 2. Upload to Vercel Blob
+      // 2. Upload to Vercel Blob (to get a public URL for Farcaster)
+      setStatusMessage("Uploading...");
       const filename = `roast-${user.username}-${Date.now()}.png`;
       const formData = new FormData();
       formData.append('file', imageBlob, filename);
       formData.append('filename', filename);
 
       const publicImageUrl = await uploadImageAction(formData);
-
-      // setStatusMessage("Opening Composer...");
 
       // 3. Construct Caption
       let caption = "";
@@ -196,30 +198,31 @@ export const RoastCard: React.FC<RoastCardProps> = ({ user, roast, memeUrl, isMe
          caption = `@${user.username} just got roasted by castroast 😂\n\nCheck yours:`;
       }
 
-      const currentHost = window.location.hostname;
-      const appUrl = (currentHost === 'localhost' || currentHost === '127.0.0.1')
-        ? 'https://castroast.vercel.app' 
-        : window.location.href; 
+      // 4. Try to open Farcaster Composer
+      setStatusMessage("Opening Composer...");
       
-      // 4. ✅ Use Native SDK Action
-      // This opens the composer directly inside Warpcast
       try {
         await sdk.actions.composeCast({
           text: caption,
-          embeds: [publicImageUrl, appUrl] // Max 2 embeds allowed
+          embeds: [publicImageUrl, PRODUCTION_FRAME_URL] // ✅ Uses correct frame link
         });
         
-        // Success
         setStatusMessage("Composer Opened!");
       } catch (sdkError) {
-        // Fallback for browsers (outside Warpcast) or if SDK fails
-        console.warn("SDK composeCast failed, falling back to URL", sdkError);
+        // 5. ✅ BROWSER FALLBACK: Download the image
+        console.warn("SDK not active. Downloading image...", sdkError);
         
-        const params = new URLSearchParams();
-        params.set("text", caption);
-        params.append("embeds[]", publicImageUrl);
-        params.append("embeds[]", appUrl);
-        window.open(`https://farcaster.xyz/~/compose?${params.toString()}`, '_blank');
+        // Create a download link for the Blob we already generated
+        const url = URL.createObjectURL(imageBlob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = `roasted-${user.username}.png`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+
+        setStatusMessage("Image Downloaded! (Share manually)");
       }
 
       setIsSharing(false);

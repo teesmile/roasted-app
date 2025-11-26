@@ -1,4 +1,3 @@
-
 import React from 'react';
 import type { Metadata } from "next";
 import { Inter, Chewy, Roboto } from "next/font/google";
@@ -8,24 +7,48 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 const chewy = Chewy({ weight: "400", subsets: ["latin"], variable: "--font-chewy" });
 const roboto = Roboto({ weight: "400", subsets: ["latin"], variable: "--font-roboto" });
 
+const APP_URL = "https://castroast.vercel.app";
+// Bump this version number (v=7) to force Farcaster to refresh your image
+const IMG_URL = `${APP_URL}/og-roasted.png?v=7`; 
+
+// Define the Mini App Config JSON object
+const frameEmbed = {
+  version: "1",
+  imageUrl: IMG_URL, // Must be 3:2 aspect ratio
+  button: {
+    title: "Roast Me",
+    action: {
+      type: "launch_frame",
+      name: "Roasted",
+      url: APP_URL,
+      splashImageUrl: `${APP_URL}/roasted.png`,
+      splashBackgroundColor: "#3b1078",
+    },
+  },
+};
 
 export const metadata: Metadata = {
   title: "Roasted",
-  description: "Check your roast or roast your frens on farcaster.",
+  description: "Check your roast or roast your frens on Farcaster.",
   openGraph: {
     title: "Roasted",
-    description: "Check your roast or roast your frens and share on farcaster.",
-    images: ["https://castroast.vercel.app/og-roasted.png"], 
+    description: "Check your roast or roast your frens on Farcaster.",
+    url: APP_URL,
+    images: [
+      {
+        url: IMG_URL,
+        width: 1200,
+        height: 630,
+        alt: "Roasted App Preview",
+      },
+    ],
   },
   other: {
-    "fc:frame": "vNext",
-    "fc:frame:image": "https://castroast.vercel.app/og-roasted.png",
-    "fc:frame:button:1": "Roast Me",
-    "fc:frame:button:1:action": "launch_frame",
-    "fc:frame:button:1:name": "Roasted",
-    "fc:frame:button:1:url": "https://castroast.vercel.app",
-    "fc:frame:button:1:splash_image_url": "https://castroast.vercel.app/roasted.png",
-    "fc:frame:button:1:splash_background_color": "#3b1078",
+    // ✅ NEW STANDARD: Stringified JSON in 'fc:miniapp'
+    "fc:miniapp": JSON.stringify(frameEmbed),
+    
+    // ✅ BACKWARD COMPATIBILITY: Same JSON in 'fc:frame'
+    "fc:frame": JSON.stringify(frameEmbed),
   },
 };
 
