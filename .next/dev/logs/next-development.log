@@ -2441,3 +2441,47 @@ It can also happen if the client has a browser extension installed which messes 
 [03:19:16.097] Server  LOG      ✓ Compiled in 19ms
 [03:19:38.382] Server  LOG      ✓ Compiled in 39ms
 [03:20:13.090] Server  LOG      ✓ Compiled in 27ms
+[03:39:52.555] Browser WARN    Autoplay blocked: {}
+[03:40:13.495] Server  LOG     Distorting PFP using Instruct-Pix2Pix: "dwr"
+[03:40:45.367] Browser WARN    Success SFX failed {}
+[04:06:29.711] Server  LOG      ✓ Compiled in 36ms
+[04:14:40.348] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[04:14:40.600] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <RootLayout>
+                        <html lang="en">
+                          <body
+                            className="inter_b2991b2-module__9mH_6q__variable chewy_4bc7f1c-module__q_IKeG__variable r..."
+-                           cz-shortcut-listen="true"
+                          >
+                  ...
+
+[04:14:45.741] Browser WARN    Autoplay blocked: {}
+[04:15:10.733] Server  LOG     Distorting PFP using Instruct-Pix2Pix: "dwr"
+[04:15:41.606] Server  ERROR   Replicate Error: TypeError: fetch failed
+[04:15:41.812] Browser WARN    Success SFX failed {}

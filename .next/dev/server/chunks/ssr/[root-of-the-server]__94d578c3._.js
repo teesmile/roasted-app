@@ -103,25 +103,45 @@ var __TURBOPACK__imported__module__$5b$next$5d2f$internal$2f$font$2f$google$2f$r
 ;
 ;
 ;
+const APP_URL = "https://castroast.vercel.app";
+// Bump this version number (v=7) to force Farcaster to refresh your image
+const IMG_URL = `${APP_URL}/og-roasted.png?v=7`;
+// Define the Mini App Config JSON object
+const frameEmbed = {
+    version: "1",
+    imageUrl: IMG_URL,
+    button: {
+        title: "Roast Me",
+        action: {
+            type: "launch_frame",
+            name: "Roasted",
+            url: APP_URL,
+            splashImageUrl: `${APP_URL}/roasted.png`,
+            splashBackgroundColor: "#3b1078"
+        }
+    }
+};
 const metadata = {
     title: "Roasted",
-    description: "Check your roast or roast your frens on farcaster.",
+    description: "Check your roast or roast your frens on Farcaster.",
     openGraph: {
         title: "Roasted",
-        description: "Check your roast or roast your frens and share on farcaster.",
+        description: "Check your roast or roast your frens on Farcaster.",
+        url: APP_URL,
         images: [
-            "https://castroast.vercel.app/og-roasted.png"
+            {
+                url: IMG_URL,
+                width: 1200,
+                height: 630,
+                alt: "Roasted App Preview"
+            }
         ]
     },
     other: {
-        "fc:frame": "vNext",
-        "fc:frame:image": "https://castroast.vercel.app/og-roasted.png",
-        "fc:frame:button:1": "Roast Me",
-        "fc:frame:button:1:action": "launch_frame",
-        "fc:frame:button:1:name": "Roasted",
-        "fc:frame:button:1:url": "https://castroast.vercel.app",
-        "fc:frame:button:1:splash_image_url": "https://castroast.vercel.app/roasted.png",
-        "fc:frame:button:1:splash_background_color": "#3b1078"
+        // ✅ NEW STANDARD: Stringified JSON in 'fc:miniapp'
+        "fc:miniapp": JSON.stringify(frameEmbed),
+        // ✅ BACKWARD COMPATIBILITY: Same JSON in 'fc:frame'
+        "fc:frame": JSON.stringify(frameEmbed)
     }
 };
 function RootLayout({ children }) {
@@ -132,12 +152,12 @@ function RootLayout({ children }) {
             children: children
         }, void 0, false, {
             fileName: "[project]/src/app/layout.tsx",
-            lineNumber: 39,
+            lineNumber: 62,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/app/layout.tsx",
-        lineNumber: 38,
+        lineNumber: 61,
         columnNumber: 5
     }, this);
 }
