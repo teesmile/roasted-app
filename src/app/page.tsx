@@ -5,8 +5,9 @@ import { UserSearch } from '../components/UserSearch';
 import { RoastCard } from '../components/RoastCard';
 import { Button } from '../components/Button';
 import { RoastState } from '../types';
-import { roastUserAction, generateMemeAction } from './actions';
-import {sdk} from "@farcaster/frame-sdk"
+import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+// ✅ CORRECTED IMPORT for Mini App SDK
+import { sdk } from "@farcaster/miniapp-sdk"; 
 
 const LOADING_MUSIC_URL = "https://codeskulptor-demos.commondatastorage.googleapis.com/pang/paza-moduless.mp3";
 const SUCCESS_SFX_URL = "https://codeskulptor-demos.commondatastorage.googleapis.com/GalaxyInvaders/bonus.mp3";
@@ -33,26 +34,38 @@ export default function Home() {
     error: null,
   });
   const [isReady, setIsReady] = useState(false);
+  const [context, setContext] = useState<any>(); 
   
   const [loadingMessage, setLoadingMessage] = useState("Cooking up something spicy...");
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const successAudioRef = useRef<HTMLAudioElement | null>(null);
 
+  // --- 1. Initialize Farcaster SDK ---
   useEffect(() => {
     const load = async () => {
-      await sdk.actions.ready();
-      setIsReady(true);
-    }
+      try {
+        const frameContext = await sdk.context;
+        setContext(frameContext);
+        
+        // ✅ Native Ready Signal
+        await sdk.actions.ready();
+        
+        setIsReady(true);
+      } catch (err) {
+        console.warn("SDK Context failed (Browser mode?)", err);
+        setIsReady(true);
+      }
+    };
     if (!isReady) {
       load();
     }
   }, [isReady]);
 
-  // Splash Screen Timer (2 seconds)
+  // Splash Screen Timer
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowSplash(false);
-    }, 2000);
+    }, 1000);
     return () => clearTimeout(timer);
   }, []);
 
@@ -86,7 +99,6 @@ export default function Home() {
         setLoadingMessage(LOADING_MESSAGES[Math.floor(Math.random() * LOADING_MESSAGES.length)]);
       }, 2500);
     }
-
     return () => { if (interval) clearInterval(interval); };
   }, [state.status]);
 
@@ -107,31 +119,46 @@ export default function Home() {
         successAudioRef.current.crossOrigin = "anonymous";
       }
 
-      setState(prev => ({ ...prev, status: 'fetching_user', error: null, memeUrl: null, isMemeLoading: false }));
+     setState(prev => ({ ...prev, status: 'fetching_user', error: null, memeUrl: null, isMemeLoading: false }));
 
-      // 1. Call Server Action (Roast)
-      const result = await roastUserAction(username);
+      // 1. Fetch User Data (Fast)
+      const fetchResult = await fetchUserDataAction(username);
       
-      if (!result.success || !result.user || !result.roast) {
-        throw new Error(result.error || "Failed to generate roast");
+      if (!fetchResult.success || !fetchResult.user) {
+        throw new Error(fetchResult.error || "Failed to find user");
       }
 
-      stopBackgroundMusic();
-      
+       // Update UI: "Cooking you up..."
+      setState(prev => ({ 
+        ...prev, 
+        status: 'analyzing', 
+        user: fetchResult.user! 
+      }));
+
+       // 2. Generate Roast (Slower)
+      const roastResult = await generateRoastAction(
+        fetchResult.user, 
+        fetchResult.castTexts || "", 
+        fetchResult.replyTexts || ""
+      );
+
+      if (!roastResult.success || !roastResult.roast) {
+        throw new Error(roastResult.error || "Failed to generate roast");
+      }
+
+       // Update UI: Show Text immediately
       setState(prev => ({ 
         ...prev, 
         status: 'complete', 
-        user: result.user!,
-        roast: result.roast!,
+        roast: roastResult.roast!,
         memeUrl: null,
         isMemeLoading: true 
       }));
 
-      // 2. Call Server Action (Meme)
-      generateMemeAction(result.user, result.roast)
+         // 3. Generate Meme in Background
+      generateMemeAction(fetchResult.user, roastResult.roast!)
         .then((memeResult) => {
            if (memeResult.success && memeResult.memeUrl) {
-             // Success Case
              if (successAudioRef.current) {
                successAudioRef.current.currentTime = 0;
                successAudioRef.current.play().catch(e => console.warn("Success SFX failed", e));
@@ -142,7 +169,6 @@ export default function Home() {
                isMemeLoading: false 
              }));
            } else {
-             // Failure Case (e.g. Rate Limit)
              console.warn("Meme generation skipped:", memeResult.error);
              setState(prev => ({ 
                ...prev, 
@@ -166,6 +192,7 @@ export default function Home() {
       }));
     }
   };
+    stopBackgroundMusic();
 
   const handleReset = () => {
     stopBackgroundMusic();
@@ -179,22 +206,21 @@ export default function Home() {
     });
   };
 
+      
+
   const LogoSVG = () => (
-    <img 
-      src="/roasted-logo.png" 
-      alt="Roasted Logo" 
-      className="w-full h-full object-contain" 
-    />
+    <img src="/roasted-logo.png" alt="Roasted Logo" className="w-full h-full object-contain" />
   );
 
   const LogoSVGHeader = () => (
-    <img 
-      src="/logo-header.svg" 
-      alt="Roasted Header Logo" 
-      className="w-full h-full object-contain" 
-    />
+    <img src="/logo-header.svg" alt="Roasted Header Logo" className="w-full h-full object-contain" />
   );
-  // Splash Screen
+
+  // Helper to open profile link
+  const openFollowLink = () => {
+    sdk.actions.openUrl("https://farcaster.xyz/teesmilex.base.eth");
+  };
+
   if (showSplash) {
     return (
       <div className="min-h-screen animated-bg flex items-center justify-center z-50 fixed inset-0">
@@ -206,12 +232,12 @@ export default function Home() {
   }
 
   return (
-    <div className=" custom-cursor min-h-screen animated-bg text-white flex flex-col">
+     <div className=" custom-cursor min-h-screen animated-bg text-white flex flex-col">
       <header className="p-6 border-b border-white/10 bg-black/20 backdrop-blur-md sticky top-0 z-10">
         <div className="max-w-5xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-3">
-            {/* Header Logo: Added bg-brand-500 and increased size */}
-            <div className="w-16 h-16  cursor-pointer p-1 rounded-lg overflow-hidden shadow-lg hover:scale-105 transition-transform">
+            {/* Header Logo: using logo-header.svg as requested */}
+            <div className="w-16 h-16 cursor-pointer p-1 rounded-lg overflow-hidden shadow-lg hover:scale-105 transition-transform">
               <LogoSVGHeader />
             </div>
             <h1 className="text-2xl font-bold tracking-tight drop-shadow-sm uppercase italic font-chewy">
@@ -221,45 +247,43 @@ export default function Home() {
           
           <div className="flex items-center gap-3">
             <span className="text-sm text-white/80 hidden sm:block font-medium shadow-sm">Built by</span>
-            <a 
-              href="https://farcaster.xyz/teesmilex.base.eth" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="px-5 py-2 bg-black/40 hover:bg-black/60 border border-white/20 text-white rounded-full text-sm font-medium transition-all flex items-center gap-2 backdrop-blur-sm"
+            <button 
+              onClick={openFollowLink}
+             className="px-5 py-2 bg-black/40 hover:bg-brand/60 border border-white/20 text-white rounded-full text-sm font-medium transition-all flex items-center gap-2 backdrop-blur-sm cursor-pointer"
             >
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 text-brand-300">
+               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 text-brand-300">
                   <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
                   <circle cx="9" cy="7" r="4"></circle>
                   <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
                   <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
                 </svg>
                 Follow
-            </a>
+            </button>
           </div>
         </div>
       </header>
 
-      {/* Main Container */}
       <main className="flex-1 flex flex-col items-center justify-center p-4 md:p-8 pb-40 w-full max-w-5xl mx-auto">
         
         {state.status === 'idle' && (
-          <UserSearch onSearch={handleSearch} isLoading={false} />
+          <UserSearch 
+            onSearch={handleSearch} 
+            isLoading={false}
+            initialUsername={context?.user?.username} 
+          />
         )}
 
         {(state.status === 'fetching_user' || state.status === 'analyzing' || state.status === 'generating_meme') && (
            <div className="max-w-md w-full mx-auto animate-fade-in">
              <div className="bg-gradient-to-br from-yellow-400 via-orange-500 to-pink-500 p-1 rounded-3xl shadow-2xl">
                <div className="bg-gradient-to-br from-yellow-400 via-orange-500 to-pink-500 p-6 rounded-[1.4rem] flex flex-col items-center text-center space-y-8 min-h-[400px] justify-center">
-                 
-                 {/* Generation Logo: Transparent (no background class), mimic splash screen style */}
                  <div className="w-56 h-56 rounded-2xl p-2 flex items-center justify-center transform animate-scale-pulse">
                     <LogoSVG />
                  </div>
-
-                 <div className="space-y-3 w-full">
-                   <h2 className="text-4xl text-white drop-shadow-lg tracking-wide font-chewy">
-                     {state.status === 'fetching_user' && 'Locating Target'}
-                     {(state.status === 'analyzing' || state.status === 'generating_meme') && 'Cooking you up real soon...'}
+                 <div className="space-y-2 w-full">
+                   <h2 className="text-2xl text-white drop-shadow-lg tracking-wide font-chewy">
+                      {state.status === 'fetching_user' && 'Locating Target'}
+                     {state.status === 'analyzing' && 'Cooking you up real soon...'}
                    </h2>
                    <p className="text-white text-base sm:text-lg drop-shadow-md min-h-[3rem] max-w-[90%] mx-auto font-chewy truncate px-2">
                      {loadingMessage}
@@ -276,6 +300,7 @@ export default function Home() {
             roast={state.roast}
             memeUrl={state.memeUrl}
             isMemeLoading={state.isMemeLoading}
+            viewerUsername={context?.user?.username}
             onReset={handleReset} 
           />
         )}
@@ -294,7 +319,6 @@ export default function Home() {
         <footer className="mt-2 text-center text-white/50 text-xs font-medium drop-shadow-sm">
           <p>This is a fun app. Use at your own emotional risk.</p>
         </footer>
-
       </main>
     </div>
   );

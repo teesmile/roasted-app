@@ -118,22 +118,24 @@ module.exports = mod;
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$3_$40$babel$2b$core$40$7$2e$28$2e$5_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/.pnpm/next@16.0.3_@babel+core@7.28.5_react-dom@19.2.0_react@19.2.0__react@19.2.0/node_modules/next/dist/build/webpack/loaders/next-flight-loader/server-reference.js [app-rsc] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f40$google$2b$genai$40$1$2e$30$2e$0_bufferutil$40$4$2e$0$2e$9_utf$2d$8$2d$validate$40$5$2e$0$2e$10$2f$node_modules$2f40$google$2f$genai$2f$dist$2f$node$2f$index$2e$mjs__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/.pnpm/@google+genai@1.30.0_bufferutil@4.0.9_utf-8-validate@5.0.10/node_modules/@google/genai/dist/node/index.mjs [app-rsc] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$externals$5d2f$buffer__$5b$external$5d$__$28$buffer$2c$__cjs$29$__ = __turbopack_context__.i("[externals]/buffer [external] (buffer, cjs)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$replicate$40$1$2e$4$2e$0$2f$node_modules$2f$replicate$2f$index$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/.pnpm/replicate@1.4.0/node_modules/replicate/index.js [app-rsc] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$3_$40$babel$2b$core$40$7$2e$28$2e$5_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$action$2d$validate$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/.pnpm/next@16.0.3_@babel+core@7.28.5_react-dom@19.2.0_react@19.2.0__react@19.2.0/node_modules/next/dist/build/webpack/loaders/next-flight-loader/action-validate.js [app-rsc] (ecmascript)");
 ;
 ;
 ;
 // --- Configuration ---
+// Note: In Server Actions, process.env vars (without NEXT_PUBLIC) are secure.
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY || "";
 const NEYNAR_API_KEY = process.env.NEYNAR_API_KEY || "";
 const NEYNAR_API_URL = process.env.NEYNAR_API_URL || "https://api.neynar.com/v2/farcaster";
-const ai = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f40$google$2b$genai$40$1$2e$30$2e$0_bufferutil$40$4$2e$0$2e$9_utf$2d$8$2d$validate$40$5$2e$0$2e$10$2f$node_modules$2f40$google$2f$genai$2f$dist$2f$node$2f$index$2e$mjs__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["GoogleGenAI"]({
-    apiKey: GEMINI_API_KEY
-});
 async function roastUserAction(username) {
     try {
         if (!GEMINI_API_KEY) throw new Error("Missing GEMINI_API_KEY in .env.local");
         if (!NEYNAR_API_KEY) throw new Error("Missing NEYNAR_API_KEY in .env.local");
+        // Initialize SDK inside action
+        const ai = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f40$google$2b$genai$40$1$2e$30$2e$0_bufferutil$40$4$2e$0$2e$9_utf$2d$8$2d$validate$40$5$2e$0$2e$10$2f$node_modules$2f40$google$2f$genai$2f$dist$2f$node$2f$index$2e$mjs__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["GoogleGenAI"]({
+            apiKey: GEMINI_API_KEY
+        });
         const cleanUsername = username.replace(/^@/, '').trim().toLowerCase();
         // 1. Fetch User
         const userRes = await fetch(`${NEYNAR_API_URL}/user/by_username?username=${cleanUsername}&viewer_fid=3`, {
@@ -150,7 +152,7 @@ async function roastUserAction(username) {
         }
         const userData = await userRes.json();
         const user = userData.user;
-        // 2. Fetch Casts (Increased limit and INCLUDED replies for the audit)
+        // 2. Fetch Casts (Increased limit to 30, INCLUDE replies for audit)
         const castsRes = await fetch(`${NEYNAR_API_URL}/feed/user/casts?fid=${user.fid}&limit=30&include_replies=true&include_recasts=false`, {
             headers: {
                 'accept': 'application/json',
@@ -166,42 +168,42 @@ async function roastUserAction(username) {
             // Separate primary casts from replies
             const primaryCasts = allCasts.filter((c)=>!c.parent_hash);
             const replies = allCasts.filter((c)=>c.parent_hash);
-            castTexts = primaryCasts.slice(0, 10).map((c)=>`- ${c.text} (Likes: ${c.reactions.likes_count})`).join('\n');
-            replyTexts = replies.slice(0, 10).map((c)=>`- ${c.text}`).join('\n');
+            castTexts = primaryCasts.slice(0, 15).map((c)=>`- ${c.text} (Likes: ${c.reactions.likes_count})`).join('\n');
+            replyTexts = replies.slice(0, 15).map((c)=>`- ${c.text}`).join('\n');
         }
-        // 3. Generate Roast - PSYCHOLOGICAL MIND READER PROMPT
+        // 3. Generate Roast - CRINGE AUDIT PROMPT
         const ratio = user.follower_count > 0 ? (user.following_count / user.follower_count * 100).toFixed(0) : "0";
         const prompt = `
-      TARGET: @${user.username} (${user.display_name})
+      ROAST TARGET: Farcaster User @${user.username} (${user.display_name})
       Bio: "${user.profile.bio.text}"
-      Stats: ${user.follower_count} followers vs ${user.following_count} following (${ratio}% ratio).
+      Followers: ${user.follower_count} | Following: ${user.following_count} (${ratio}% ratio 💀)
 
-      DATA DUMP (Their recent thoughts):
+      RECENT 90-DAY ACTIVITY (casts + ALL replies - dig for self-owns):
       ${castTexts}
-      ${replyTexts || 'NO REPLIES (ghost account vibes)'}
+      ${replyTexts ? `\nTHEIR REPLIES (Expose these):\n${replyTexts}` : '\nNO REPLIES (ghost account vibes)'}
 
-      CRINGE AUDIT PARAMETERS:
-      - Bio Cringe: Tryhard keywords, emoji spam, humblebrags.
-      - Content Patterns: Crypto zombie slang, engagement farming, self-quotes.
-      - Personality Flaws: Desperation, arrogance, boredom.
+      CRINGE AUDIT - EXPOSE THESE FIRST:
+      1. **Bio Cringe**: Tryhard keywords, emoji spam, humblebrags, "DM for collabs"
+      2. **Follower Ratio**: <10% = desperate followback farmer. >200% = spammer
+      3. **Content Patterns**: 
+         - "gm/fren/wagmi" count >3 = braindead crypto zombie
+         - Replybegging ("LFG @vitalik 👀", ratio replies > casts)
+         - Self-quotes, "just minted" spam, "who's building?" virtue signals
+         - Copy-paste thought-leader diarrhea
+      4. **Engagement Whoring**: Likes-begging, "drop below", dead threads
 
-      TASK: Deliver a STAND-UP COMEDIAN HECKLER ROAST (Max 60 words).
-      
-      STRICT RULES:
-      1. **NO QUOTES**: Do not quote their posts. Do not say "You said...".
-      2. **NO DASHES/LISTS**: Write a cohesive paragraph.
-      3. **MIND READER STYLE**: Look into their soul and describe their pathetic reality with additional savage.
-      4. **BE BRUTAL**: Attack their specific insecurities revealed by the data (like, last 100 casts and replies).
-      
-      Example of Desired Style:
-      be creative, brutal, and specific. be unpredictable too
+      TASK: Deliver STAND-UP COMEDIAN HECKLER ROAST (60 words max)
+      - Savage. Personal. Hit their deepest insecurity.
+      - Structure: Opening punch → Cringe expose → Brutal closer
+      - Voice: Don Rickles meets @basedjester
+      - NO hashtags, disclaimers, mercy.
     `;
         const roastRes = await ai.models.generateContent({
             model: 'gemini-2.5-flash',
             contents: prompt,
             config: {
-                systemInstruction: "You are a brutal, psychic roast master. You do not quote people; you analyze their soul and destroy them directly.",
-                temperature: 1
+                systemInstruction: "You are a savage, ruthless roast master. You speak in a flowing, witty, and devastating manner. You do not list points, you weave them into a single brutal paragraph.",
+                temperature: 1.1
             }
         });
         const roast = roastRes.text || "You're too boring to roast.";
@@ -220,76 +222,41 @@ async function roastUserAction(username) {
 }
 async function generateMemeAction(user, roast) {
     try {
-        if (!GEMINI_API_KEY) throw new Error("Missing GEMINI_API_KEY");
-        // Helper to fetch image buffer
-        async function urlToBase64(url) {
-            const response = await fetch(url);
-            if (!response.ok) throw new Error("Failed to fetch image");
-            const arrayBuffer = await response.arrayBuffer();
-            const buffer = __TURBOPACK__imported__module__$5b$externals$5d2f$buffer__$5b$external$5d$__$28$buffer$2c$__cjs$29$__["Buffer"].from(arrayBuffer);
-            return {
-                data: buffer.toString('base64'),
-                mimeType: response.headers.get('content-type') || 'image/png'
-            };
+        if (!process.env.REPLICATE_API_TOKEN) {
+            throw new Error("Missing REPLICATE_API_TOKEN");
         }
-        const imagePart = await urlToBase64(user.pfp_url);
-        // Prompt: Focus on VISUAL DISTORTION ONLY. No text inside the image.
-        const memePrompt = `
-      This is the profile picture of a user who just got roasted.
-      Roast context: "${roast}"
-      
-      TASK: Apply a heavy, funny visual filter/distortion to this face.
-      Styles: Deep fried, clown makeup, melting, high contrast, or glitch art.
-      
-      IMPORTANT:
-      - OUTPUT ASPECT RATIO MUST BE 1:1.
-      - DO NOT ADD ANY TEXT TO THE IMAGE.
-      - Keep the face recognizable but ridiculed.
+        const replicate = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$replicate$40$1$2e$4$2e$0$2f$node_modules$2f$replicate$2f$index$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"]({
+            auth: process.env.REPLICATE_API_TOKEN
+        });
+        console.log("Distorting PFP using Instruct-Pix2Pix:", user.username);
+        // Prompt: Instructions for how to change the face
+        const prompt = `
+      Turn this person into a crying clown. 
+      Apply a deep fried meme filter. 
+      Make the face look devastated, melting, and roasted.
+      Context: ${roast.slice(0, 30)}
     `;
-        const memeRes = await ai.models.generateContent({
-            model: 'gemini-2.5-flash-image',
-            contents: {
-                parts: [
-                    {
-                        inlineData: imagePart
-                    },
-                    {
-                        text: memePrompt
-                    }
-                ]
-            },
-            config: {
-                imageConfig: {
-                    aspectRatio: "1:1"
-                }
+        // MODEL: Instruct-Pix2Pix
+        // This is the ONLY fast model that reliably edits faces instead of replacing them.
+        const output = await replicate.run("timothybrooks/instruct-pix2pix:30c1d0b916a6f8efce20493f5d61ee27491ab2a60437c13c588468b9810ec23f", {
+            input: {
+                image: user.pfp_url,
+                prompt: prompt,
+                image_guidance_scale: 1.5,
+                num_inference_steps: 20
             }
         });
-        let memeUrl = null;
-        for (const part of memeRes.candidates?.[0]?.content?.parts || []){
-            if (part.inlineData) {
-                memeUrl = `data:image/png;base64,${part.inlineData.data}`;
-                break;
-            }
-        }
-        if (!memeUrl) throw new Error("No image generated");
+        const memeUrl = Array.isArray(output) ? String(output[0]) : String(output);
         return {
             success: true,
             memeUrl
         };
     } catch (error) {
-        // Graceful handling for Rate Limits (429) so the app doesn't crash
-        if (error.status === 429 || error.message?.includes('429')) {
-            console.warn("Meme generation rate limited (local). Skipping.");
-            return {
-                success: false,
-                error: "Rate limit hit (Meme skipped)"
-            };
-        }
-        console.error("Meme Action Error:", error);
+        console.error("Replicate Error:", error);
         return {
-            success: false,
-            error: "Failed to generate meme"
-        };
+            success: true,
+            memeUrl: user.pfp_url
+        }; // Fallback to original PFP
     }
 }
 ;

@@ -1,14 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from './Button';
 import { Input } from './Input';
 
 interface UserSearchProps {
   onSearch: (username: string) => void;
   isLoading: boolean;
+  initialUsername?: string; // ✅ New Prop
 }
 
-export const UserSearch: React.FC<UserSearchProps> = ({ onSearch, isLoading }) => {
-  const [username, setUsername] = useState('');
+export const UserSearch: React.FC<UserSearchProps> = ({ onSearch, isLoading, initialUsername }) => {
+  const [username, setUsername] = useState(initialUsername || '');
+
+  // ✅ Auto-fill if initialUsername arrives late (async SDK load)
+  useEffect(() => {
+    if (initialUsername) {
+      setUsername(initialUsername);
+    }
+  }, [initialUsername]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

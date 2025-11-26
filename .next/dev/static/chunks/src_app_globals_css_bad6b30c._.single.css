@@ -74,6 +74,8 @@
     --color-red-600: #e40014;
     --color-orange-500: #fe6e00;
     --color-yellow-400: #fac800;
+    --color-purple-600: #9810fa;
+    --color-purple-700: #8200da;
     --color-pink-500: #f6339a;
     --color-gray-100: #f3f4f6;
     --color-gray-200: #e5e7eb;
@@ -136,6 +138,7 @@
     --color-brand-400: #ff8566;
     --color-brand-500: #f15a24;
     --color-brand-600: #d94516;
+    --color-brand-700: #b3320f;
     --color-brand-900: #782510;
     --animate-fade-in: fadeIn .5s ease-out forwards;
     --animate-slide-up: slideUp .5s ease-out forwards;
@@ -148,6 +151,8 @@
       --color-red-600: lab(48.4493% 77.4328 61.5452);
       --color-orange-500: lab(64.272% 57.1788 90.3583);
       --color-yellow-400: lab(83.2664% 8.65132 106.895);
+      --color-purple-600: lab(43.0295% 75.21 -86.5669);
+      --color-purple-700: lab(36.1758% 69.8525 -80.0381);
       --color-pink-500: lab(56.9303% 76.8162 -8.07021);
       --color-gray-100: lab(96.1596% -.0823438 -1.13575);
       --color-gray-200: lab(91.6229% -.159115 -2.26791);
@@ -849,6 +854,10 @@
     background-color: var(--color-brand-500);
   }
 
+  .bg-brand-600 {
+    background-color: var(--color-brand-600);
+  }
+
   .bg-gray-800 {
     background-color: var(--color-gray-800);
   }
@@ -865,6 +874,10 @@
 
   .bg-gray-900 {
     background-color: var(--color-gray-900);
+  }
+
+  .bg-purple-600 {
+    background-color: var(--color-purple-600);
   }
 
   .bg-red-600\/20 {
@@ -1317,6 +1330,12 @@
   }
 
   @media (hover: hover) {
+    .hover\:bg-brand-700:hover {
+      background-color: var(--color-brand-700);
+    }
+  }
+
+  @media (hover: hover) {
     .hover\:bg-brand-900\/30:hover {
       background-color: #7825104d;
     }
@@ -1331,6 +1350,12 @@
   @media (hover: hover) {
     .hover\:bg-gray-100:hover {
       background-color: var(--color-gray-100);
+    }
+  }
+
+  @media (hover: hover) {
+    .hover\:bg-purple-700:hover {
+      background-color: var(--color-purple-700);
     }
   }
 

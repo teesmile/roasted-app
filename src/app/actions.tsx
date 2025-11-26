@@ -1,7 +1,8 @@
 'use server';
 
 import { GoogleGenAI } from "@google/genai";
-import { Buffer } from "buffer";
+import { put } from "@vercel/blob";
+import Replicate from "replicate";
 
 // --- Types ---
 export interface FarcasterUser {
@@ -23,21 +24,20 @@ export interface Cast {
 }
 
 // --- Configuration ---
+// Note: In Server Actions, process.env vars (without NEXT_PUBLIC) are secure.
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY || "";
 const NEYNAR_API_KEY = process.env.NEYNAR_API_KEY || "";
 const NEYNAR_API_URL = process.env.NEYNAR_API_URL || "https://api.neynar.com/v2/farcaster";
 
-const ai = new GoogleGenAI({ apiKey: GEMINI_API_KEY });
-
-// --- ACTION 1: Get User & Generate Roast ---
-export async function roastUserAction(username: string): Promise<{
+// --- ACTION 1: Fetch User Data (Neynar) ---
+export async function fetchUserDataAction(username: string): Promise<{
   success: boolean;
   user?: FarcasterUser;
-  roast?: string;
+  castTexts?: string;
+  replyTexts?: string;
   error?: string;
 }> {
   try {
-    if (!GEMINI_API_KEY) throw new Error("Missing GEMINI_API_KEY in .env.local");
     if (!NEYNAR_API_KEY) throw new Error("Missing NEYNAR_API_KEY in .env.local");
 
     const cleanUsername = username.replace(/^@/, '').trim().toLowerCase();
@@ -57,7 +57,7 @@ export async function roastUserAction(username: string): Promise<{
     const userData = await userRes.json();
     const user = userData.user as FarcasterUser;
 
-    // 2. Fetch Casts (Increased limit and INCLUDED replies for the audit)
+    // 2. Fetch Casts (Limit 30, include replies)
     const castsRes = await fetch(
       `${NEYNAR_API_URL}/feed/user/casts?fid=${user.fid}&limit=30&include_replies=true&include_recasts=false`,
       { headers: { 'accept': 'application/json', 'api_key': NEYNAR_API_KEY }, cache: 'no-store' }
@@ -70,131 +70,143 @@ export async function roastUserAction(username: string): Promise<{
       const castsData = await castsRes.json();
       const allCasts = (castsData.casts || []) as Cast[];
       
-      // Separate primary casts from replies
       const primaryCasts = allCasts.filter(c => !c.parent_hash);
       const replies = allCasts.filter(c => c.parent_hash);
 
-      castTexts = primaryCasts.slice(0, 10).map(c => `- ${c.text} (Likes: ${c.reactions.likes_count})`).join('\n');
-      replyTexts = replies.slice(0, 10).map(c => `- ${c.text}`).join('\n');
+      castTexts = primaryCasts.slice(0, 15).map(c => `- ${c.text} (Likes: ${c.reactions.likes_count})`).join('\n');
+      replyTexts = replies.slice(0, 15).map(c => `- ${c.text}`).join('\n');
     }
 
-    // 3. Generate Roast - PSYCHOLOGICAL MIND READER PROMPT
+    return { success: true, user, castTexts, replyTexts };
+
+  } catch (error: any) {
+    console.error('Fetch User Error:', error);
+    return { success: false, error: error.message || 'Server error' };
+  }
+}
+
+// --- ACTION 2: Generate Roast (Gemini) ---
+export async function generateRoastAction(
+  user: FarcasterUser, 
+  castTexts: string, 
+  replyTexts: string
+): Promise<{ success: boolean; roast?: string; error?: string }> {
+  try {
+    if (!GEMINI_API_KEY) throw new Error("Missing GEMINI_API_KEY in .env.local");
+    const ai = new GoogleGenAI({ apiKey: GEMINI_API_KEY });
+
     const ratio = user.follower_count > 0 
       ? (user.following_count / user.follower_count * 100).toFixed(0) 
       : "0";
 
     const prompt = `
-      TARGET: @${user.username} (${user.display_name})
+      ROAST TARGET: Farcaster User @${user.username} (${user.display_name})
       Bio: "${user.profile.bio.text}"
-      Stats: ${user.follower_count} followers vs ${user.following_count} following (${ratio}% ratio).
+      Followers: ${user.follower_count} | Following: ${user.following_count} (${ratio}% ratio 💀)
 
-      DATA DUMP (Their recent thoughts):
+      RECENT 90-DAY ACTIVITY (casts + ALL replies - dig for self-owns):
       ${castTexts}
-      ${replyTexts || 'NO REPLIES (ghost account vibes)'}
+      ${replyTexts ? `\nTHEIR REPLIES (Expose these):\n${replyTexts}` : '\nNO REPLIES (ghost account vibes)'}
 
-      CRINGE AUDIT PARAMETERS:
-      - Bio Cringe: Tryhard keywords, emoji spam, humblebrags.
-      - Content Patterns: Crypto zombie slang, engagement farming, self-quotes.
-      - Personality Flaws: Desperation, arrogance, boredom.
+      CRINGE AUDIT - EXPOSE THESE FIRST:
+      1. **Bio Cringe**: Tryhard keywords, emoji spam, humblebrags, "DM for collabs"
+      2. **Follower Ratio**: <10% = desperate followback farmer. >200% = spammer
+      3. **Content Patterns**: 
+         - "gm/fren/wagmi" count >3 = braindead crypto zombie
+         - Replybegging ("LFG @vitalik 👀", ratio replies > casts)
+         - Self-quotes, "just minted" spam, "who's building?" virtue signals
+         - Copy-paste thought-leader diarrhea
+      4. **Engagement Whoring**: Likes-begging, "drop below", dead threads
 
-      TASK: Deliver a STAND-UP COMEDIAN HECKLER ROAST (Max 60 words).
-      
-      STRICT RULES:
-      1. **NO QUOTES**: Do not quote their posts. Do not say "You said...".
-      2. **NO DASHES/LISTS**: Write a cohesive paragraph.
-      3. **MIND READER STYLE**: Look into their soul and describe their pathetic reality with additional savage.
-      4. **BE BRUTAL**: Attack their specific insecurities revealed by the data (like, last 100 casts and replies).
-      
-      Example of Desired Style:
-      be creative, brutal, and specific. be unpredictable too
+      TASK: Deliver STAND-UP COMEDIAN HECKLER ROAST (60 words max)
+      - Savage. Personal. Hit their deepest insecurity.
+      - Structure: Opening punch → Cringe expose → Brutal closer
+      - Voice: Don Rickles meets @basedjester
+      - NO hashtags, disclaimers, mercy.
     `;
 
     const roastRes = await ai.models.generateContent({
       model: 'gemini-2.5-flash',
       contents: prompt,
       config: {
-        systemInstruction: "You are a brutal, psychic roast master. You do not quote people; you analyze their soul and destroy them directly.",
-        temperature: 1,
+        systemInstruction: "You are a savage, ruthless roast master. You speak in a flowing, witty, and devastating manner. You do not list points, you weave them into a single brutal paragraph.",
+        temperature: 1.1,
       }
     });
 
     const roast = roastRes.text || "You're too boring to roast.";
-
-    return { success: true, user, roast };
+    return { success: true, roast };
 
   } catch (error: any) {
-    console.error('Roast Action Error:', error);
+    console.error('Roast Gen Error:', error);
     return { success: false, error: error.message || 'Server error' };
   }
 }
 
-// --- ACTION 2: Generate Meme (Progressive Loading) ---
+
+
+// --- ACTION 3: Generate Meme (Using Replicate) ---
 export async function generateMemeAction(user: FarcasterUser, roast: string): Promise<{
   success: boolean;
   memeUrl?: string;
   error?: string;
 }> {
   try {
-    if (!GEMINI_API_KEY) throw new Error("Missing GEMINI_API_KEY");
-
-    // Helper to fetch image buffer
-    async function urlToBase64(url: string) {
-      const response = await fetch(url);
-      if (!response.ok) throw new Error("Failed to fetch image");
-      const arrayBuffer = await response.arrayBuffer();
-      const buffer = Buffer.from(arrayBuffer);
-      return {
-        data: buffer.toString('base64'),
-        mimeType: response.headers.get('content-type') || 'image/png'
-      };
+    if (!process.env.REPLICATE_API_TOKEN) {
+      throw new Error("Missing REPLICATE_API_TOKEN");
     }
 
-    const imagePart = await urlToBase64(user.pfp_url);
-
-    // Prompt: Focus on VISUAL DISTORTION ONLY. No text inside the image.
-    const memePrompt = `
-      This is the profile picture of a user who just got roasted.
-      Roast context: "${roast}"
-      
-      TASK: Apply a heavy, funny visual filter/distortion to this face.
-      Styles: Deep fried, clown makeup, melting, high contrast, or glitch art.
-      
-      IMPORTANT:
-      - OUTPUT ASPECT RATIO MUST BE 1:1.
-      - DO NOT ADD ANY TEXT TO THE IMAGE.
-      - Keep the face recognizable but ridiculed.
-    `;
-
-    const memeRes = await ai.models.generateContent({
-      model: 'gemini-2.5-flash-image',
-      contents: {
-        parts: [
-          { inlineData: imagePart },
-          { text: memePrompt }
-        ]
-      },
-      config: { imageConfig: { aspectRatio: "1:1" } }
+    const replicate = new Replicate({
+      auth: process.env.REPLICATE_API_TOKEN,
     });
 
-    let memeUrl = null;
-    for (const part of memeRes.candidates?.[0]?.content?.parts || []) {
-      if (part.inlineData) {
-        memeUrl = `data:image/png;base64,${part.inlineData.data}`;
-        break;
-      }
-    }
+    console.log("Distorting PFP using Instruct-Pix2Pix:", user.username);
 
-    if (!memeUrl) throw new Error("No image generated");
+    // Prompt: Instructions for how to change the face
+    const prompt = `
+      Turn this person into a crying clown. 
+      Apply a deep fried meme filter. 
+      Make the face look devastated, melting, and roasted.
+      Context: ${roast.slice(0, 30)}
+    `;
+
+    // MODEL: Instruct-Pix2Pix
+    // This is the ONLY fast model that reliably edits faces instead of replacing them.
+    const output = await replicate.run(
+      "timothybrooks/instruct-pix2pix:30c1d0b916a6f8efce20493f5d61ee27491ab2a60437c13c588468b9810ec23f",
+      {
+        input: {
+          image: user.pfp_url,    // ✅ The PFP goes here
+          prompt: prompt,         // ✅ The command goes here
+          image_guidance_scale: 1.5, // 1.5 = Keep face shape, but change texture
+          num_inference_steps: 20,
+        }
+      }
+    );
+
+    const memeUrl = Array.isArray(output) ? String(output[0]) : String(output);
 
     return { success: true, memeUrl };
 
   } catch (error: any) {
-    // Graceful handling for Rate Limits (429) so the app doesn't crash
-    if (error.status === 429 || error.message?.includes('429')) {
-      console.warn("Meme generation rate limited (local). Skipping.");
-      return { success: false, error: "Rate limit hit (Meme skipped)" };
-    }
-    console.error("Meme Action Error:", error);
-    return { success: false, error: "Failed to generate meme" };
+    console.error("Replicate Error:", error);
+    return { success: true, memeUrl: user.pfp_url }; // Fallback to original PFP
   }
+}
+
+// --- ACTION 4: Upload Image to Vercel Blob ---
+export async function uploadImageAction(formData: FormData): Promise<string> {
+  const file = formData.get('file') as File;
+  const filename = formData.get('filename') as string;
+
+  if (!file) {
+    throw new Error('No file provided');
+  }
+
+  // Upload to Vercel Blob
+  const blob = await put(filename, file, {
+    access: 'public',
+  });
+
+  return blob.url; // Returns the https://... public URL
 }

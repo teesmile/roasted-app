@@ -1,18 +1,33 @@
 {
   "node": {
-    "406e3405653d65e174f660fc48b6a1922983761d12": {
+    "70638422578e9f9a31d4e9e127812defe5e267b21b": {
       "workers": {
         "app/page": {
           "moduleId": "[project]/.next-internal/server/app/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/app/actions.tsx [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
           "async": false,
-          "exportedName": "roastUserAction",
+          "exportedName": "generateRoastAction",
           "filename": "src/app/actions.tsx"
         }
       },
       "layer": {
         "app/page": "action-browser"
       },
-      "exportedName": "roastUserAction",
+      "exportedName": "generateRoastAction",
+      "filename": "src/app/actions.tsx"
+    },
+    "40956cc960b06227ae4762a599faa678d0f80f90c1": {
+      "workers": {
+        "app/page": {
+          "moduleId": "[project]/.next-internal/server/app/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/app/actions.tsx [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "fetchUserDataAction",
+          "filename": "src/app/actions.tsx"
+        }
+      },
+      "layer": {
+        "app/page": "action-browser"
+      },
+      "exportedName": "fetchUserDataAction",
       "filename": "src/app/actions.tsx"
     },
     "60d9fe79e76b1a05989be5e34f60e48cfebb8cb151": {
@@ -28,6 +43,21 @@
         "app/page": "action-browser"
       },
       "exportedName": "generateMemeAction",
+      "filename": "src/app/actions.tsx"
+    },
+    "40a2e178efb798952f0a9f0e3ba82fa274e9a4a5bc": {
+      "workers": {
+        "app/page": {
+          "moduleId": "[project]/.next-internal/server/app/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/app/actions.tsx [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "uploadImageAction",
+          "filename": "src/app/actions.tsx"
+        }
+      },
+      "layer": {
+        "app/page": "action-browser"
+      },
+      "exportedName": "uploadImageAction",
       "filename": "src/app/actions.tsx"
     }
   },
