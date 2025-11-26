@@ -171,7 +171,7 @@ export const RoastCard: React.FC<RoastCardProps> = ({ user, roast, memeUrl, isMe
   // --- ✅ NEW SHARE LOGIC using sdk.actions.composeCast ---
   const handleShare = async () => {
     setIsSharing(true);
-    setStatusMessage("Generating & Uploading...");
+    setStatusMessage("Generating...");
 
     try {
       // 1. Generate Blob
@@ -186,7 +186,7 @@ export const RoastCard: React.FC<RoastCardProps> = ({ user, roast, memeUrl, isMe
 
       const publicImageUrl = await uploadImageAction(formData);
 
-      setStatusMessage("Opening Composer...");
+      // setStatusMessage("Opening Composer...");
 
       // 3. Construct Caption
       let caption = "";
@@ -243,7 +243,7 @@ export const RoastCard: React.FC<RoastCardProps> = ({ user, roast, memeUrl, isMe
 
   return (
     <div className="w-full max-w-2xl animate-slide-up pb-12">
-      <div className="bg-[#280b51] rounded-2xl overflow-hidden shadow-2xl border border-gray-800 relative flex flex-col">
+      <div className="bg-[#310d63] rounded-2xl overflow-hidden shadow-2xl border border-gray-800 relative flex flex-col">
         
         {/* Header */}
         <div className="bg-brand-500 p-2 text-center shadow-lg z-10">
@@ -311,7 +311,7 @@ export const RoastCard: React.FC<RoastCardProps> = ({ user, roast, memeUrl, isMe
           <Button variant="outline" onClick={handleRoastAnother} className="text-sm px-4 py-2">
             Roast Another
           </Button>
-          <Button onClick={handleShare} isLoading={isSharing} className="text-sm px-4 py-2 bg-brand-600 hover:bg-brand-700">
+          <Button onClick={handleShare} isLoading={isSharing} className="text-sm px-4 py-2 bg-brand-400 hover:bg-brand-500">
             Share
           </Button>
         </div>
