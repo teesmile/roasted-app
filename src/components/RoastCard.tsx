@@ -4,12 +4,16 @@ import React, { useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { FarcasterUser } from '../types';
 import { Button } from './Button';
+import { uploadImageAction } from '../app/actions'; 
+// ✅ Import the correct SDK
+import { sdk } from "@farcaster/miniapp-sdk";
 
 interface RoastCardProps {
   user: FarcasterUser;
   roast: string;
   memeUrl: string | null;
   isMemeLoading?: boolean;
+  viewerUsername?: string; 
   onReset: () => void;
 }
 
@@ -18,11 +22,10 @@ const SFX = {
   BOING: 'https://commondatastorage.googleapis.com/codeskulptor-assets/jump.m4a'
 };
 
-// Mascot Logo - Updated to new file
 const LOGO_DATA_URI = "/roasted-logo.png";
 
-export const RoastCard: React.FC<RoastCardProps> = ({ user, roast, memeUrl, isMemeLoading, onReset }) => {
-  const [isGeneratingImage, setIsGeneratingImage] = useState(false);
+export const RoastCard: React.FC<RoastCardProps> = ({ user, roast, memeUrl, isMemeLoading, viewerUsername, onReset }) => {
+  const [isSharing, setIsSharing] = useState(false);
   const [statusMessage, setStatusMessage] = useState<string | null>(null);
 
   const playSound = (url: string, volume = 1.0, delay = 0) => {
@@ -45,42 +48,36 @@ export const RoastCard: React.FC<RoastCardProps> = ({ user, roast, memeUrl, isMe
     playSound(SFX.WHOOSH, 0.8);
   }, []);
 
+  // --- CANVAS GENERATION (Kept exactly the same) ---
   const generateCompositeImage = async (): Promise<Blob | null> => {
     return new Promise((resolve) => {
       const canvas = document.createElement('canvas');
       const ctx = canvas.getContext('2d');
-      if (!ctx) {
-        resolve(null);
-        return;
-      }
-      // Narrow the 2D context to a non-null type for use inside async callbacks
+      if (!ctx) { resolve(null); return; }
       const ctx2: CanvasRenderingContext2D = ctx;
-
       const styles = getComputedStyle(document.body);
       const chewyFont = styles.getPropertyValue('--font-chewy') || 'cursive'; 
       const robotoFont = styles.getPropertyValue('--font-roboto') || 'Roboto, sans-serif';
-
       const width = 1080;
       const height = 1080;
       canvas.width = width;
       canvas.height = height;
 
-      // 1. Background - #280b51 Theme
-  const gradient = ctx2.createLinearGradient(0, 0, 0, height);
-  gradient.addColorStop(0, '#280b51'); 
-  gradient.addColorStop(1, '#0f0e17');
-  ctx2.fillStyle = gradient;
-  ctx2.fillRect(0, 0, width, height);
+      // 1. Background
+      const gradient = ctx2.createLinearGradient(0, 0, 0, height);
+      gradient.addColorStop(0, '#280b51'); 
+      gradient.addColorStop(1, '#0f0e17');
+      ctx2.fillStyle = gradient;
+      ctx2.fillRect(0, 0, width, height);
 
       // 2. Header
-  ctx2.fillStyle = '#f15a24';
-  ctx2.fillRect(0, 0, width, 100);
-      
-  ctx2.fillStyle = '#ffffff';
-  ctx2.font = `50px ${chewyFont}`;
-  ctx2.textAlign = 'center';
-  ctx2.textBaseline = 'middle';
-  ctx2.fillText('⚠️ EMOTIONAL DAMAGE DETECTED ⚠️', width / 2, 50);
+      ctx2.fillStyle = '#f15a24';
+      ctx2.fillRect(0, 0, width, 100);
+      ctx2.fillStyle = '#ffffff';
+      ctx2.font = `50px ${chewyFont}`;
+      ctx2.textAlign = 'center';
+      ctx2.textBaseline = 'middle';
+      ctx2.fillText('⚠️ EMOTIONAL DAMAGE DETECTED ⚠️', width / 2, 50);
 
       // 3. Draw Content Function
       const drawContent = (memeImg?: HTMLImageElement) => {
@@ -91,19 +88,17 @@ export const RoastCard: React.FC<RoastCardProps> = ({ user, roast, memeUrl, isMe
         ctx2.fillStyle = 'rgba(255, 255, 255, 0.5)';
         ctx2.font = '24px Inter, sans-serif';
         ctx2.fillText('Roasted Analysis', footerTextX, height - 65);
-        
         ctx2.font = 'italic 20px Inter, sans-serif';
         ctx2.fillStyle = 'rgba(255, 255, 255, 0.5)'; 
         ctx2.fillText('teesmile', footerTextX, height - 35);
 
-        // Draw Logo next to footer text
+        // Logo
         const logoImg = new Image();
         logoImg.onload = () => {
-          // Draw logo on top (transparent PNG)
           ctx2.drawImage(logoImg, footerTextX - 140, height - 80, 50, 50);
           finalize();
         };
-        logoImg.onerror = finalize; // Proceed if logo fails
+        logoImg.onerror = finalize; 
         logoImg.src = LOGO_DATA_URI;
         
         function finalize() {
@@ -111,27 +106,21 @@ export const RoastCard: React.FC<RoastCardProps> = ({ user, roast, memeUrl, isMe
           ctx2.fillStyle = '#ffffff';
           ctx2.font = 'bold 32px Inter, sans-serif';
           ctx2.textAlign = 'left';
-          // Ensure backticks are used here
           ctx2.fillText(`@${user.username}`, 50, height - 40);
           
-          // Roast Text - Roboto
+          // Roast Text
           ctx2.fillStyle = '#ffffff';
-          // Ensure backticks are used here
           ctx2.font = `36px ${robotoFont}`; 
           ctx2.textAlign = 'center';
-          
           const imgSize = 320;
           const textX = width / 2;
           const textY = memeImg ? (150 + imgSize + 60) : 300; 
           const maxWidth = 950;
           const lineHeight = 70; 
-          
           const words = roast.split(' ');
           let line = '';
           let y = textY;
-          
           ctx2.textBaseline = 'alphabetic';
-
           for (let n = 0; n < words.length; n++) {
             const testLine = line + words[n] + ' ';
             const metrics = ctx2.measureText(testLine);
@@ -145,7 +134,6 @@ export const RoastCard: React.FC<RoastCardProps> = ({ user, roast, memeUrl, isMe
             }
           }
           ctx2.fillText(line, textX, y);
-
           canvas.toBlob((blob) => {
             resolve(blob);
           }, 'image/png');
@@ -159,22 +147,17 @@ export const RoastCard: React.FC<RoastCardProps> = ({ user, roast, memeUrl, isMe
           const imgSize = 320;
           const cx = width / 2;
           const cy = 150 + (imgSize / 2);
-
           ctx2.save();
           ctx2.translate(cx, cy);
           ctx2.rotate(-5 * Math.PI / 180);
-          
           ctx2.shadowColor = '#f15a24';
           ctx2.shadowBlur = 40;
-          
           ctx2.drawImage(img, -imgSize/2, -imgSize/2, imgSize, imgSize);
-          
           ctx2.shadowBlur = 0; 
           ctx2.strokeStyle = '#374151';
           ctx2.lineWidth = 4;
           ctx2.strokeRect(-imgSize/2, -imgSize/2, imgSize, imgSize);
           ctx2.restore(); 
-
           drawContent(img);
         };
         img.onerror = () => { drawContent(); };
@@ -185,51 +168,67 @@ export const RoastCard: React.FC<RoastCardProps> = ({ user, roast, memeUrl, isMe
     });
   };
 
+  // --- ✅ NEW SHARE LOGIC using sdk.actions.composeCast ---
   const handleShare = async () => {
-    setIsGeneratingImage(true);
-    setStatusMessage("Generating image...");
+    setIsSharing(true);
+    setStatusMessage("Generating & Uploading...");
 
     try {
+      // 1. Generate Blob
       const imageBlob = await generateCompositeImage();
       if (!imageBlob) throw new Error("Failed to generate image");
 
-      try {
-        await navigator.clipboard.write([
-          new ClipboardItem({ [imageBlob.type]: imageBlob })
-        ]);
-        setStatusMessage("Image Copied");
-      } catch (err) {
-        console.warn("Clipboard failed, downloading", err);
-        const url = URL.createObjectURL(imageBlob);
-        const link = document.createElement('a');
-        link.href = url;
-        link.download = `roasted-${user.username}.png`;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        URL.revokeObjectURL(url);
-        setStatusMessage("⬇️ Image Saved! Attach it manually.");
+      // 2. Upload to Vercel Blob
+      const filename = `roast-${user.username}-${Date.now()}.png`;
+      const formData = new FormData();
+      formData.append('file', imageBlob, filename);
+      formData.append('filename', filename);
+
+      const publicImageUrl = await uploadImageAction(formData);
+
+      setStatusMessage("Opening Composer...");
+
+      // 3. Construct Caption
+      let caption = "";
+      if (viewerUsername && viewerUsername.toLowerCase() !== user.username.toLowerCase()) {
+         caption = `@${viewerUsername} just roasted @${user.username} with castroast 😂💀\n\nCheck yours or roast a fren:`;
+      } else {
+         caption = `@${user.username} just got roasted by castroast 😂\n\nCheck yours:`;
       }
 
-      await new Promise(r => setTimeout(r, 1500));
-
-      const shareText = `I just got roasted by the roast whiz😂.\n\nCheck yours:`;
       const currentHost = window.location.hostname;
       const appUrl = (currentHost === 'localhost' || currentHost === '127.0.0.1')
         ? 'https://castroast.vercel.app' 
         : window.location.href; 
       
-      const shareUrl = `https://farcaster.xyz/~/compose?text=${encodeURIComponent(shareText)}&embeds[]=${encodeURIComponent(appUrl)}`;
-      
-      window.open(shareUrl, '_blank');
-      
-      setIsGeneratingImage(false);
-      setTimeout(() => setStatusMessage(null), 10000);
+      // 4. ✅ Use Native SDK Action
+      // This opens the composer directly inside Warpcast
+      try {
+        await sdk.actions.composeCast({
+          text: caption,
+          embeds: [publicImageUrl, appUrl] // Max 2 embeds allowed
+        });
+        
+        // Success
+        setStatusMessage("Composer Opened!");
+      } catch (sdkError) {
+        // Fallback for browsers (outside Warpcast) or if SDK fails
+        console.warn("SDK composeCast failed, falling back to URL", sdkError);
+        
+        const params = new URLSearchParams();
+        params.set("text", caption);
+        params.append("embeds[]", publicImageUrl);
+        params.append("embeds[]", appUrl);
+        window.open(`https://farcaster.xyz/~/compose?${params.toString()}`, '_blank');
+      }
+
+      setIsSharing(false);
+      setTimeout(() => setStatusMessage(null), 3000);
 
     } catch (error) {
       console.error("Share failed", error);
-      setIsGeneratingImage(false);
-      setStatusMessage("Error generating image");
+      setIsSharing(false);
+      setStatusMessage("Error sharing image");
     }
   };
 
@@ -238,7 +237,6 @@ export const RoastCard: React.FC<RoastCardProps> = ({ user, roast, memeUrl, isMe
     setTimeout(() => onReset(), 150);
   };
 
-  // Inline Logo Component for UI
   const LogoIcon = () => (
     <img src={LOGO_DATA_URI} alt="Roasted Logo" className="w-10 h-10 object-contain rounded-lg shadow-sm" />
   );
@@ -254,11 +252,10 @@ export const RoastCard: React.FC<RoastCardProps> = ({ user, roast, memeUrl, isMe
              </h3>
         </div>
 
-        {/* Content Body - Background #280b51 */}
+        {/* Content Body */}
         <div className="p-6 sm:p-8 flex flex-col md:flex-row items-center gap-6 bg-[#280b51]">
           <div className="flex-1 order-2 md:order-1 w-full">
             <div 
-              // Roboto Font
               className="text-lg sm:text-2xl leading-loose text-center md:text-left text-white drop-shadow-md prose prose-invert max-w-none font-normal"
               style={{ fontFamily: 'var(--font-roboto)' }}
             >
@@ -287,6 +284,7 @@ export const RoastCard: React.FC<RoastCardProps> = ({ user, roast, memeUrl, isMe
           </div>
         </div>
 
+        {/* User Info Footer */}
         <div className="bg-[#13111a] p-4 flex items-center justify-between border-t border-gray-800 backdrop-blur-sm">
           <div className="flex items-center gap-3">
              <img src={user.pfp_url} alt={user.username} className="w-10 h-10 rounded-full border border-gray-600 grayscale hover:grayscale-0 transition-all" />
@@ -295,16 +293,15 @@ export const RoastCard: React.FC<RoastCardProps> = ({ user, roast, memeUrl, isMe
               <p className="text-gray-500 text-xs">FID: {user.fid}</p>
             </div>
           </div>
-          {/* Footer Right Side - Added Logo */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center justify-center gap-4">
             <LogoIcon />
             <div className="text-gray-500 text-xs flex flex-col items-center">
                <p>Roasted Analysis</p>
-               <p className="text-gray-500 italic">teesmile</p>
             </div>
           </div>
         </div>
 
+        {/* Buttons */}
         <div className="bg-[#0f0e17] p-4 flex flex-col sm:flex-row gap-3 justify-center sm:justify-end border-t border-gray-900">
           {statusMessage && (
              <div className="text-brand-400 text-sm font-bold self-center animate-pulse text-center">
@@ -314,7 +311,7 @@ export const RoastCard: React.FC<RoastCardProps> = ({ user, roast, memeUrl, isMe
           <Button variant="outline" onClick={handleRoastAnother} className="text-sm px-4 py-2">
             Roast Another
           </Button>
-          <Button onClick={handleShare} isLoading={isGeneratingImage} className="text-sm px-4 py-2">
+          <Button onClick={handleShare} isLoading={isSharing} className="text-sm px-4 py-2 bg-brand-600 hover:bg-brand-700">
             Share
           </Button>
         </div>
