@@ -67,8 +67,8 @@ export const RoastCard: React.FC<RoastCardProps> = ({ user, roast, memeUrl, isMe
 
       // 1. Background
       const gradient = ctx2.createLinearGradient(0, 0, 0, height);
-      gradient.addColorStop(0, '#280b51'); 
-      gradient.addColorStop(1, '#0f0e17');
+      gradient.addColorStop(0, '#471382'); 
+      gradient.addColorStop(1, '#1a0530');
       ctx2.fillStyle = gradient;
       ctx2.fillRect(0, 0, width, height);
 
@@ -263,7 +263,7 @@ export const RoastCard: React.FC<RoastCardProps> = ({ user, roast, memeUrl, isMe
 
   return (
     <div className="w-full max-w-2xl animate-slide-up pb-12">
-      <div className="bg-[#310d63] rounded-2xl overflow-hidden shadow-2xl border border-gray-800 relative flex flex-col">
+      <div className="bg-[#471382] rounded-2xl overflow-hidden shadow-2xl border border-gray-800 relative flex flex-col">
         
         {/* Header */}
         <div className="bg-brand-500 p-2 text-center shadow-lg z-10">
