@@ -2427,3 +2427,17 @@ It can also happen if the client has a browser extension installed which messes 
 [02:48:08.995] Browser WARN    Autoplay blocked: {}
 [02:48:22.215] Server  LOG     Distorting PFP using Instruct-Pix2Pix: "teesmilex.base.eth"
 [02:48:24.371] Browser WARN    Success SFX failed {}
+[03:01:19.392] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[03:01:26.225] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[03:13:14.206] Server  LOG      ✓ Compiled in 20ms
+[03:13:16.115] Server  LOG      ✓ Compiled in 44ms
+[03:13:20.808] Server  LOG      ✓ Compiled in 51ms
+[03:13:22.943] Server  LOG      ✓ Compiled in 31ms
+[03:15:26.386] Server  LOG      ✓ Compiled in 13ms
+[03:16:21.418] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[03:19:02.823] Server  LOG      ✓ Compiled in 19ms
+[03:19:05.686] Server  LOG      ✓ Compiled in 23ms
+[03:19:07.973] Server  LOG      ✓ Compiled in 16ms
+[03:19:16.097] Server  LOG      ✓ Compiled in 19ms
+[03:19:38.382] Server  LOG      ✓ Compiled in 39ms
+[03:20:13.090] Server  LOG      ✓ Compiled in 27ms

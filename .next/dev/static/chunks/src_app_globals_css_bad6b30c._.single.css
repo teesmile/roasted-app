@@ -826,6 +826,10 @@
     background-color: #280b51;
   }
 
+  .bg-\[\#310d63\] {
+    background-color: #310d63;
+  }
+
   .bg-\[\#13111a\] {
     background-color: #13111a;
   }
@@ -848,6 +852,10 @@
     .bg-black\/40 {
       background-color: color-mix(in oklab, var(--color-black) 40%, transparent);
     }
+  }
+
+  .bg-brand-400 {
+    background-color: var(--color-brand-400);
   }
 
   .bg-brand-500 {
@@ -1320,6 +1328,12 @@
       .hover\:bg-black\/60:hover {
         background-color: color-mix(in oklab, var(--color-black) 60%, transparent);
       }
+    }
+  }
+
+  @media (hover: hover) {
+    .hover\:bg-brand-500:hover {
+      background-color: var(--color-brand-500);
     }
   }
 
