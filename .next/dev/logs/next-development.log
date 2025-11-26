@@ -2507,3 +2507,5125 @@ It can also happen if the client has a browser extension installed which messes 
 [05:11:56.354] Browser WARN    Autoplay blocked: {}
 [05:12:19.064] Server  LOG     Distorting PFP using Instruct-Pix2Pix: "dwr"
 [05:12:44.064] Browser WARN    Success SFX failed {}
+[05:43:04.716] Server  LOG      ✓ Compiled in 445ms
+[05:43:11.947] Server  LOG      ✓ Compiled in 80ms
+[05:43:21.918] Server  LOG      ✓ Compiled in 69ms
+[05:55:20.201] Server  LOG      ✓ Compiled in 106ms
+[05:56:06.293] Server  LOG      ✓ Compiled in 30ms
+[05:56:25.037] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[05:56:25.395] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <RootLayout>
+                        <html lang="en">
+                          <body
+                            className="inter_b2991b2-module__9mH_6q__variable chewy_4bc7f1c-module__q_IKeG__variable r..."
+-                           cz-shortcut-listen="true"
+                          >
+                  ...
+
+[05:57:05.078] Server  LOG     Distorting PFP using Instruct-Pix2Pix: "dwr"
+[05:58:00.644] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[05:58:00.802] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <RootLayout>
+                        <html lang="en">
+                          <body
+                            className="inter_b2991b2-module__9mH_6q__variable chewy_4bc7f1c-module__q_IKeG__variable r..."
+-                           cz-shortcut-listen="true"
+                          >
+                  ...
+
+[06:01:29.342] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[06:01:47.663] Server  LOG     Distorting PFP using Instruct-Pix2Pix: "dwr"
+[06:03:49.750] Server  LOG      ✓ Compiled in 30ms
+[06:03:50.577] Browser ERROR   The final argument passed to %s changed size between renders. The order and size of this array must remain constant.
+
+Previous: %s
+Incoming: %s useEffect [idle] []
+[06:03:50.577] Browser ERROR   The final argument passed to %s changed size between renders. The order and size of this array must remain constant.
+
+Previous: %s
+Incoming: %s useEffect [idle] []
+[06:03:50.578] Browser ERROR   The final argument passed to %s changed size between renders. The order and size of this array must remain constant.
+
+Previous: %s
+Incoming: %s useEffect [complete] []
+[06:04:47.809] Server  LOG      ✓ Compiled in 86ms
+[06:04:48.577] Browser ERROR   The final argument passed to %s changed size between renders. The order and size of this array must remain constant.
+
+Previous: %s
+Incoming: %s useEffect [] [idle]
+[06:04:48.578] Browser ERROR   The final argument passed to %s changed size between renders. The order and size of this array must remain constant.
+
+Previous: %s
+Incoming: %s useEffect [] [idle]
+[06:04:48.580] Browser ERROR   The final argument passed to %s changed size between renders. The order and size of this array must remain constant.
+
+Previous: %s
+Incoming: %s useEffect [] [complete]
+[06:04:55.863] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:55.878] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:55.884] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:55.891] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:55.896] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:55.902] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:55.906] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:55.910] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.341] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.346] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.350] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.354] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.358] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.363] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.364] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.369] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.379] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.381] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.387] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.391] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.393] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.398] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.400] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.402] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.409] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.410] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.417] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.418] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.422] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.423] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.424] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.428] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.434] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.438] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.439] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.453] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.456] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.458] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.466] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.468] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.485] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.487] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.494] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.497] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.501] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.507] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.512] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.522] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.528] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.533] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.539] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.543] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.552] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.557] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.560] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.563] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.567] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.574] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.578] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.586] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.590] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.606] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.612] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.616] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.622] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.627] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.638] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.648] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.651] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.654] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.658] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.672] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.681] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.687] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.690] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.692] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.701] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.704] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.709] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.717] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.730] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.734] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.739] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.742] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.745] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.752] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.755] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.757] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.765] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.769] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.778] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.781] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.784] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.787] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.799] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.804] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.816] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.819] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.822] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.833] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.836] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.839] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.902] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.904] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.919] Server  LOG      ✓ Compiled in 1925ms
+[06:04:56.930] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.932] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.934] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.936] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.941] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.943] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.944] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.946] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.953] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.955] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.958] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.961] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.964] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.968] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.969] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.971] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.975] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.977] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.979] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.980] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.982] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.983] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.985] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.988] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.992] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.994] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.996] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:56.998] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:57.000] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:57.002] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:57.003] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:57.004] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:57.011] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:57.014] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:57.016] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:57.017] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:57.019] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:57.020] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:57.022] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:57.024] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:57.030] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:57.032] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:57.038] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:57.040] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:57.043] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:57.045] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:57.047] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:57.049] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:57.053] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:57.056] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:57.058] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:57.063] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:57.065] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:57.067] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:57.069] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:57.070] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:57.074] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:57.076] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:57.078] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:57.080] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:57.084] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:57.089] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:57.091] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:57.093] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:57.097] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:57.099] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:57.101] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:57.103] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:57.104] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:57.106] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:57.108] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:57.112] Server  ERROR    ⨯ ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[06:04:58.597] Browser ERROR   ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[06:04:58.598] Browser ERROR   ./src/app/page.tsx:5:1
+Export RoastCard doesn't exist in target module
+  3 | import React, { useState, useEffect, useRef } from 'react';
+  4 | import { UserSearch } from '../components/UserSearch';
+> 5 | import { RoastCard } from '../components/RoastCard';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Button } from '../components/Button';
+  7 | import { RoastState } from '../types';
+  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+
+The export RoastCard was not found in module [project]/src/components/RoastCard.tsx [app-client] (ecmascript).
+Did you mean to import default?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+[06:04:58.598] Browser ERROR   ./src/app/page.tsx:5:1
+Export RoastCard doesn't exist in target module
+  3 | import React, { useState, useEffect, useRef } from 'react';
+  4 | import { UserSearch } from '../components/UserSearch';
+> 5 | import { RoastCard } from '../components/RoastCard';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Button } from '../components/Button';
+  7 | import { RoastState } from '../types';
+  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+
+The export RoastCard was not found in module [project]/src/components/RoastCard.tsx [app-ssr] (ecmascript).
+Did you mean to import default?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+[06:04:58.598] Browser ERROR   ./src/components/RoastCard.tsx:5:1
+Export RoastCard doesn't exist in target module
+  3 | import React, { useState, useEffect, useRef } from 'react';
+  4 | import { UserSearch } from '../components/UserSearch';
+> 5 | import { RoastCard } from '../components/RoastCard';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Button } from '../components/Button';
+  7 | import { RoastState } from '../types';
+  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+
+The export RoastCard was not found in module [project]/src/components/RoastCard.tsx [app-client] (ecmascript).
+Did you mean to import default?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+[06:04:58.598] Browser ERROR   ./src/components/RoastCard.tsx:5:1
+Export RoastCard doesn't exist in target module
+  3 | import React, { useState, useEffect, useRef } from 'react';
+  4 | import { UserSearch } from '../components/UserSearch';
+> 5 | import { RoastCard } from '../components/RoastCard';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Button } from '../components/Button';
+  7 | import { RoastState } from '../types';
+  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+
+The export RoastCard was not found in module [project]/src/components/RoastCard.tsx [app-ssr] (ecmascript).
+Did you mean to import default?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+[06:04:58.599] Browser ERROR   ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[06:04:58.599] Browser ERROR   ./src/app/page.tsx:5:1
+Export RoastCard doesn't exist in target module
+  3 | import React, { useState, useEffect, useRef } from 'react';
+  4 | import { UserSearch } from '../components/UserSearch';
+> 5 | import { RoastCard } from '../components/RoastCard';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Button } from '../components/Button';
+  7 | import { RoastState } from '../types';
+  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+
+The export RoastCard was not found in module [project]/src/components/RoastCard.tsx [app-client] (ecmascript).
+Did you mean to import default?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+[06:04:58.599] Browser ERROR   ./src/app/page.tsx:5:1
+Export RoastCard doesn't exist in target module
+  3 | import React, { useState, useEffect, useRef } from 'react';
+  4 | import { UserSearch } from '../components/UserSearch';
+> 5 | import { RoastCard } from '../components/RoastCard';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Button } from '../components/Button';
+  7 | import { RoastState } from '../types';
+  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+
+The export RoastCard was not found in module [project]/src/components/RoastCard.tsx [app-ssr] (ecmascript).
+Did you mean to import default?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+[06:04:58.599] Browser ERROR   ./src/components/RoastCard.tsx:5:1
+Export RoastCard doesn't exist in target module
+  3 | import React, { useState, useEffect, useRef } from 'react';
+  4 | import { UserSearch } from '../components/UserSearch';
+> 5 | import { RoastCard } from '../components/RoastCard';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Button } from '../components/Button';
+  7 | import { RoastState } from '../types';
+  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+
+The export RoastCard was not found in module [project]/src/components/RoastCard.tsx [app-client] (ecmascript).
+Did you mean to import default?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+[06:04:58.599] Browser ERROR   ./src/components/RoastCard.tsx:5:1
+Export RoastCard doesn't exist in target module
+  3 | import React, { useState, useEffect, useRef } from 'react';
+  4 | import { UserSearch } from '../components/UserSearch';
+> 5 | import { RoastCard } from '../components/RoastCard';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Button } from '../components/Button';
+  7 | import { RoastState } from '../types';
+  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+
+The export RoastCard was not found in module [project]/src/components/RoastCard.tsx [app-ssr] (ecmascript).
+Did you mean to import default?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+[06:04:58.599] Browser ERROR   ./src/components/RoastCard.tsx:8:1
+Module not found: Can't resolve './actions'
+   6 | import { Button } from '../components/Button';
+   7 | import { RoastState } from '../types';
+>  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { sdk } from "@farcaster/miniapp-sdk"; 
+  10 |
+  11 | // ✅ Local Files
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[06:04:58.599] Browser ERROR   ./src/app/page.tsx:5:1
+Export RoastCard doesn't exist in target module
+  3 | import React, { useState, useEffect, useRef } from 'react';
+  4 | import { UserSearch } from '../components/UserSearch';
+> 5 | import { RoastCard } from '../components/RoastCard';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Button } from '../components/Button';
+  7 | import { RoastState } from '../types';
+  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+
+The export RoastCard was not found in module [project]/src/components/RoastCard.tsx [app-client] (ecmascript).
+Did you mean to import default?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+[06:04:58.599] Browser ERROR   ./src/app/page.tsx:5:1
+Export RoastCard doesn't exist in target module
+  3 | import React, { useState, useEffect, useRef } from 'react';
+  4 | import { UserSearch } from '../components/UserSearch';
+> 5 | import { RoastCard } from '../components/RoastCard';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Button } from '../components/Button';
+  7 | import { RoastState } from '../types';
+  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+
+The export RoastCard was not found in module [project]/src/components/RoastCard.tsx [app-ssr] (ecmascript).
+Did you mean to import default?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+[06:04:58.599] Browser ERROR   ./src/components/RoastCard.tsx:5:1
+Export RoastCard doesn't exist in target module
+  3 | import React, { useState, useEffect, useRef } from 'react';
+  4 | import { UserSearch } from '../components/UserSearch';
+> 5 | import { RoastCard } from '../components/RoastCard';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Button } from '../components/Button';
+  7 | import { RoastState } from '../types';
+  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+
+The export RoastCard was not found in module [project]/src/components/RoastCard.tsx [app-client] (ecmascript).
+Did you mean to import default?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+[06:04:58.599] Browser ERROR   ./src/components/RoastCard.tsx:5:1
+Export RoastCard doesn't exist in target module
+  3 | import React, { useState, useEffect, useRef } from 'react';
+  4 | import { UserSearch } from '../components/UserSearch';
+> 5 | import { RoastCard } from '../components/RoastCard';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Button } from '../components/Button';
+  7 | import { RoastState } from '../types';
+  8 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+
+The export RoastCard was not found in module [project]/src/components/RoastCard.tsx [app-ssr] (ecmascript).
+Did you mean to import default?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/components/RoastCard.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/RoastCard.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+[06:05:47.386] Server  LOG      ✓ Compiled in 517ms
+[06:07:07.805] Server  LOG      ✓ Compiled in 69ms
+[06:07:08.576] Browser ERROR   The final argument passed to %s changed size between renders. The order and size of this array must remain constant.
+
+Previous: %s
+Incoming: %s useEffect [idle] []
+[06:07:08.578] Browser ERROR   The final argument passed to %s changed size between renders. The order and size of this array must remain constant.
+
+Previous: %s
+Incoming: %s useEffect [idle] []
+[06:07:08.578] Browser ERROR   The final argument passed to %s changed size between renders. The order and size of this array must remain constant.
+
+Previous: %s
+Incoming: %s useEffect [complete] []
+[06:09:11.637] Server  LOG      ✓ Compiled in 17ms
+[06:11:51.604] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[06:12:17.993] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[06:13:21.870] Server  LOG     Distorting PFP using Instruct-Pix2Pix: "dwr"
+[06:15:32.566] Server  LOG     Distorting PFP using Instruct-Pix2Pix: "obyanuju"
+[06:20:27.732] Server  LOG      ✓ Compiled in 91ms
+[06:21:27.041] Server  LOG      ✓ Compiled in 31ms
+[06:21:45.197] Server  LOG      ✓ Compiled in 27ms
+[06:22:02.501] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[06:22:02.990] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <RootLayout>
+                        <html lang="en">
+                          <body
+                            className="inter_b2991b2-module__9mH_6q__variable chewy_4bc7f1c-module__q_IKeG__variable r..."
+-                           cz-shortcut-listen="true"
+                          >
+                  ...
+
+[06:22:11.862] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[06:22:11.990] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <RootLayout>
+                        <html lang="en">
+                          <body
+                            className="inter_b2991b2-module__9mH_6q__variable chewy_4bc7f1c-module__q_IKeG__variable r..."
+-                           cz-shortcut-listen="true"
+                          >
+                  ...
+
+[06:22:27.027] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[06:22:57.495] Server  LOG     Distorting PFP using Instruct-Pix2Pix: "jules"
+[06:23:16.524] Server  ERROR   Replicate Error: Error: Prediction failed: 429 Client Error: Unknown Error for url: https://i.imgur.com/N3ayAHl.jpg

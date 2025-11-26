@@ -14,19 +14,27 @@ interface RoastCardProps {
   isMemeLoading?: boolean;
   viewerUsername?: string; 
   onReset: () => void;
+  onStopMusic?: () => void; // ✅ New Prop
 }
 
+// Reusing success sound for now
 const SFX = {
-  WHOOSH: 'https://codeskulptor-demos.commondatastorage.googleapis.com/pang/arrow.mp3',
-  BOING: 'https://commondatastorage.googleapis.com/codeskulptor-assets/jump.m4a'
+  WHOOSH: '/sounds/success.wav',
+  BOING: '/sounds/success.wav'
 };
 
 const LOGO_DATA_URI = "/roasted-logo.png";
-
-// ✅ Hardcode your Frame URL here to ensure the correct link is always shared
 const PRODUCTION_FRAME_URL = "https://castroast.vercel.app";
 
-export const RoastCard: React.FC<RoastCardProps> = ({ user, roast, memeUrl, isMemeLoading, viewerUsername, onReset }) => {
+export const RoastCard: React.FC<RoastCardProps> = ({ 
+  user, 
+  roast, 
+  memeUrl, 
+  isMemeLoading, 
+  viewerUsername, 
+  onReset, 
+  onStopMusic // Destructure prop
+}) => {
   const [isSharing, setIsSharing] = useState(false);
   const [statusMessage, setStatusMessage] = useState<string | null>(null);
 
@@ -35,14 +43,8 @@ export const RoastCard: React.FC<RoastCardProps> = ({ user, roast, memeUrl, isMe
       try {
         const audio = new Audio(url);
         audio.volume = volume;
-        audio.crossOrigin = "anonymous";
-        const playPromise = audio.play();
-        if (playPromise !== undefined) {
-          playPromise.catch(() => { /* Auto-play blocked */ });
-        }
-      } catch (e) {
-        console.error("Audio error", e);
-      }
+        audio.play().catch(() => {});
+      } catch (e) { console.error(e); }
     }, delay);
   };
 
@@ -50,7 +52,7 @@ export const RoastCard: React.FC<RoastCardProps> = ({ user, roast, memeUrl, isMe
     playSound(SFX.WHOOSH, 0.8);
   }, []);
 
-  // --- CANVAS GENERATION ---
+  // --- CANVAS GENERATION (Kept your exact logic) ---
   const generateCompositeImage = async (): Promise<Blob | null> => {
     return new Promise((resolve) => {
       const canvas = document.createElement('canvas');
@@ -65,7 +67,7 @@ export const RoastCard: React.FC<RoastCardProps> = ({ user, roast, memeUrl, isMe
       canvas.width = width;
       canvas.height = height;
 
-      // 1. Background
+      // 1. Background (Your Gradient)
       const gradient = ctx2.createLinearGradient(0, 0, 0, height);
       gradient.addColorStop(0, '#471382'); 
       gradient.addColorStop(1, '#1a0530');
@@ -81,14 +83,11 @@ export const RoastCard: React.FC<RoastCardProps> = ({ user, roast, memeUrl, isMe
       ctx2.textBaseline = 'middle';
       ctx2.fillText('⚠️ EMOTIONAL DAMAGE DETECTED ⚠️', width / 2, 50);
 
-   // 3. Draw Content Function
+      // 3. Draw Content
       const drawContent = (memeImg?: HTMLImageElement) => {
-        
-        // --- NEW FOOTER ALIGNMENT LOGIC ---
-        const footerY = height - 50; // Distance from bottom
+        const footerY = height - 50; 
         const footerRightMargin = 50; 
         
-        // 1. Draw Text (Right Aligned)
         ctx2.font = 'bold 24px Inter, sans-serif';
         ctx2.fillStyle = 'rgba(255, 255, 255, 0.6)';
         ctx2.textAlign = 'right';
@@ -97,19 +96,15 @@ export const RoastCard: React.FC<RoastCardProps> = ({ user, roast, memeUrl, isMe
         const footerText = "Roasted Analysis";
         const textMetrics = ctx2.measureText(footerText);
         const textX = width - footerRightMargin;
-        
         ctx2.fillText(footerText, textX, footerY);
 
-        // 2. Draw Logo (To the left of the text)
         const logoSize = 40;
         const logoPadding = 15;
-        // Calculate X position: Text X - Text Width - Padding - Logo Width
         const logoX = textX - textMetrics.width - logoPadding - logoSize;
-        const logoY = footerY - (logoSize / 2); // Center vertically with text
+        const logoY = footerY - (logoSize / 2); 
 
         const logoImg = new Image();
         logoImg.onload = () => {
-          // Draw logo
           ctx2.drawImage(logoImg, logoX, logoY, logoSize, logoSize);
           finalize();
         };
@@ -117,28 +112,23 @@ export const RoastCard: React.FC<RoastCardProps> = ({ user, roast, memeUrl, isMe
         logoImg.src = LOGO_DATA_URI;
         
         function finalize() {
-          // User Handle (Bottom Left)
           ctx2.fillStyle = '#ffffff';
           ctx2.font = 'bold 32px Inter, sans-serif';
           ctx2.textAlign = 'left';
-          ctx2.textBaseline = 'alphabetic'; // Reset baseline
+          ctx2.textBaseline = 'alphabetic'; 
           ctx2.fillText(`@${user.username}`, 50, height - 40);
           
-          // Roast Text (Center)
           ctx2.fillStyle = '#ffffff';
           ctx2.font = `36px ${robotoFont}`; 
           ctx2.textAlign = 'center';
-          
           const imgSize = 320;
           const textX = width / 2;
           const textY = memeImg ? (150 + imgSize + 60) : 300; 
           const maxWidth = 950;
           const lineHeight = 70; 
-          
           const words = roast.split(' ');
           let line = '';
           let y = textY;
-          
           for (let n = 0; n < words.length; n++) {
             const testLine = line + words[n] + ' ';
             const metrics = ctx2.measureText(testLine);
@@ -152,7 +142,6 @@ export const RoastCard: React.FC<RoastCardProps> = ({ user, roast, memeUrl, isMe
             }
           }
           ctx2.fillText(line, textX, y);
-
           canvas.toBlob((blob) => {
             resolve(blob);
           }, 'image/png');
@@ -187,17 +176,17 @@ export const RoastCard: React.FC<RoastCardProps> = ({ user, roast, memeUrl, isMe
     });
   };
 
-  // --- SHARE LOGIC ---
   const handleShare = async () => {
+    // ✅ Stop music when share is clicked
+    if (onStopMusic) onStopMusic();
+
     setIsSharing(true);
     setStatusMessage("Generating Image...");
 
     try {
-      // 1. Generate Blob locally
       const imageBlob = await generateCompositeImage();
       if (!imageBlob) throw new Error("Failed to generate image");
 
-      // 2. Upload to Vercel Blob (to get a public URL for Farcaster)
       setStatusMessage("Uploading...");
       const filename = `roast-${user.username}-${Date.now()}.png`;
       const formData = new FormData();
@@ -206,30 +195,23 @@ export const RoastCard: React.FC<RoastCardProps> = ({ user, roast, memeUrl, isMe
 
       const publicImageUrl = await uploadImageAction(formData);
 
-      // 3. Construct Caption
       let caption = "";
-       const CREATOR_HANDLE = "@teesmilex.base.eth";
+      const CREATOR_HANDLE = "@teesmilex.base.eth";
       if (viewerUsername && viewerUsername.toLowerCase() !== user.username.toLowerCase()) {
          caption = `@${viewerUsername} just roasted @${user.username} with castroast 😂💀\n\nCheck yours or roast a fren:`;
       } else {
          caption = `@${user.username} just got roasted by castroast 😂\n\nCheck yours:`;
       }
       caption += ` - Roasted by ${CREATOR_HANDLE}`
-      // 4. Try to open Farcaster Composer
-      // setStatusMessage("Opening Composer...");
       
       try {
         await sdk.actions.composeCast({
           text: caption,
-          embeds: [publicImageUrl, PRODUCTION_FRAME_URL] // ✅ Uses correct frame link
+          embeds: [publicImageUrl, PRODUCTION_FRAME_URL] 
         });
-        
         setStatusMessage("Composer Opened!");
       } catch (sdkError) {
-        // 5. ✅ BROWSER FALLBACK: Download the image
-        console.warn("SDK not active. Downloading image...", sdkError);
-        
-        // Create a download link for the Blob we already generated
+        console.warn("SDK not active. Downloading...", sdkError);
         const url = URL.createObjectURL(imageBlob);
         const link = document.createElement('a');
         link.href = url;
@@ -238,8 +220,7 @@ export const RoastCard: React.FC<RoastCardProps> = ({ user, roast, memeUrl, isMe
         link.click();
         document.body.removeChild(link);
         URL.revokeObjectURL(url);
-
-        setStatusMessage("Image Downloaded! (Share manually)");
+        setStatusMessage("Image Downloaded!");
       }
 
       setIsSharing(false);

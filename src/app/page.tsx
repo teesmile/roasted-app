@@ -6,11 +6,11 @@ import { RoastCard } from '../components/RoastCard';
 import { Button } from '../components/Button';
 import { RoastState } from '../types';
 import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
-// ✅ CORRECTED IMPORT for Mini App SDK
 import { sdk } from "@farcaster/miniapp-sdk"; 
 
-const LOADING_MUSIC_URL = "https://codeskulptor-demos.commondatastorage.googleapis.com/pang/paza-moduless.mp3";
-const SUCCESS_SFX_URL = "https://codeskulptor-demos.commondatastorage.googleapis.com/GalaxyInvaders/bonus.mp3";
+// ✅ Local Files
+const LOADING_MUSIC_URL = "/sounds/loading.wav"; 
+const SUCCESS_SFX_URL = "/sounds/success.wav";
 
 const LOADING_MESSAGES = [
   "This dude seems to be hiding something...",
@@ -37,50 +37,69 @@ export default function Home() {
   const [context, setContext] = useState<any>(); 
   
   const [loadingMessage, setLoadingMessage] = useState("Cooking up something spicy...");
+  
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const successAudioRef = useRef<HTMLAudioElement | null>(null);
 
-  // --- 1. Initialize Farcaster SDK ---
+  // --- 1. Initialize SDK ---
   useEffect(() => {
     const load = async () => {
       try {
         const frameContext = await sdk.context;
         setContext(frameContext);
-        
-        // ✅ Native Ready Signal
         await sdk.actions.ready();
-        
         setIsReady(true);
       } catch (err) {
-        console.warn("SDK Context failed (Browser mode?)", err);
+        console.warn("SDK Context failed", err);
         setIsReady(true);
       }
     };
-    if (!isReady) {
-      load();
-    }
+    if (!isReady) load();
   }, [isReady]);
+
+  // --- 2. Initialize Audio & Autoplay ---
+  useEffect(() => {
+    // Setup Audio Objects
+    if (typeof window !== 'undefined') {
+      audioRef.current = new Audio(LOADING_MUSIC_URL);
+      audioRef.current.loop = true;
+      audioRef.current.volume = 0.3;
+
+      successAudioRef.current = new Audio(SUCCESS_SFX_URL);
+      successAudioRef.current.volume = 1.0;
+
+      // Try Autoplay immediately
+      const attemptPlay = async () => {
+        try {
+          await audioRef.current?.play();
+        } catch (e) {
+          // If blocked, add a one-time click listener to start it
+          const startOnInteraction = () => {
+             audioRef.current?.play().catch(() => {});
+             document.removeEventListener('click', startOnInteraction);
+          };
+          document.addEventListener('click', startOnInteraction);
+        }
+      };
+      
+      // Only attempt play if not already complete/error
+      if (state.status === 'idle') {
+        attemptPlay();
+      }
+    }
+
+    return () => {
+      // stopBackgroundMusic();
+    };
+  }, []);
 
   // Splash Screen Timer
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowSplash(false);
-    }, 1000);
+    }, 2000);
     return () => clearTimeout(timer);
   }, []);
-
-  const startBackgroundMusic = () => {
-    if (typeof window !== 'undefined') {
-      if (!audioRef.current) {
-        audioRef.current = new Audio(LOADING_MUSIC_URL);
-        audioRef.current.loop = true;
-        audioRef.current.volume = 0.3;
-        audioRef.current.crossOrigin = "anonymous";
-      }
-      audioRef.current.currentTime = 0;
-      audioRef.current.play().catch(err => console.warn("Autoplay blocked:", err));
-    }
-  };
 
   const stopBackgroundMusic = () => {
     if (audioRef.current) {
@@ -89,6 +108,7 @@ export default function Home() {
     }
   };
 
+  // Loading Messages Cycler
   useEffect(() => {
     const isLoading = ['fetching_user', 'analyzing', 'generating_meme'].includes(state.status);
     let interval: any;
@@ -102,40 +122,23 @@ export default function Home() {
     return () => { if (interval) clearInterval(interval); };
   }, [state.status]);
 
-  useEffect(() => {
-    const isPlayingState = ['fetching_user', 'analyzing', 'generating_meme'].includes(state.status);
-    if (!isPlayingState) {
-      stopBackgroundMusic();
-    }
-  }, [state.status]);
-
   const handleSearch = async (username: string) => {
     try {
-      startBackgroundMusic();
-      
-      if (typeof window !== 'undefined' && !successAudioRef.current) {
-        successAudioRef.current = new Audio(SUCCESS_SFX_URL);
-        successAudioRef.current.volume = 1.0;
-        successAudioRef.current.crossOrigin = "anonymous";
+      // Ensure music is playing if it wasn't already
+      if (audioRef.current?.paused) {
+         audioRef.current.play().catch(() => {});
       }
 
-     setState(prev => ({ ...prev, status: 'fetching_user', error: null, memeUrl: null, isMemeLoading: false }));
+      setState(prev => ({ ...prev, status: 'fetching_user', error: null, memeUrl: null, isMemeLoading: false }));
 
-      // 1. Fetch User Data (Fast)
       const fetchResult = await fetchUserDataAction(username);
       
       if (!fetchResult.success || !fetchResult.user) {
         throw new Error(fetchResult.error || "Failed to find user");
       }
 
-       // Update UI: "Cooking you up..."
-      setState(prev => ({ 
-        ...prev, 
-        status: 'analyzing', 
-        user: fetchResult.user! 
-      }));
+      setState(prev => ({ ...prev, status: 'analyzing', user: fetchResult.user! }));
 
-       // 2. Generate Roast (Slower)
       const roastResult = await generateRoastAction(
         fetchResult.user, 
         fetchResult.castTexts || "", 
@@ -146,7 +149,13 @@ export default function Home() {
         throw new Error(roastResult.error || "Failed to generate roast");
       }
 
-       // Update UI: Show Text immediately
+      // Success! Stop music, play SFX
+      // stopBackgroundMusic();
+      if (successAudioRef.current) {
+         successAudioRef.current.currentTime = 0;
+         successAudioRef.current.play().catch(() => {});
+      }
+
       setState(prev => ({ 
         ...prev, 
         status: 'complete', 
@@ -155,35 +164,21 @@ export default function Home() {
         isMemeLoading: true 
       }));
 
-         // 3. Generate Meme in Background
       generateMemeAction(fetchResult.user, roastResult.roast!)
         .then((memeResult) => {
            if (memeResult.success && memeResult.memeUrl) {
-             if (successAudioRef.current) {
-               successAudioRef.current.currentTime = 0;
-               successAudioRef.current.play().catch(e => console.warn("Success SFX failed", e));
-             }
-             setState(prev => ({ 
-               ...prev, 
-               memeUrl: memeResult.memeUrl!, 
-               isMemeLoading: false 
-             }));
+             setState(prev => ({ ...prev, memeUrl: memeResult.memeUrl!, isMemeLoading: false }));
            } else {
-             console.warn("Meme generation skipped:", memeResult.error);
-             setState(prev => ({ 
-               ...prev, 
-               isMemeLoading: false,
-             }));
+             setState(prev => ({ ...prev, isMemeLoading: false }));
            }
         })
         .catch(err => {
-           console.warn("Meme generation failed", err);
            setState(prev => ({ ...prev, isMemeLoading: false }));
         });
 
     } catch (err: any) {
       console.error(err);
-      stopBackgroundMusic();
+      // stopBackgroundMusic();
       setState(prev => ({
         ...prev,
         status: 'error',
@@ -192,10 +187,13 @@ export default function Home() {
       }));
     }
   };
-    stopBackgroundMusic();
 
   const handleReset = () => {
-    stopBackgroundMusic();
+    // Restart music on reset
+    if (audioRef.current) {
+        audioRef.current.currentTime = 0;
+        audioRef.current.play().catch(() => {});
+    }
     setState({
       status: 'idle',
       user: null,
@@ -206,8 +204,7 @@ export default function Home() {
     });
   };
 
-      
-
+  // ✅ YOUR ORIGINAL SVGs
   const LogoSVG = () => (
     <img src="/roasted-logo.png" alt="Roasted Logo" className="w-full h-full object-contain" />
   );
@@ -216,7 +213,6 @@ export default function Home() {
     <img src="/logo-header.svg" alt="Roasted Header Logo" className="w-full h-full object-contain" />
   );
 
-  // Helper to open profile link
   const openFollowLink = () => {
     sdk.actions.openUrl("https://farcaster.xyz/teesmilex.base.eth");
   };
@@ -232,11 +228,10 @@ export default function Home() {
   }
 
   return (
-     <div className=" custom-cursor min-h-screen animated-bg text-white flex flex-col">
+    <div className="custom-cursor min-h-screen animated-bg text-white flex flex-col">
       <header className="p-6 border-b border-white/10 bg-black/20 backdrop-blur-md sticky top-0 z-10">
         <div className="max-w-5xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-3">
-            {/* Header Logo: using logo-header.svg as requested */}
             <div className="w-16 h-16 cursor-pointer p-1 rounded-lg overflow-hidden shadow-lg hover:scale-105 transition-transform">
               <LogoSVGHeader />
             </div>
@@ -249,9 +244,9 @@ export default function Home() {
             <span className="text-sm text-white/80 hidden sm:block font-medium shadow-sm">Built by</span>
             <button 
               onClick={openFollowLink}
-             className="px-5 py-2 bg-black/40 hover:bg-brand/60 border border-white/20 text-white rounded-full text-sm font-medium transition-all flex items-center gap-2 backdrop-blur-sm cursor-pointer"
+              className="px-5 py-2 bg-black/40 hover:bg-black/60 border border-white/20 text-white rounded-full text-sm font-medium transition-all flex items-center gap-2 backdrop-blur-sm cursor-pointer"
             >
-               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 text-brand-300">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 text-brand-300">
                   <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
                   <circle cx="9" cy="7" r="4"></circle>
                   <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
@@ -274,16 +269,19 @@ export default function Home() {
         )}
 
         {(state.status === 'fetching_user' || state.status === 'analyzing' || state.status === 'generating_meme') && (
+           // ✅ YOUR ORIGINAL GRADIENT CONTAINER STRUCTURE
            <div className="max-w-md w-full mx-auto animate-fade-in">
              <div className="bg-gradient-to-br from-yellow-400 via-orange-500 to-pink-500 p-1 rounded-3xl shadow-2xl">
                <div className="bg-gradient-to-br from-yellow-400 via-orange-500 to-pink-500 p-6 rounded-[1.4rem] flex flex-col items-center text-center space-y-8 min-h-[400px] justify-center">
+                 
                  <div className="w-56 h-56 rounded-2xl p-2 flex items-center justify-center transform animate-scale-pulse">
                     <LogoSVG />
                  </div>
-                 <div className="space-y-2 w-full">
-                   <h2 className="text-2xl text-white drop-shadow-lg tracking-wide font-chewy">
-                      {state.status === 'fetching_user' && 'Locating Target'}
-                     {state.status === 'analyzing' && 'Cooking you up real soon...'}
+
+                 <div className="space-y-3 w-full">
+                   <h2 className="text-4xl text-white drop-shadow-lg tracking-wide font-chewy">
+                     {state.status === 'fetching_user' && 'Locating Target'}
+                     {(state.status === 'analyzing' || state.status === 'generating_meme') && 'Cooking you up real soon...'}
                    </h2>
                    <p className="text-white text-base sm:text-lg drop-shadow-md min-h-[3rem] max-w-[90%] mx-auto font-chewy truncate px-2">
                      {loadingMessage}
@@ -301,7 +299,9 @@ export default function Home() {
             memeUrl={state.memeUrl}
             isMemeLoading={state.isMemeLoading}
             viewerUsername={context?.user?.username}
-            onReset={handleReset} 
+            onReset={handleReset}
+            // ✅ Pass stop function to the card
+            onStopMusic={stopBackgroundMusic} 
           />
         )}
 
