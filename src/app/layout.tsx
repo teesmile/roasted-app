@@ -9,7 +9,7 @@ const roboto = Roboto({ weight: "400", subsets: ["latin"], variable: "--font-rob
 
 const APP_URL = "https://castroast.vercel.app";
 // Bump this version number (v=7) to force Farcaster to refresh your image
-const IMG_URL = `${APP_URL}/og-roasted.png?v=7`; 
+const IMG_URL = `${APP_URL}/og-roasted.png?v=8`; 
 
 // Define the Mini App Config JSON object
 const frameEmbed = {
@@ -43,6 +43,15 @@ export const metadata: Metadata = {
       },
     ],
   },
+   // ✅ ADD THIS FOR TWITTER
+  twitter: {
+    card: "summary_large_image",
+    title: "Roasted",
+    description: "Check your roast or roast your frens on Farcaster.",
+    images: [`${APP_URL}/og-roasted.png?v=8`], // Must match the version above
+    creator: "@teesmilex", // Optional: Your twitter or farcaster handle
+  },
+
   other: {
     // ✅ NEW STANDARD: Stringified JSON in 'fc:miniapp'
     "fc:miniapp": JSON.stringify(frameEmbed),

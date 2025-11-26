@@ -105,7 +105,7 @@ var __TURBOPACK__imported__module__$5b$next$5d2f$internal$2f$font$2f$google$2f$r
 ;
 const APP_URL = "https://castroast.vercel.app";
 // Bump this version number (v=7) to force Farcaster to refresh your image
-const IMG_URL = `${APP_URL}/og-roasted.png?v=7`;
+const IMG_URL = `${APP_URL}/og-roasted.png?v=8`;
 // Define the Mini App Config JSON object
 const frameEmbed = {
     version: "1",
@@ -137,6 +137,16 @@ const metadata = {
             }
         ]
     },
+    // ✅ ADD THIS FOR TWITTER
+    twitter: {
+        card: "summary_large_image",
+        title: "Roasted",
+        description: "Check your roast or roast your frens on Farcaster.",
+        images: [
+            `${APP_URL}/og-roasted.png?v=8`
+        ],
+        creator: "@teesmilex"
+    },
     other: {
         // ✅ NEW STANDARD: Stringified JSON in 'fc:miniapp'
         "fc:miniapp": JSON.stringify(frameEmbed),
@@ -152,12 +162,12 @@ function RootLayout({ children }) {
             children: children
         }, void 0, false, {
             fileName: "[project]/src/app/layout.tsx",
-            lineNumber: 62,
+            lineNumber: 71,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/app/layout.tsx",
-        lineNumber: 61,
+        lineNumber: 70,
         columnNumber: 5
     }, this);
 }

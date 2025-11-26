@@ -470,30 +470,40 @@ const RoastCard = ({ user, roast, memeUrl, isMemeLoading, viewerUsername, onRese
             ctx2.fillText('⚠️ EMOTIONAL DAMAGE DETECTED ⚠️', width / 2, 50);
             // 3. Draw Content Function
             const drawContent = (memeImg)=>{
-                ctx2.textAlign = 'center';
-                const footerTextX = width - 120;
-                // Footer Text
-                ctx2.fillStyle = 'rgba(255, 255, 255, 0.5)';
-                ctx2.font = '24px Inter, sans-serif';
-                ctx2.fillText('Roasted Analysis', footerTextX, height - 65);
-                // ❌ REMOVED "teesmile" text from here as requested
-                // ctx2.font = 'italic 20px Inter, sans-serif';
-                // ctx2.fillText('teesmile', footerTextX, height - 35); 
-                // Logo
+                // --- NEW FOOTER ALIGNMENT LOGIC ---
+                const footerY = height - 50; // Distance from bottom
+                const footerRightMargin = 50;
+                // 1. Draw Text (Right Aligned)
+                ctx2.font = 'bold 24px Inter, sans-serif';
+                ctx2.fillStyle = 'rgba(255, 255, 255, 0.6)';
+                ctx2.textAlign = 'right';
+                ctx2.textBaseline = 'middle';
+                const footerText = "Roasted Analysis";
+                const textMetrics = ctx2.measureText(footerText);
+                const textX = width - footerRightMargin;
+                ctx2.fillText(footerText, textX, footerY);
+                // 2. Draw Logo (To the left of the text)
+                const logoSize = 40;
+                const logoPadding = 15;
+                // Calculate X position: Text X - Text Width - Padding - Logo Width
+                const logoX = textX - textMetrics.width - logoPadding - logoSize;
+                const logoY = footerY - logoSize / 2; // Center vertically with text
                 const logoImg = new Image();
                 logoImg.onload = ()=>{
-                    ctx2.drawImage(logoImg, footerTextX - 140, height - 80, 50, 50);
+                    // Draw logo
+                    ctx2.drawImage(logoImg, logoX, logoY, logoSize, logoSize);
                     finalize();
                 };
                 logoImg.onerror = finalize;
                 logoImg.src = LOGO_DATA_URI;
                 function finalize() {
-                    // User Handle
+                    // User Handle (Bottom Left)
                     ctx2.fillStyle = '#ffffff';
                     ctx2.font = 'bold 32px Inter, sans-serif';
                     ctx2.textAlign = 'left';
+                    ctx2.textBaseline = 'alphabetic'; // Reset baseline
                     ctx2.fillText(`@${user.username}`, 50, height - 40);
-                    // Roast Text
+                    // Roast Text (Center)
                     ctx2.fillStyle = '#ffffff';
                     ctx2.font = `36px ${robotoFont}`;
                     ctx2.textAlign = 'center';
@@ -505,7 +515,6 @@ const RoastCard = ({ user, roast, memeUrl, isMemeLoading, viewerUsername, onRese
                     const words = roast.split(' ');
                     let line = '';
                     let y = textY;
-                    ctx2.textBaseline = 'alphabetic';
                     for(let n = 0; n < words.length; n++){
                         const testLine = line + words[n] + ' ';
                         const metrics = ctx2.measureText(testLine);
@@ -570,13 +579,15 @@ const RoastCard = ({ user, roast, memeUrl, isMemeLoading, viewerUsername, onRese
             const publicImageUrl = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$data$3a$0c6ca6__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$text$2f$javascript$3e$__["uploadImageAction"])(formData);
             // 3. Construct Caption
             let caption = "";
+            const CREATOR_HANDLE = "@teesmilex.base.eth";
             if (viewerUsername && viewerUsername.toLowerCase() !== user.username.toLowerCase()) {
                 caption = `@${viewerUsername} just roasted @${user.username} with castroast 😂💀\n\nCheck yours or roast a fren:`;
             } else {
                 caption = `@${user.username} just got roasted by castroast 😂\n\nCheck yours:`;
             }
+            caption += ` - Roasted by ${CREATOR_HANDLE}`;
             // 4. Try to open Farcaster Composer
-            setStatusMessage("Opening Composer...");
+            // setStatusMessage("Opening Composer...");
             try {
                 await __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f40$farcaster$2b$miniapp$2d$sdk$40$0$2e$2$2e$1_bufferutil$40$4$2e$0$2e$9_typescript$40$5$2e$9$2e$3_utf$2d$8$2d$validate$40$5$2e$0$2e$10_zod$40$4$2e$1$2e$12$2f$node_modules$2f40$farcaster$2f$miniapp$2d$sdk$2f$dist$2f$sdk$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["sdk"].actions.composeCast({
                     text: caption,
@@ -618,7 +629,7 @@ const RoastCard = ({ user, roast, memeUrl, isMemeLoading, viewerUsername, onRese
             className: "w-10 h-10 object-contain rounded-lg shadow-sm"
         }, void 0, false, {
             fileName: "[project]/src/components/RoastCard.tsx",
-            lineNumber: 244,
+            lineNumber: 261,
             columnNumber: 5
         }, ("TURBOPACK compile-time value", void 0));
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$3_$40$babel$2b$core$40$7$2e$28$2e$5_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -633,12 +644,12 @@ const RoastCard = ({ user, roast, memeUrl, isMemeLoading, viewerUsername, onRese
                         children: "⚠️ Emotional Damage Detected ⚠️"
                     }, void 0, false, {
                         fileName: "[project]/src/components/RoastCard.tsx",
-                        lineNumber: 253,
+                        lineNumber: 270,
                         columnNumber: 14
                     }, ("TURBOPACK compile-time value", void 0))
                 }, void 0, false, {
                     fileName: "[project]/src/components/RoastCard.tsx",
-                    lineNumber: 252,
+                    lineNumber: 269,
                     columnNumber: 9
                 }, ("TURBOPACK compile-time value", void 0)),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$3_$40$babel$2b$core$40$7$2e$28$2e$5_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -655,17 +666,17 @@ const RoastCard = ({ user, roast, memeUrl, isMemeLoading, viewerUsername, onRese
                                     children: roast
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/RoastCard.tsx",
-                                    lineNumber: 265,
+                                    lineNumber: 282,
                                     columnNumber: 16
                                 }, ("TURBOPACK compile-time value", void 0))
                             }, void 0, false, {
                                 fileName: "[project]/src/components/RoastCard.tsx",
-                                lineNumber: 261,
+                                lineNumber: 278,
                                 columnNumber: 13
                             }, ("TURBOPACK compile-time value", void 0))
                         }, void 0, false, {
                             fileName: "[project]/src/components/RoastCard.tsx",
-                            lineNumber: 260,
+                            lineNumber: 277,
                             columnNumber: 11
                         }, ("TURBOPACK compile-time value", void 0)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$3_$40$babel$2b$core$40$7$2e$28$2e$5_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -687,7 +698,7 @@ const RoastCard = ({ user, roast, memeUrl, isMemeLoading, viewerUsername, onRese
                                             strokeWidth: "4"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/RoastCard.tsx",
-                                            lineNumber: 273,
+                                            lineNumber: 290,
                                             columnNumber: 21
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$3_$40$babel$2b$core$40$7$2e$28$2e$5_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
@@ -696,18 +707,18 @@ const RoastCard = ({ user, roast, memeUrl, isMemeLoading, viewerUsername, onRese
                                             d: "M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/RoastCard.tsx",
-                                            lineNumber: 274,
+                                            lineNumber: 291,
                                             columnNumber: 21
                                         }, ("TURBOPACK compile-time value", void 0))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/RoastCard.tsx",
-                                    lineNumber: 272,
+                                    lineNumber: 289,
                                     columnNumber: 18
                                 }, ("TURBOPACK compile-time value", void 0))
                             }, void 0, false, {
                                 fileName: "[project]/src/components/RoastCard.tsx",
-                                lineNumber: 271,
+                                lineNumber: 288,
                                 columnNumber: 15
                             }, ("TURBOPACK compile-time value", void 0)) : memeUrl ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$3_$40$babel$2b$core$40$7$2e$28$2e$5_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "relative group",
@@ -716,7 +727,7 @@ const RoastCard = ({ user, roast, memeUrl, isMemeLoading, viewerUsername, onRese
                                         className: "absolute -inset-1 bg-gradient-to-r from-brand-500 to-red-600 rounded-xl blur opacity-75 group-hover:opacity-100 transition duration-200"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/RoastCard.tsx",
-                                        lineNumber: 279,
+                                        lineNumber: 296,
                                         columnNumber: 17
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$3_$40$babel$2b$core$40$7$2e$28$2e$5_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
@@ -725,24 +736,24 @@ const RoastCard = ({ user, roast, memeUrl, isMemeLoading, viewerUsername, onRese
                                         className: "relative w-32 h-32 sm:w-40 sm:h-40 rounded-xl object-cover border-2 border-gray-800 shadow-2xl rotate-2 hover:rotate-0 transition-transform duration-300"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/RoastCard.tsx",
-                                        lineNumber: 280,
+                                        lineNumber: 297,
                                         columnNumber: 17
                                     }, ("TURBOPACK compile-time value", void 0))
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/RoastCard.tsx",
-                                lineNumber: 278,
+                                lineNumber: 295,
                                 columnNumber: 15
                             }, ("TURBOPACK compile-time value", void 0)) : null
                         }, void 0, false, {
                             fileName: "[project]/src/components/RoastCard.tsx",
-                            lineNumber: 269,
+                            lineNumber: 286,
                             columnNumber: 11
                         }, ("TURBOPACK compile-time value", void 0))
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/RoastCard.tsx",
-                    lineNumber: 259,
+                    lineNumber: 276,
                     columnNumber: 9
                 }, ("TURBOPACK compile-time value", void 0)),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$3_$40$babel$2b$core$40$7$2e$28$2e$5_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -757,7 +768,7 @@ const RoastCard = ({ user, roast, memeUrl, isMemeLoading, viewerUsername, onRese
                                     className: "w-10 h-10 rounded-full border border-gray-600 grayscale hover:grayscale-0 transition-all"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/RoastCard.tsx",
-                                    lineNumber: 293,
+                                    lineNumber: 310,
                                     columnNumber: 14
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$3_$40$babel$2b$core$40$7$2e$28$2e$5_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -771,7 +782,7 @@ const RoastCard = ({ user, roast, memeUrl, isMemeLoading, viewerUsername, onRese
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/RoastCard.tsx",
-                                            lineNumber: 295,
+                                            lineNumber: 312,
                                             columnNumber: 15
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$3_$40$babel$2b$core$40$7$2e$28$2e$5_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -782,19 +793,19 @@ const RoastCard = ({ user, roast, memeUrl, isMemeLoading, viewerUsername, onRese
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/RoastCard.tsx",
-                                            lineNumber: 296,
+                                            lineNumber: 313,
                                             columnNumber: 15
                                         }, ("TURBOPACK compile-time value", void 0))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/RoastCard.tsx",
-                                    lineNumber: 294,
+                                    lineNumber: 311,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0))
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/RoastCard.tsx",
-                            lineNumber: 292,
+                            lineNumber: 309,
                             columnNumber: 11
                         }, ("TURBOPACK compile-time value", void 0)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$3_$40$babel$2b$core$40$7$2e$28$2e$5_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -802,7 +813,7 @@ const RoastCard = ({ user, roast, memeUrl, isMemeLoading, viewerUsername, onRese
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$3_$40$babel$2b$core$40$7$2e$28$2e$5_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(LogoIcon, {}, void 0, false, {
                                     fileName: "[project]/src/components/RoastCard.tsx",
-                                    lineNumber: 300,
+                                    lineNumber: 317,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$3_$40$babel$2b$core$40$7$2e$28$2e$5_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -811,24 +822,24 @@ const RoastCard = ({ user, roast, memeUrl, isMemeLoading, viewerUsername, onRese
                                         children: "Roasted Analysis"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/RoastCard.tsx",
-                                        lineNumber: 302,
+                                        lineNumber: 319,
                                         columnNumber: 16
                                     }, ("TURBOPACK compile-time value", void 0))
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/RoastCard.tsx",
-                                    lineNumber: 301,
+                                    lineNumber: 318,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0))
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/RoastCard.tsx",
-                            lineNumber: 299,
+                            lineNumber: 316,
                             columnNumber: 11
                         }, ("TURBOPACK compile-time value", void 0))
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/RoastCard.tsx",
-                    lineNumber: 291,
+                    lineNumber: 308,
                     columnNumber: 9
                 }, ("TURBOPACK compile-time value", void 0)),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$3_$40$babel$2b$core$40$7$2e$28$2e$5_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -839,7 +850,7 @@ const RoastCard = ({ user, roast, memeUrl, isMemeLoading, viewerUsername, onRese
                             children: statusMessage
                         }, void 0, false, {
                             fileName: "[project]/src/components/RoastCard.tsx",
-                            lineNumber: 310,
+                            lineNumber: 327,
                             columnNumber: 14
                         }, ("TURBOPACK compile-time value", void 0)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$3_$40$babel$2b$core$40$7$2e$28$2e$5_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$Button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -849,7 +860,7 @@ const RoastCard = ({ user, roast, memeUrl, isMemeLoading, viewerUsername, onRese
                             children: "Roast Another"
                         }, void 0, false, {
                             fileName: "[project]/src/components/RoastCard.tsx",
-                            lineNumber: 314,
+                            lineNumber: 331,
                             columnNumber: 11
                         }, ("TURBOPACK compile-time value", void 0)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$3_$40$babel$2b$core$40$7$2e$28$2e$5_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$Button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -859,24 +870,24 @@ const RoastCard = ({ user, roast, memeUrl, isMemeLoading, viewerUsername, onRese
                             children: "Share"
                         }, void 0, false, {
                             fileName: "[project]/src/components/RoastCard.tsx",
-                            lineNumber: 317,
+                            lineNumber: 334,
                             columnNumber: 11
                         }, ("TURBOPACK compile-time value", void 0))
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/RoastCard.tsx",
-                    lineNumber: 308,
+                    lineNumber: 325,
                     columnNumber: 9
                 }, ("TURBOPACK compile-time value", void 0))
             ]
         }, void 0, true, {
             fileName: "[project]/src/components/RoastCard.tsx",
-            lineNumber: 249,
+            lineNumber: 266,
             columnNumber: 7
         }, ("TURBOPACK compile-time value", void 0))
     }, void 0, false, {
         fileName: "[project]/src/components/RoastCard.tsx",
-        lineNumber: 248,
+        lineNumber: 265,
         columnNumber: 5
     }, ("TURBOPACK compile-time value", void 0));
 };
