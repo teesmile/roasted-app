@@ -38,3 +38,943 @@ It can also happen if the client has a browser extension installed which messes 
 
 [00:00:44.269] Browser ERROR   Error adding mini app: {}
 [00:01:34.105] Server  LOG     Distorting PFP using Instruct-Pix2Pix: "dwr"
+[00:03:35.998] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:03:36.202] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <RootLayout>
+                        <html lang="en">
+                          <body
+                            className="inter_b2991b2-module__9mH_6q__variable chewy_4bc7f1c-module__q_IKeG__variable r..."
+-                           cz-shortcut-listen="true"
+                          >
+                  ...
+
+[00:15:41.153] Server  ERROR    ⨯ ./src/app/page.tsx:8:1
+Module not found: Can't resolve '@/components/addMiniApp'
+   6 | import { RoastCard } from '../components/RoastCard';
+   7 | import { Button } from '../components/Button';
+>  8 | import { AddMiniAppDrawer } from "@/components/addMiniApp";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { RoastState } from '../types';
+  10 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+  11 | import { sdk } from "@farcaster/miniapp-sdk"; 
+
+Import map: aliased to relative './src/components/addMiniApp' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:41.167] Server  ERROR    ⨯ ./src/app/page.tsx:8:1
+Module not found: Can't resolve '@/components/addMiniApp'
+   6 | import { RoastCard } from '../components/RoastCard';
+   7 | import { Button } from '../components/Button';
+>  8 | import { AddMiniAppDrawer } from "@/components/addMiniApp";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { RoastState } from '../types';
+  10 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+  11 | import { sdk } from "@farcaster/miniapp-sdk"; 
+
+Import map: aliased to relative './src/components/addMiniApp' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:41.173] Server  ERROR    ⨯ ./src/app/page.tsx:8:1
+Module not found: Can't resolve '@/components/addMiniApp'
+   6 | import { RoastCard } from '../components/RoastCard';
+   7 | import { Button } from '../components/Button';
+>  8 | import { AddMiniAppDrawer } from "@/components/addMiniApp";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { RoastState } from '../types';
+  10 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+  11 | import { sdk } from "@farcaster/miniapp-sdk"; 
+
+Import map: aliased to relative './src/components/addMiniApp' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:41.182] Server  ERROR    ⨯ ./src/app/page.tsx:8:1
+Module not found: Can't resolve '@/components/addMiniApp'
+   6 | import { RoastCard } from '../components/RoastCard';
+   7 | import { Button } from '../components/Button';
+>  8 | import { AddMiniAppDrawer } from "@/components/addMiniApp";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { RoastState } from '../types';
+  10 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+  11 | import { sdk } from "@farcaster/miniapp-sdk"; 
+
+Import map: aliased to relative './src/components/addMiniApp' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:41.227] Server  ERROR    ⨯ ./src/app/page.tsx:8:1
+Module not found: Can't resolve '@/components/addMiniApp'
+   6 | import { RoastCard } from '../components/RoastCard';
+   7 | import { Button } from '../components/Button';
+>  8 | import { AddMiniAppDrawer } from "@/components/addMiniApp";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { RoastState } from '../types';
+  10 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+  11 | import { sdk } from "@farcaster/miniapp-sdk"; 
+
+Import map: aliased to relative './src/components/addMiniApp' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:41.232] Server  ERROR    ⨯ ./src/app/page.tsx:8:1
+Module not found: Can't resolve '@/components/addMiniApp'
+   6 | import { RoastCard } from '../components/RoastCard';
+   7 | import { Button } from '../components/Button';
+>  8 | import { AddMiniAppDrawer } from "@/components/addMiniApp";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { RoastState } from '../types';
+  10 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+  11 | import { sdk } from "@farcaster/miniapp-sdk"; 
+
+Import map: aliased to relative './src/components/addMiniApp' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:41.236] Server  ERROR    ⨯ ./src/app/page.tsx:8:1
+Module not found: Can't resolve '@/components/addMiniApp'
+   6 | import { RoastCard } from '../components/RoastCard';
+   7 | import { Button } from '../components/Button';
+>  8 | import { AddMiniAppDrawer } from "@/components/addMiniApp";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { RoastState } from '../types';
+  10 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+  11 | import { sdk } from "@farcaster/miniapp-sdk"; 
+
+Import map: aliased to relative './src/components/addMiniApp' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:41.240] Server  ERROR    ⨯ ./src/app/page.tsx:8:1
+Module not found: Can't resolve '@/components/addMiniApp'
+   6 | import { RoastCard } from '../components/RoastCard';
+   7 | import { Button } from '../components/Button';
+>  8 | import { AddMiniAppDrawer } from "@/components/addMiniApp";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { RoastState } from '../types';
+  10 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+  11 | import { sdk } from "@farcaster/miniapp-sdk"; 
+
+Import map: aliased to relative './src/components/addMiniApp' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:41.249] Server  ERROR    ⨯ ./src/app/page.tsx:8:1
+Module not found: Can't resolve '@/components/addMiniApp'
+   6 | import { RoastCard } from '../components/RoastCard';
+   7 | import { Button } from '../components/Button';
+>  8 | import { AddMiniAppDrawer } from "@/components/addMiniApp";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { RoastState } from '../types';
+  10 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+  11 | import { sdk } from "@farcaster/miniapp-sdk"; 
+
+Import map: aliased to relative './src/components/addMiniApp' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:41.254] Server  ERROR    ⨯ ./src/app/page.tsx:8:1
+Module not found: Can't resolve '@/components/addMiniApp'
+   6 | import { RoastCard } from '../components/RoastCard';
+   7 | import { Button } from '../components/Button';
+>  8 | import { AddMiniAppDrawer } from "@/components/addMiniApp";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { RoastState } from '../types';
+  10 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+  11 | import { sdk } from "@farcaster/miniapp-sdk"; 
+
+Import map: aliased to relative './src/components/addMiniApp' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:41.259] Server  ERROR    ⨯ ./src/app/page.tsx:8:1
+Module not found: Can't resolve '@/components/addMiniApp'
+   6 | import { RoastCard } from '../components/RoastCard';
+   7 | import { Button } from '../components/Button';
+>  8 | import { AddMiniAppDrawer } from "@/components/addMiniApp";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { RoastState } from '../types';
+  10 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+  11 | import { sdk } from "@farcaster/miniapp-sdk"; 
+
+Import map: aliased to relative './src/components/addMiniApp' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:41.264] Server  ERROR    ⨯ ./src/app/page.tsx:8:1
+Module not found: Can't resolve '@/components/addMiniApp'
+   6 | import { RoastCard } from '../components/RoastCard';
+   7 | import { Button } from '../components/Button';
+>  8 | import { AddMiniAppDrawer } from "@/components/addMiniApp";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { RoastState } from '../types';
+  10 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+  11 | import { sdk } from "@farcaster/miniapp-sdk"; 
+
+Import map: aliased to relative './src/components/addMiniApp' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:41.271] Server  ERROR    ⨯ ./src/app/page.tsx:8:1
+Module not found: Can't resolve '@/components/addMiniApp'
+   6 | import { RoastCard } from '../components/RoastCard';
+   7 | import { Button } from '../components/Button';
+>  8 | import { AddMiniAppDrawer } from "@/components/addMiniApp";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { RoastState } from '../types';
+  10 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+  11 | import { sdk } from "@farcaster/miniapp-sdk"; 
+
+Import map: aliased to relative './src/components/addMiniApp' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:41.276] Server  ERROR    ⨯ ./src/app/page.tsx:8:1
+Module not found: Can't resolve '@/components/addMiniApp'
+   6 | import { RoastCard } from '../components/RoastCard';
+   7 | import { Button } from '../components/Button';
+>  8 | import { AddMiniAppDrawer } from "@/components/addMiniApp";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { RoastState } from '../types';
+  10 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+  11 | import { sdk } from "@farcaster/miniapp-sdk"; 
+
+Import map: aliased to relative './src/components/addMiniApp' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:41.280] Server  ERROR    ⨯ ./src/app/page.tsx:8:1
+Module not found: Can't resolve '@/components/addMiniApp'
+   6 | import { RoastCard } from '../components/RoastCard';
+   7 | import { Button } from '../components/Button';
+>  8 | import { AddMiniAppDrawer } from "@/components/addMiniApp";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { RoastState } from '../types';
+  10 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+  11 | import { sdk } from "@farcaster/miniapp-sdk"; 
+
+Import map: aliased to relative './src/components/addMiniApp' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:41.284] Server  ERROR    ⨯ ./src/app/page.tsx:8:1
+Module not found: Can't resolve '@/components/addMiniApp'
+   6 | import { RoastCard } from '../components/RoastCard';
+   7 | import { Button } from '../components/Button';
+>  8 | import { AddMiniAppDrawer } from "@/components/addMiniApp";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { RoastState } from '../types';
+  10 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+  11 | import { sdk } from "@farcaster/miniapp-sdk"; 
+
+Import map: aliased to relative './src/components/addMiniApp' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:41.291] Server  ERROR    ⨯ ./src/app/page.tsx:8:1
+Module not found: Can't resolve '@/components/addMiniApp'
+   6 | import { RoastCard } from '../components/RoastCard';
+   7 | import { Button } from '../components/Button';
+>  8 | import { AddMiniAppDrawer } from "@/components/addMiniApp";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { RoastState } from '../types';
+  10 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+  11 | import { sdk } from "@farcaster/miniapp-sdk"; 
+
+Import map: aliased to relative './src/components/addMiniApp' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:41.294] Server  ERROR    ⨯ ./src/app/page.tsx:8:1
+Module not found: Can't resolve '@/components/addMiniApp'
+   6 | import { RoastCard } from '../components/RoastCard';
+   7 | import { Button } from '../components/Button';
+>  8 | import { AddMiniAppDrawer } from "@/components/addMiniApp";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { RoastState } from '../types';
+  10 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+  11 | import { sdk } from "@farcaster/miniapp-sdk"; 
+
+Import map: aliased to relative './src/components/addMiniApp' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:41.299] Server  ERROR    ⨯ ./src/app/page.tsx:8:1
+Module not found: Can't resolve '@/components/addMiniApp'
+   6 | import { RoastCard } from '../components/RoastCard';
+   7 | import { Button } from '../components/Button';
+>  8 | import { AddMiniAppDrawer } from "@/components/addMiniApp";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { RoastState } from '../types';
+  10 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+  11 | import { sdk } from "@farcaster/miniapp-sdk"; 
+
+Import map: aliased to relative './src/components/addMiniApp' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:41.301] Server  ERROR    ⨯ ./src/app/page.tsx:8:1
+Module not found: Can't resolve '@/components/addMiniApp'
+   6 | import { RoastCard } from '../components/RoastCard';
+   7 | import { Button } from '../components/Button';
+>  8 | import { AddMiniAppDrawer } from "@/components/addMiniApp";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { RoastState } from '../types';
+  10 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+  11 | import { sdk } from "@farcaster/miniapp-sdk"; 
+
+Import map: aliased to relative './src/components/addMiniApp' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:41.308] Server  ERROR    ⨯ ./src/app/page.tsx:8:1
+Module not found: Can't resolve '@/components/addMiniApp'
+   6 | import { RoastCard } from '../components/RoastCard';
+   7 | import { Button } from '../components/Button';
+>  8 | import { AddMiniAppDrawer } from "@/components/addMiniApp";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { RoastState } from '../types';
+  10 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+  11 | import { sdk } from "@farcaster/miniapp-sdk"; 
+
+Import map: aliased to relative './src/components/addMiniApp' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:41.314] Server  ERROR    ⨯ ./src/app/page.tsx:8:1
+Module not found: Can't resolve '@/components/addMiniApp'
+   6 | import { RoastCard } from '../components/RoastCard';
+   7 | import { Button } from '../components/Button';
+>  8 | import { AddMiniAppDrawer } from "@/components/addMiniApp";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { RoastState } from '../types';
+  10 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+  11 | import { sdk } from "@farcaster/miniapp-sdk"; 
+
+Import map: aliased to relative './src/components/addMiniApp' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:41.318] Server  ERROR    ⨯ ./src/app/page.tsx:8:1
+Module not found: Can't resolve '@/components/addMiniApp'
+   6 | import { RoastCard } from '../components/RoastCard';
+   7 | import { Button } from '../components/Button';
+>  8 | import { AddMiniAppDrawer } from "@/components/addMiniApp";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { RoastState } from '../types';
+  10 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+  11 | import { sdk } from "@farcaster/miniapp-sdk"; 
+
+Import map: aliased to relative './src/components/addMiniApp' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:41.321] Server  ERROR    ⨯ ./src/app/page.tsx:8:1
+Module not found: Can't resolve '@/components/addMiniApp'
+   6 | import { RoastCard } from '../components/RoastCard';
+   7 | import { Button } from '../components/Button';
+>  8 | import { AddMiniAppDrawer } from "@/components/addMiniApp";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { RoastState } from '../types';
+  10 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+  11 | import { sdk } from "@farcaster/miniapp-sdk"; 
+
+Import map: aliased to relative './src/components/addMiniApp' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:41.326] Server  ERROR    ⨯ ./src/app/page.tsx:8:1
+Module not found: Can't resolve '@/components/addMiniApp'
+   6 | import { RoastCard } from '../components/RoastCard';
+   7 | import { Button } from '../components/Button';
+>  8 | import { AddMiniAppDrawer } from "@/components/addMiniApp";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { RoastState } from '../types';
+  10 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+  11 | import { sdk } from "@farcaster/miniapp-sdk"; 
+
+Import map: aliased to relative './src/components/addMiniApp' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:41.330] Server  ERROR    ⨯ ./src/app/page.tsx:8:1
+Module not found: Can't resolve '@/components/addMiniApp'
+   6 | import { RoastCard } from '../components/RoastCard';
+   7 | import { Button } from '../components/Button';
+>  8 | import { AddMiniAppDrawer } from "@/components/addMiniApp";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { RoastState } from '../types';
+  10 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+  11 | import { sdk } from "@farcaster/miniapp-sdk"; 
+
+Import map: aliased to relative './src/components/addMiniApp' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:41.335] Server  ERROR    ⨯ ./src/app/page.tsx:8:1
+Module not found: Can't resolve '@/components/addMiniApp'
+   6 | import { RoastCard } from '../components/RoastCard';
+   7 | import { Button } from '../components/Button';
+>  8 | import { AddMiniAppDrawer } from "@/components/addMiniApp";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { RoastState } from '../types';
+  10 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+  11 | import { sdk } from "@farcaster/miniapp-sdk"; 
+
+Import map: aliased to relative './src/components/addMiniApp' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:41.338] Server  ERROR    ⨯ ./src/app/page.tsx:8:1
+Module not found: Can't resolve '@/components/addMiniApp'
+   6 | import { RoastCard } from '../components/RoastCard';
+   7 | import { Button } from '../components/Button';
+>  8 | import { AddMiniAppDrawer } from "@/components/addMiniApp";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { RoastState } from '../types';
+  10 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+  11 | import { sdk } from "@farcaster/miniapp-sdk"; 
+
+Import map: aliased to relative './src/components/addMiniApp' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:41.341] Server  ERROR    ⨯ ./src/app/page.tsx:8:1
+Module not found: Can't resolve '@/components/addMiniApp'
+   6 | import { RoastCard } from '../components/RoastCard';
+   7 | import { Button } from '../components/Button';
+>  8 | import { AddMiniAppDrawer } from "@/components/addMiniApp";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { RoastState } from '../types';
+  10 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+  11 | import { sdk } from "@farcaster/miniapp-sdk"; 
+
+Import map: aliased to relative './src/components/addMiniApp' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:41.344] Server  ERROR    ⨯ ./src/app/page.tsx:8:1
+Module not found: Can't resolve '@/components/addMiniApp'
+   6 | import { RoastCard } from '../components/RoastCard';
+   7 | import { Button } from '../components/Button';
+>  8 | import { AddMiniAppDrawer } from "@/components/addMiniApp";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { RoastState } from '../types';
+  10 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+  11 | import { sdk } from "@farcaster/miniapp-sdk"; 
+
+Import map: aliased to relative './src/components/addMiniApp' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:41.348] Server  ERROR    ⨯ ./src/app/page.tsx:8:1
+Module not found: Can't resolve '@/components/addMiniApp'
+   6 | import { RoastCard } from '../components/RoastCard';
+   7 | import { Button } from '../components/Button';
+>  8 | import { AddMiniAppDrawer } from "@/components/addMiniApp";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { RoastState } from '../types';
+  10 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+  11 | import { sdk } from "@farcaster/miniapp-sdk"; 
+
+Import map: aliased to relative './src/components/addMiniApp' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:41.352] Server  ERROR    ⨯ ./src/app/page.tsx:8:1
+Module not found: Can't resolve '@/components/addMiniApp'
+   6 | import { RoastCard } from '../components/RoastCard';
+   7 | import { Button } from '../components/Button';
+>  8 | import { AddMiniAppDrawer } from "@/components/addMiniApp";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { RoastState } from '../types';
+  10 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+  11 | import { sdk } from "@farcaster/miniapp-sdk"; 
+
+Import map: aliased to relative './src/components/addMiniApp' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:41.356] Server  LOG      ✓ Compiled in 358ms
+[00:15:41.689] Browser ERROR   ./src/app/page.tsx:8:1
+Module not found: Can't resolve '@/components/addMiniApp'
+   6 | import { RoastCard } from '../components/RoastCard';
+   7 | import { Button } from '../components/Button';
+>  8 | import { AddMiniAppDrawer } from "@/components/addMiniApp";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { RoastState } from '../types';
+  10 | import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
+  11 | import { sdk } from "@farcaster/miniapp-sdk"; 
+
+Import map: aliased to relative './src/components/addMiniApp' inside of [project]/
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:16:00.609] Server  LOG      ✓ Compiled in 67ms
+[00:16:20.769] Server  LOG      ✓ Compiled in 68ms
+[00:16:23.872] Browser ERROR   uncaughtError: ReferenceError: setShowAddAppDrawer is not defined
+[00:16:29.262] Server  LOG      ✓ Compiled in 58ms
+[00:17:02.326] Server  LOG      ✓ Compiled in 74ms
+[00:17:22.344] Server  LOG      ✓ Compiled in 88ms
+[00:17:25.458] Browser ERROR   Error adding mini app: {}
+[00:17:46.496] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:17:46.899] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <RootLayout>
+                        <html lang="en">
+                          <body
+                            className="inter_b2991b2-module__9mH_6q__variable chewy_4bc7f1c-module__q_IKeG__variable r..."
+-                           cz-shortcut-listen="true"
+                          >
+                  ...
+
+[00:17:49.750] Browser ERROR   Error adding mini app: {}
+[00:18:00.606] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:18:00.821] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <RootLayout>
+                        <html lang="en">
+                          <body
+                            className="inter_b2991b2-module__9mH_6q__variable chewy_4bc7f1c-module__q_IKeG__variable r..."
+-                           cz-shortcut-listen="true"
+                          >
+                  ...
+
+[00:18:03.868] Browser ERROR   Error adding mini app: {}
