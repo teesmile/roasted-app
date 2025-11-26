@@ -43,19 +43,30 @@ export default function Home() {
 
   // --- 1. Initialize SDK ---
   useEffect(() => {
-    const load = async () => {
-      try {
-        const frameContext = await sdk.context;
-        setContext(frameContext);
-        await sdk.actions.ready();
-        setIsReady(true);
-      } catch (err) {
-        console.warn("SDK Context failed", err);
-        setIsReady(true);
+  const load = async () => {
+    try {
+      const frameContext = await sdk.context;
+      setContext(frameContext);
+      await sdk.actions.ready();
+
+      // Only prompt if not already added
+      if (!frameContext?.client?.added) {
+        try {
+          await sdk.actions.addMiniApp();
+        } catch (addError) {
+          console.log("addMiniApp skipped:", addError);
+        }
       }
-    };
-    if (!isReady) load();
-  }, [isReady]);
+
+      setIsReady(true);
+    } catch (err) {
+      console.warn("SDK Context failed", err);
+      setIsReady(true);
+    }
+  };
+
+  if (!isReady) load();
+}, [isReady]);
 
   // --- 2. Initialize Audio & Autoplay ---
   useEffect(() => {
