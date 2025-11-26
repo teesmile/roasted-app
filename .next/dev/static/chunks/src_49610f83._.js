@@ -327,8 +327,8 @@ const RoastCard = ({ user, roast, memeUrl, isMemeLoading, viewerUsername, onRese
             canvas.height = height;
             // 1. Background
             const gradient = ctx2.createLinearGradient(0, 0, 0, height);
-            gradient.addColorStop(0, '#280b51');
-            gradient.addColorStop(1, '#0f0e17');
+            gradient.addColorStop(0, '#471382');
+            gradient.addColorStop(1, '#1a0530');
             ctx2.fillStyle = gradient;
             ctx2.fillRect(0, 0, width, height);
             // 2. Header
@@ -506,7 +506,7 @@ const RoastCard = ({ user, roast, memeUrl, isMemeLoading, viewerUsername, onRese
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$3_$40$babel$2b$core$40$7$2e$28$2e$5_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "w-full max-w-2xl animate-slide-up pb-12",
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$3_$40$babel$2b$core$40$7$2e$28$2e$5_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-            className: "bg-[#310d63] rounded-2xl overflow-hidden shadow-2xl border border-gray-800 relative flex flex-col",
+            className: "bg-[#471382] rounded-2xl overflow-hidden shadow-2xl border border-gray-800 relative flex flex-col",
             children: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$3_$40$babel$2b$core$40$7$2e$28$2e$5_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: "bg-brand-500 p-2 text-center shadow-lg z-10",
