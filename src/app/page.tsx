@@ -10,8 +10,8 @@ import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './
 import { sdk } from "@farcaster/miniapp-sdk"; 
 
 // ✅ Local Files
-const LOADING_MUSIC_URL = "/sounds/loading.wav"; 
-const SUCCESS_SFX_URL = "/sounds/success.wav";
+const LOADING_MUSIC_URL = "/sounds/loading.mp3"; 
+const SUCCESS_SFX_URL = "/sounds/success.mp3";
 
 const LOADING_MESSAGES = [
   "This dude seems to be hiding something...",
