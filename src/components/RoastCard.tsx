@@ -81,49 +81,64 @@ export const RoastCard: React.FC<RoastCardProps> = ({ user, roast, memeUrl, isMe
       ctx2.textBaseline = 'middle';
       ctx2.fillText('⚠️ EMOTIONAL DAMAGE DETECTED ⚠️', width / 2, 50);
 
-      // 3. Draw Content Function
+   // 3. Draw Content Function
       const drawContent = (memeImg?: HTMLImageElement) => {
-        ctx2.textAlign = 'center'; 
-        const footerTextX = width - 120; 
-
-        // Footer Text
-        ctx2.fillStyle = 'rgba(255, 255, 255, 0.5)';
-        ctx2.font = '24px Inter, sans-serif';
-        ctx2.fillText('Roasted Analysis', footerTextX, height - 65);
         
-        // ❌ REMOVED "teesmile" text from here as requested
-        // ctx2.font = 'italic 20px Inter, sans-serif';
-        // ctx2.fillText('teesmile', footerTextX, height - 35); 
+        // --- NEW FOOTER ALIGNMENT LOGIC ---
+        const footerY = height - 50; // Distance from bottom
+        const footerRightMargin = 50; 
+        
+        // 1. Draw Text (Right Aligned)
+        ctx2.font = 'bold 24px Inter, sans-serif';
+        ctx2.fillStyle = 'rgba(255, 255, 255, 0.6)';
+        ctx2.textAlign = 'right';
+        ctx2.textBaseline = 'middle';
+        
+        const footerText = "Roasted Analysis";
+        const textMetrics = ctx2.measureText(footerText);
+        const textX = width - footerRightMargin;
+        
+        ctx2.fillText(footerText, textX, footerY);
 
-        // Logo
+        // 2. Draw Logo (To the left of the text)
+        const logoSize = 40;
+        const logoPadding = 15;
+        // Calculate X position: Text X - Text Width - Padding - Logo Width
+        const logoX = textX - textMetrics.width - logoPadding - logoSize;
+        const logoY = footerY - (logoSize / 2); // Center vertically with text
+
         const logoImg = new Image();
         logoImg.onload = () => {
-          ctx2.drawImage(logoImg, footerTextX - 140, height - 80, 50, 50);
+          // Draw logo
+          ctx2.drawImage(logoImg, logoX, logoY, logoSize, logoSize);
           finalize();
         };
         logoImg.onerror = finalize; 
         logoImg.src = LOGO_DATA_URI;
         
         function finalize() {
-          // User Handle
+          // User Handle (Bottom Left)
           ctx2.fillStyle = '#ffffff';
           ctx2.font = 'bold 32px Inter, sans-serif';
           ctx2.textAlign = 'left';
+          ctx2.textBaseline = 'alphabetic'; // Reset baseline
           ctx2.fillText(`@${user.username}`, 50, height - 40);
           
-          // Roast Text
+          // Roast Text (Center)
           ctx2.fillStyle = '#ffffff';
           ctx2.font = `36px ${robotoFont}`; 
           ctx2.textAlign = 'center';
+          
           const imgSize = 320;
           const textX = width / 2;
           const textY = memeImg ? (150 + imgSize + 60) : 300; 
           const maxWidth = 950;
           const lineHeight = 70; 
+          
           const words = roast.split(' ');
           let line = '';
           let y = textY;
-          ctx2.textBaseline = 'alphabetic';
+          
           for (let n = 0; n < words.length; n++) {
             const testLine = line + words[n] + ' ';
             const metrics = ctx2.measureText(testLine);
@@ -137,6 +152,7 @@ export const RoastCard: React.FC<RoastCardProps> = ({ user, roast, memeUrl, isMe
             }
           }
           ctx2.fillText(line, textX, y);
+
           canvas.toBlob((blob) => {
             resolve(blob);
           }, 'image/png');
@@ -192,14 +208,15 @@ export const RoastCard: React.FC<RoastCardProps> = ({ user, roast, memeUrl, isMe
 
       // 3. Construct Caption
       let caption = "";
+       const CREATOR_HANDLE = "@teesmilex.base.eth";
       if (viewerUsername && viewerUsername.toLowerCase() !== user.username.toLowerCase()) {
          caption = `@${viewerUsername} just roasted @${user.username} with castroast 😂💀\n\nCheck yours or roast a fren:`;
       } else {
          caption = `@${user.username} just got roasted by castroast 😂\n\nCheck yours:`;
       }
-
+      caption += ` - Roasted by ${CREATOR_HANDLE}`
       // 4. Try to open Farcaster Composer
-      setStatusMessage("Opening Composer...");
+      // setStatusMessage("Opening Composer...");
       
       try {
         await sdk.actions.composeCast({
