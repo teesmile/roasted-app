@@ -5,7 +5,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import { UserSearch } from '../components/UserSearch';
 import { RoastCard } from '../components/RoastCard';
 import { Button } from '../components/Button';
-import { AddMiniAppDrawer } from "@/components/addMiniApp";
 import { RoastState } from '../types';
 import { generateRoastAction, fetchUserDataAction, generateMemeAction } from './actions';
 import { sdk } from "@farcaster/miniapp-sdk"; 
@@ -40,8 +39,6 @@ export default function Home() {
   
   const [loadingMessage, setLoadingMessage] = useState("Cooking up something spicy...");
   
-  // ✅ Add state for the drawer
-  const [showAddAppDrawer, setShowAddAppDrawer] = useState(false);
   
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const successAudioRef = useRef<HTMLAudioElement | null>(null);
@@ -66,16 +63,26 @@ export default function Home() {
     if (!isReady) load();
   }, [isReady]);
 
-  // ✅ Show drawer after splash screen and app is ready
-  useEffect(() => {
-    if (!showSplash && isReady) {
-      // Delay showing drawer by 1 second after splash
-      const timer = setTimeout(() => {
-        setShowAddAppDrawer(true);
-      }, 1000);
-      return () => clearTimeout(timer);
-    }
-  }, [showSplash, isReady]);
+ useEffect(() => {
+  if (!showSplash && isReady) {
+    const timer = setTimeout(async () => {
+      try {
+        await sdk.actions.addMiniApp();
+        console.log('✅ App successfully added!');
+      } catch (error: any) {
+        const errorMsg = error?.message || '';
+        if (errorMsg.includes('RejectedByUser')) {
+          console.log('User declined to add the app');
+        } else if (errorMsg.includes('InvalidDomainManifestJson')) {
+          console.error('⚠️ Invalid manifest or domain mismatch:', error);
+        } else {
+          console.error('Error adding mini app:', error);
+        }
+      }
+    }, 1000);
+    return () => clearTimeout(timer);
+  }
+}, [showSplash, isReady]);
 
   // --- 2. Initialize Audio & Autoplay ---
   useEffect(() => {
@@ -340,13 +347,6 @@ export default function Home() {
           <p>This is a fun app. Use at your own emotional risk.</p>
         </footer>
       </main>
-     <AddMiniAppDrawer 
-  isOpen={showAddAppDrawer}
-  onClose={() => setShowAddAppDrawer(false)}
-  onSuccess={() => console.log('🎉 App successfully added!')}
-  appName="Roasted"
-  appIcon="/logo-header.svg"
-/>
     </div>
   );
 }
