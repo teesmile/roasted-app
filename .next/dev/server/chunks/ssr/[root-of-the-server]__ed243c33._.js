@@ -938,8 +938,8 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f40$
 ;
 ;
 // ✅ Local Files
-const LOADING_MUSIC_URL = "/sounds/loading.wav";
-const SUCCESS_SFX_URL = "/sounds/success.wav";
+const LOADING_MUSIC_URL = "/sounds/loading.mp3";
+const SUCCESS_SFX_URL = "/sounds/success.mp3";
 const LOADING_MESSAGES = [
     "This dude seems to be hiding something...",
     "Scanning for cringe...",

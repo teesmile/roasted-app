@@ -826,8 +826,8 @@ var _s = __turbopack_context__.k.signature();
 ;
 ;
 // ✅ Local Files
-const LOADING_MUSIC_URL = "/sounds/loading.wav";
-const SUCCESS_SFX_URL = "/sounds/success.wav";
+const LOADING_MUSIC_URL = "/sounds/loading.mp3";
+const SUCCESS_SFX_URL = "/sounds/success.mp3";
 const LOADING_MESSAGES = [
     "This dude seems to be hiding something...",
     "Scanning for cringe...",
