@@ -313,7 +313,7 @@ export const RoastCard: React.FC<RoastCardProps> = ({
             Roast Another
           </Button>
           <Button onClick={handleShare} isLoading={isSharing} className="text-sm px-4 py-2 bg-brand-400 hover:bg-brand-500">
-            Share
+            Share on Farcaster
           </Button>
         </div>
       </div>

@@ -851,7 +851,7 @@ const RoastCard = ({ user, roast, memeUrl, isMemeLoading, viewerUsername, onRese
                             onClick: handleShare,
                             isLoading: isSharing,
                             className: "text-sm px-4 py-2 bg-brand-400 hover:bg-brand-500",
-                            children: "Share"
+                            children: "Share on Farcaster"
                         }, void 0, false, {
                             fileName: "[project]/src/components/RoastCard.tsx",
                             lineNumber: 315,
