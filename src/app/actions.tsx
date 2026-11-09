@@ -2,7 +2,19 @@
 
 import { GoogleGenAI } from "@google/genai";
 import { put } from "@vercel/blob";
+import { headers } from "next/headers";
 import Replicate from "replicate";
+import {
+  ALLOWED_MIME_TYPES,
+  MAX_UPLOAD_BYTES,
+  UploadRejected,
+  assertRoastPng,
+  checkRateLimit,
+  clientIpFrom,
+  consumeUploadToken,
+  issueUploadToken,
+  verifyUploadToken,
+} from "@/lib/uploadGuard";
 
 // --- Types ---
 export interface FarcasterUser {
@@ -90,7 +102,7 @@ export async function generateRoastAction(
   user: FarcasterUser, 
   castTexts: string, 
   replyTexts: string
-): Promise<{ success: boolean; roast?: string; error?: string }> {
+): Promise<{ success: boolean; roast?: string; uploadToken?: string; error?: string }> {
   try {
     if (!GEMINI_API_KEY) throw new Error("Missing GEMINI_API_KEY in .env.local");
     const ai = new GoogleGenAI({ apiKey: GEMINI_API_KEY });
@@ -135,7 +147,8 @@ export async function generateRoastAction(
     });
 
     const roast = roastRes.text || "You're too boring to roast.";
-    return { success: true, roast };
+    const uploadToken = issueUploadToken(user.username, roast);
+    return { success: true, roast, uploadToken };
 
   } catch (error: any) {
     console.error('Roast Gen Error:', error);
@@ -194,19 +207,49 @@ export async function generateMemeAction(user: FarcasterUser, roast: string): Pr
   }
 }
 
-// --- ACTION 4: Upload Image to Vercel Blob ---
-export async function uploadImageAction(formData: FormData): Promise<string> {
-  const file = formData.get('file') as File;
-  const filename = formData.get('filename') as string;
+// --- ACTION 4: Upload Roast Image to Vercel Blob ---
+// Only accepts the 1080x1080 PNG roast card, with a valid single-use token issued
+// by generateRoastAction for that same user. The blob name is set here, never by the client.
+export async function uploadImageAction(formData: FormData): Promise<{
+  success: boolean;
+  url?: string;
+  error?: string;
+}> {
+  try {
+    checkRateLimit(`upload:${clientIpFrom(await headers())}`);
 
-  if (!file) {
-    throw new Error('No file provided');
+    const file = formData.get('file');
+    const token = formData.get('token');
+    const username = formData.get('username');
+
+    if (!(file instanceof File)) throw new UploadRejected('No file provided');
+    if (typeof token !== 'string' || typeof username !== 'string') {
+      throw new UploadRejected('Missing upload token');
+    }
+    if (!ALLOWED_MIME_TYPES.has(file.type)) throw new UploadRejected('Only PNG images are allowed');
+    if (file.size === 0 || file.size > MAX_UPLOAD_BYTES) {
+      throw new UploadRejected(`Image must be under ${MAX_UPLOAD_BYTES / 1024 / 1024} MB`);
+    }
+
+    const payload = verifyUploadToken(token);
+    if (payload.u !== username.toLowerCase()) throw new UploadRejected('Upload token does not match this roast');
+
+    const bytes = Buffer.from(await file.arrayBuffer());
+    if (bytes.length > MAX_UPLOAD_BYTES) throw new UploadRejected('Image too large');
+    assertRoastPng(bytes);
+    consumeUploadToken(payload);
+
+    const safeName = payload.u.replace(/[^a-z0-9_.-]/g, '').slice(0, 40) || 'user';
+    const blob = await put(`roasts/roast-${safeName}.png`, bytes, {
+      access: 'public',
+      contentType: 'image/png',
+      addRandomSuffix: true,
+    });
+
+    return { success: true, url: blob.url };
+  } catch (error: unknown) {
+    if (error instanceof UploadRejected) return { success: false, error: error.message };
+    console.error('Upload Error:', error);
+    return { success: false, error: 'Upload failed' };
   }
-
-  // Upload to Vercel Blob
-  const blob = await put(filename, file, {
-    access: 'public',
-  });
-
-  return blob.url; // Returns the https://... public URL
 }

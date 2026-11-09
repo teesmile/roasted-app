@@ -27,6 +27,7 @@ export interface RoastState {
   user: FarcasterUser | null;
   roast: string | null;
   memeUrl: string | null;
+  uploadToken?: string | null;
   isMemeLoading?: boolean;
   error: string | null;
 }

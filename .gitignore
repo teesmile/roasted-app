@@ -16,6 +16,7 @@ dist/
 .env.development.local
 .env.test.local
 .env.production.local
+.env*.local
 
 # Logs
 npm-debug.log*
@@ -38,4 +39,14 @@ lerna-debug.log*
 # Vite
 .vite
 vite.config.js.timestamp-*
-vite.config.ts.timestamp-*.next
+vite.config.ts.timestamp-*
+
+# Next.js build output
+.next/
+out/
+*.tsbuildinfo
+
+# Vercel
+.vercel
+
+.env*

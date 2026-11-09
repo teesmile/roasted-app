@@ -11,6 +11,7 @@ interface RoastCardProps {
   user: FarcasterUser;
   roast: string;
   memeUrl: string | null;
+  uploadToken: string | null;
   isMemeLoading?: boolean;
   viewerUsername?: string; 
   onReset: () => void;
@@ -30,6 +31,7 @@ export const RoastCard: React.FC<RoastCardProps> = ({
   user, 
   roast, 
   memeUrl, 
+  uploadToken,
   isMemeLoading, 
   viewerUsername, 
   onReset, 
@@ -187,13 +189,17 @@ export const RoastCard: React.FC<RoastCardProps> = ({
       const imageBlob = await generateCompositeImage();
       if (!imageBlob) throw new Error("Failed to generate image");
 
-      setStatusMessage("Uploading...");
-      const filename = `roast-${user.username}-${Date.now()}.png`;
-      const formData = new FormData();
-      formData.append('file', imageBlob, filename);
-      formData.append('filename', filename);
+      if (!uploadToken) throw new Error("Missing upload token");
 
-      const publicImageUrl = await uploadImageAction(formData);
+      setStatusMessage("Uploading...");
+      const formData = new FormData();
+      formData.append('file', imageBlob, `roast-${user.username}.png`);
+      formData.append('username', user.username);
+      formData.append('token', uploadToken);
+
+      const upload = await uploadImageAction(formData);
+      if (!upload.success || !upload.url) throw new Error(upload.error || "Upload failed");
+      const publicImageUrl = upload.url;
 
       let caption = "";
       const CREATOR_HANDLE = "@teesmilex.base.eth";

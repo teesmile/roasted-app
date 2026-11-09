@@ -187,6 +187,7 @@ export default function Home() {
         ...prev, 
         status: 'complete', 
         roast: roastResult.roast!,
+        uploadToken: roastResult.uploadToken ?? null,
         memeUrl: null,
         isMemeLoading: true 
       }));
@@ -226,6 +227,7 @@ export default function Home() {
       user: null,
       roast: null,
       memeUrl: null,
+      uploadToken: null,
       isMemeLoading: false,
       error: null
     });
@@ -324,6 +326,7 @@ export default function Home() {
             user={state.user} 
             roast={state.roast}
             memeUrl={state.memeUrl}
+            uploadToken={state.uploadToken ?? null}
             isMemeLoading={state.isMemeLoading}
             viewerUsername={context?.user?.username}
             onReset={handleReset}
